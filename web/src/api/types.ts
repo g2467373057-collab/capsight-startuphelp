@@ -188,10 +188,29 @@ export interface FounderIdea {
   geography: string
 }
 
+/** A numbered source in the written report, cited in the text as [n]. */
+export interface Reference {
+  n: number
+  title: string
+  url: string
+  issuer?: string
+  date?: string
+  kind: SourceKind
+}
+
+/** The report as a reader sees it: one paragraph per judgment point, a conclusion, numbered references. */
+export interface Narrative {
+  sections: { jp: JpId; heading: string; text: string }[]
+  conclusion: string
+  references: Reference[]
+}
+
 export interface ReportResult {
   runId: string
   kind: 'report'
   idea: FounderIdea
+  /** Written report shown to the founder; the structured sections below back it and are used for scoring. */
+  narrative: Narrative
   sections: ReportSection[]
   summary: ReportSummary
   /** The competitor table behind JP4–JP5. */

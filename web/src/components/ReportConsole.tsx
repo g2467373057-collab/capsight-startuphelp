@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { colLabel, downloadCsv } from '../api/client'
 import { ApiError, isDemo } from '../api/http'
-import { downloadMarkdown, JP_LABEL, JP_SOURCE, runReport, statusText } from '../api/report'
-import type { Claim, Lang, ReportResult, RunEvent, RunResult, Source } from '../api/types'
+import { downloadMarkdown, runReport } from '../api/report'
+import type { Lang, Reference, ReportResult, RunEvent, RunResult } from '../api/types'
 import { errorText } from '../data/content'
 import { useLang } from '../i18n'
 import { CellView } from './CellView'
@@ -17,7 +17,11 @@ const COPY = {
     start: '生成报告',
     running: '生成中…',
     tryOne: '试试：',
-    noVerdict: '本报告只列出证据，不给出做或不做的结论。决定由你来做。',
+    noVerdict: '报告基于公开资料和政策知识库，每条数据都标了出处。',
+    title: (p: string) => `${p}：市场调研报告`,
+    conclusion: '核心结论',
+    yourCall: '这是对市场现状的分析，做不做由你决定。',
+    refs: '参考来源',
     live: '正在生成报告',
     liveSub: '查政策知识库、找竞争对手、核对官网和定价，通常需要几分钟。',
     customer: '目标客户',
@@ -28,14 +32,14 @@ const COPY = {
     favorable: '有利信号',
     risks: '风险',
     gaps: '证据缺口',
-    validate: '需要你自己验证',
+    validate: '接下来建议你自己验证',
     none: '无',
     exportMd: '导出报告',
     exportCsv: '导出竞品表 CSV',
     again: '新的想法',
-    ragOff: '政策知识库尚未接入：JP1–JP3 暂时没有证据，接入后会自动使用。',
+    ragOff: '说明：政策知识库还在接入中，所以市场规模、政策和补贴三部分暂时没有资料可引用。',
     tooShort: '请多写几个字，至少说明产品做什么、卖给谁。',
-    details: (n: number) => `查看竞品明细（${n} 家）`,
+    details: (n: number) => `查看竞品明细表（${n} 家）`,
     hideDetails: '收起竞品明细',
     demo: '演示数据，仅用于展示报告结构。',
   },
@@ -47,7 +51,11 @@ const COPY = {
     start: 'Generate report',
     running: 'Generating…',
     tryOne: 'Try:',
-    noVerdict: 'This report presents evidence only. It gives no go / no-go verdict: the decision is yours.',
+    noVerdict: 'Built from public sources and the policy knowledge base; every figure is cited.',
+    title: (p: string) => `${p}: market research report`,
+    conclusion: 'Key takeaways',
+    yourCall: 'This reads the market as it stands; whether to build it is your call.',
+    refs: 'References',
     live: 'Building your report',
     liveSub: 'Searching the policy knowledge base, finding competitors, checking official sites and pricing. Usually a few minutes.',
     customer: 'Customer',
@@ -58,12 +66,12 @@ const COPY = {
     favorable: 'Favorable signals',
     risks: 'Risks',
     gaps: 'Evidence gaps',
-    validate: 'What you must validate yourself',
+    validate: 'What to validate next yourself',
     none: 'None',
     exportMd: 'Export report',
     exportCsv: 'Competitor table (CSV)',
     again: 'New idea',
-    ragOff: 'Policy knowledge base not connected yet: JP1–JP3 have no evidence for now and will use it once connected.',
+    ragOff: 'Note: the policy knowledge base is still being connected, so the market, policy and grant sections have no documents to cite yet.',
     tooShort: 'Please write a bit more: at least what the product does and who it is for.',
     details: (n: number) => `Competitor details (${n})`,
     hideDetails: 'Hide competitor details',
@@ -79,49 +87,28 @@ function host(url: string) {
   }
 }
 
-function Src({ s }: { s: Source }) {
+/** Paragraph text with [n] marks turned into small superscript links to the numbered references. */
+function Cited({ text, refs }: { text: string; refs: Reference[] }) {
+  const parts = text.split(/(\[\d+(?:,\s*\d+)*\])/g)
   return (
-    <a className={`src-pill src-pill--${s.kind}`} href={s.url} target="_blank" rel="noreferrer" title={`${s.title}\n${s.url}`}>
-      <Icon name={s.kind === 'web' ? 'site' : s.kind} size={12} />
-      {host(s.url)}
-    </a>
-  )
-}
-
-function ClaimItem({ c, label }: { c: Claim; label: string }) {
-  const meta = [c.issuer, c.date].filter(Boolean).join(' · ')
-  return (
-    <li className="rep-claim">
-      <span>{c.text}</span>
-      <span className="rep-claim__meta">
-        {meta && <span className="rep-claim__issuer">{meta}</span>}
-        {c.sources.map((s) => (
-          <Src key={s.url} s={s} />
-        ))}
-      </span>
-      {c.quote && (
-        <span className="rep-claim__quote">
-          {label}: “{c.quote}”
-        </span>
-      )}
-    </li>
-  )
-}
-
-function Box({ title, items, none, tone }: { title: string; items: string[]; none: string; tone: string }) {
-  return (
-    <div className={`rep-sum__box rep-sum__box--${tone}`}>
-      <p className="pane__label">{title}</p>
-      {items.length ? (
-        <ul>
-          {items.map((i) => (
-            <li key={i}>{i}</li>
-          ))}
-        </ul>
-      ) : (
-        <p className="rep-muted">{none}</p>
-      )}
-    </div>
+    <>
+      {parts.map((p, i) => {
+        const m = /^\[(\d+(?:,\s*\d+)*)\]$/.exec(p)
+        if (!m) return <span key={i}>{p}</span>
+        return (
+          <sup key={i} className="rep-cite">
+            {m[1].split(/,\s*/).map((n) => {
+              const r = refs.find((x) => x.n === Number(n))
+              return r ? (
+                <a key={n} href={r.url} target="_blank" rel="noreferrer" title={[r.title, r.issuer, r.date].filter(Boolean).join(' · ')}>
+                  {n}
+                </a>
+              ) : null
+            })}
+          </sup>
+        )
+      })}
+    </>
   )
 }
 
@@ -303,13 +290,13 @@ export default function ReportConsole({
 
         {/* ---------- 3 · market report ---------- */}
         {phase === 'done' && result && (
-          <div className="pane pane--result rep">
+          <article className="pane pane--result rep-doc">
             <div className="rep-head">
               <div>
                 <p className="pane__label">{s.steps[2]}</p>
-                <h3>{result.idea.product}</h3>
+                <h2 className="rep-doc__title">{s.title(result.idea.product)}</h2>
                 <p className="rep-muted">
-                  {s.customer}: {result.idea.customer || '—'} · {s.market}: {result.idea.geography}
+                  {s.customer}: {result.idea.customer || '—'} · {s.market}: {result.idea.geography} · {result.finishedAt.slice(0, 10)}
                 </p>
                 <p className="rep-muted rep-idea">“{result.idea.idea}”</p>
               </div>
@@ -322,25 +309,23 @@ export default function ReportConsole({
                 </button>
               </div>
             </div>
-            <p className="rep-banner">{s.noVerdict}</p>
-            {!result.ragConnected && <p className="rep-warn">{s.ragOff}</p>}
 
-            {result.sections.map((sec) => (
-              <section key={sec.jp} className={`rep-sec rep-sec--${sec.status}`}>
-                <header className="rep-sec__head">
-                  <span className="rep-sec__id">{sec.jp.toUpperCase()}</span>
-                  <h4>{JP_LABEL[lang][sec.jp]}</h4>
-                  <span className={`rep-tag rep-tag--${JP_SOURCE[sec.jp] === 'RAG' ? 'rag' : 'cap'}`}>{JP_SOURCE[sec.jp] === 'RAG' ? (lang === 'zh' ? '政策知识库' : 'Knowledge base') : lang === 'zh' ? '竞品调研' : 'Competitor research'}</span>
-                  <span className={`rep-status rep-status--${sec.status}`}>{statusText(lang, sec.status)}</span>
-                </header>
-                {sec.note && <p className="rep-note">{sec.note}</p>}
-                {sec.claims.length > 0 && (
-                  <ul className="rep-claims">
-                    {sec.claims.map((c, i) => (
-                      <ClaimItem key={i} c={c} label={s.sourceText} />
-                    ))}
-                  </ul>
-                )}
+            <section className="rep-conc">
+              <h3>{s.conclusion}</h3>
+              <p>
+                <Cited text={result.narrative.conclusion} refs={result.narrative.references} />
+              </p>
+              <p className="rep-conc__note">{s.yourCall}</p>
+            </section>
+
+            {result.narrative.sections.map((sec, i) => (
+              <section key={sec.jp} className="rep-para">
+                <h3>
+                  {i + 1}. {sec.heading}
+                </h3>
+                <p>
+                  <Cited text={sec.text} refs={result.narrative.references} />
+                </p>
                 {sec.jp === 'jp5' && comp && comp.rows.length > 0 && (
                   <div className="rep-comp">
                     <div className="rep-comp__bar">
@@ -359,18 +344,38 @@ export default function ReportConsole({
               </section>
             ))}
 
-            <section className="rep-sum">
-              <h4>{s.summary}</h4>
-              <div className="rep-sum__grid">
-                <Box title={s.favorable} items={result.summary.favorable} none={s.none} tone="ok" />
-                <Box title={s.risks} items={result.summary.risks} none={s.none} tone="risk" />
-                <Box title={s.gaps} items={result.summary.gaps} none={s.none} tone="gap" />
-                <Box title={s.validate} items={result.summary.validate} none={s.none} tone="you" />
-              </div>
-              <p className="rep-banner rep-banner--foot">{s.noVerdict}</p>
-            </section>
+            {result.summary.validate.length > 0 && (
+              <section className="rep-para">
+                <h3>{s.validate}</h3>
+                <ul className="rep-validate">
+                  {result.summary.validate.map((v) => (
+                    <li key={v}>{v}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {result.narrative.references.length > 0 && (
+              <section className="rep-refs">
+                <h3>{s.refs}</h3>
+                <ol>
+                  {result.narrative.references.map((r) => (
+                    <li key={r.n} id={`ref-${result.runId}-${r.n}`}>
+                      <a href={r.url} target="_blank" rel="noreferrer">
+                        {r.title}
+                      </a>
+                      <span className="rep-muted">
+                        {' '}
+                        · {[r.issuer, r.date, host(r.url)].filter(Boolean).join(' · ')}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+            {!result.ragConnected && <p className="footnote">{s.ragOff}</p>}
             {isDemo && <p className="footnote">{s.demo}</p>}
-          </div>
+          </article>
         )}
       </div>
     </div>

@@ -54,6 +54,31 @@ async function demoReport(idea: string, { lang, onEvent }: ReportOptions): Promi
     kind: 'report',
     idea: { idea, product: zh ? '中小企业招聘平台（演示）' : 'SME recruitment platform (demo)', customer: 'SMEs', sector: 'HR tech', geography: 'Singapore' },
     ragConnected: false,
+    narrative: {
+      sections: zh
+        ? [
+            { jp: 'jp1', heading: '市场规模与增长', text: '目前接入的资料里还没有这个细分市场的规模或增长数据，所以市场有多大暂时无法用数字说明。' },
+            { jp: 'jp2', heading: '政策与法规', text: '还没有检索到适用的法规原文。处理求职者个人资料的产品通常涉及数据保护要求，上线前最好请专业人士确认。' },
+            { jp: 'jp3', heading: '政府补贴与支持', text: '暂时没有找到相关的政府补贴或支持计划。' },
+            { jp: 'jp4', heading: '竞争格局', text: '市场上已经有面向中小企业的招聘软件[1]、求职招聘平台[2]和人力资源管理套件[3]，说明这个需求已经有人在做，并不是空白市场。' },
+            { jp: 'jp5', heading: '竞品定价', text: '这几家竞品的官网都没有公开价格，暂时没法用价格做对比，可能需要以客户身份询价。' },
+          ]
+        : [
+            { jp: 'jp1', heading: 'Market size and growth', text: 'The documents connected so far give no size or growth figures for this segment, so the size of the market cannot be stated in numbers yet.' },
+            { jp: 'jp2', heading: 'Policy and regulation', text: 'No applicable regulation text has been retrieved yet. Products that handle applicants\' personal data usually face data protection rules, so a professional check before launch is wise.' },
+            { jp: 'jp3', heading: 'Government grants and support', text: 'No relevant government grant or support scheme has been found yet.' },
+            { jp: 'jp4', heading: 'Competitive landscape', text: 'Hiring software for SMEs [1], a job board [2] and an HR suite [3] already serve this market, so the need is real and the space is not empty.' },
+            { jp: 'jp5', heading: 'Competitor pricing', text: 'None of these competitors publish prices on their sites, so a price comparison is not possible yet; asking for quotes as a customer may be needed.' },
+          ],
+      conclusion: zh
+        ? '这是一个已经有人在做的市场[1][2][3]：需求存在，但你需要讲清楚和现有招聘平台、人力资源套件的区别。竞品价格不透明，既是比价的难点，也可能是用透明定价切入的机会。市场规模和法规要求还缺资料，是现在最大的不确定性。'
+        : 'This is a market others already serve [1][2][3]: the need exists, but you will need a clear difference from current job boards and HR suites. Opaque competitor pricing makes comparison hard, and may also be an opening for transparent pricing. Market size and regulatory requirements are the biggest unknowns right now.',
+      references: [
+        { n: 1, title: 'Example A', url: 'https://example.com/about', kind: 'site' },
+        { n: 2, title: 'Example B', url: 'https://example.org/about', kind: 'site' },
+        { n: 3, title: 'Example C', url: 'https://example.net/about', kind: 'site' },
+      ],
+    },
     sections: [
       { jp: 'jp1', status: 'missing', claims: [], note: (zh ? '未找到该细分市场数据' : 'No data found for this market segment') + off },
       { jp: 'jp2', status: 'missing', claims: [], note: (zh ? '未找到相关法规，请咨询专业人士' : 'No relevant regulation found; please consult a professional') + off },
@@ -118,32 +143,22 @@ export const statusText = (lang: Lang, s: 'enough' | 'partial' | 'missing') => S
 /** The report as Markdown, for sharing or pasting into the team's documents. */
 export function reportMarkdown(r: ReportResult, lang: Lang): string {
   const zh = lang === 'zh'
+  const n = r.narrative
+  const cite = (t: string) => t.replace(/\[(\d+(?:,\s*\d+)*)\]/g, (_, l: string) => l.split(/,\s*/).map((x) => `[^${x}]`).join(''))
   const out: string[] = []
-  out.push(`# ${zh ? '创业市场报告' : 'Founder market report'}: ${r.idea.product}`)
-  out.push('')
-  out.push(`> ${zh ? '本报告只列出证据，不给出投或不投的结论。决定由创业者做出。' : 'This report presents evidence only. It gives no go / no-go verdict; the founder decides.'}`)
-  out.push('')
-  out.push(`- ${zh ? '想法' : 'Idea'}: ${r.idea.idea}`)
-  out.push(`- ${zh ? '目标客户' : 'Customer'}: ${r.idea.customer || '—'} · ${zh ? '市场' : 'Market'}: ${r.idea.geography}`)
-  out.push(`- ${zh ? '生成时间' : 'Generated'}: ${r.finishedAt.slice(0, 16).replace('T', ' ')} UTC · run ${r.runId}`)
-  for (const s of r.sections) {
-    out.push('', `## ${s.jp.toUpperCase()} ${JP_LABEL[lang][s.jp]} (${JP_SOURCE[s.jp]})`, '', `**${statusText(lang, s.status)}**${s.note ? `: ${s.note}` : ''}`, '')
-    for (const c of s.claims) {
-      const meta = [c.issuer, c.date].filter(Boolean).join(', ')
-      out.push(`- ${c.text}${meta ? ` (${meta})` : ''} ${c.sources.map((x) => `[${x.title || x.url}](${x.url})`).join(' ')}`)
-      if (c.quote) out.push(`  - ${zh ? '原文' : 'Source text'}: "${c.quote}"`)
-    }
+  out.push(`# ${r.idea.product}${zh ? '：市场调研报告' : ': market research report'}`, '')
+  out.push(`*${zh ? '想法' : 'Idea'}: ${r.idea.idea}*`, '')
+  out.push(`${zh ? '目标客户' : 'Customer'}: ${r.idea.customer || '—'} · ${zh ? '市场' : 'Market'}: ${r.idea.geography} · ${r.finishedAt.slice(0, 10)}`, '')
+  out.push(`## ${zh ? '核心结论' : 'Key takeaways'}`, '', cite(n.conclusion), '', `> ${zh ? '这是对市场现状的分析，做不做由你决定。' : 'This reads the market as it stands; whether to build it is your call.'}`)
+  n.sections.forEach((s, i) => out.push('', `## ${i + 1}. ${s.heading}`, '', cite(s.text)))
+  if (r.summary.validate.length) {
+    out.push('', `## ${zh ? '接下来建议你自己验证' : 'What to validate next yourself'}`, '')
+    for (const v of r.summary.validate) out.push(`- ${v}`)
   }
-  const list = (h: string, items: string[]) => {
-    out.push('', `### ${h}`, '')
-    if (items.length) for (const i of items) out.push(`- ${i}`)
-    else out.push(`- ${zh ? '无' : 'None'}`)
+  if (n.references.length) {
+    out.push('', `## ${zh ? '参考来源' : 'References'}`, '')
+    for (const ref of n.references) out.push(`[^${ref.n}]: [${ref.title}](${ref.url})${[ref.issuer, ref.date].filter(Boolean).length ? ` · ${[ref.issuer, ref.date].filter(Boolean).join(' · ')}` : ''}`)
   }
-  out.push('', `## ${zh ? '总结' : 'Summary'}`)
-  list(zh ? '有利信号' : 'Favorable signals', r.summary.favorable)
-  list(zh ? '风险' : 'Risks', r.summary.risks)
-  list(zh ? '证据缺口' : 'Evidence gaps', r.summary.gaps)
-  list(zh ? '需要你自己验证' : 'What you must validate yourself', r.summary.validate)
   return out.join('\n') + '\n'
 }
 

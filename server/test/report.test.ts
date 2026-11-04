@@ -142,3 +142,20 @@ test('full report with RAG passages fills JP1–JP3', async () => {
   assert.deepEqual(res.sections.slice(0, 3).map((s) => s.status), ['enough', 'enough', 'missing'])
   assert.equal(res.idea.geography, 'Singapore')
 })
+
+test('narrative: bad citations removed, sentences with unsupported numbers dropped, verdicts dropped', async () => {
+  const { checkParagraph, writeNarrative, competitorSections: cs } = await import('../src/pipeline/report.ts')
+  const allowed = new Set(['3', '79'])
+  assert.equal(checkParagraph('Three firms compete [1]. Prices start at S$79 [2][9]. The market is worth S$500 million [1].', 2, allowed), 'Three firms compete [1]. Prices start at S$79 [2].')
+  assert.equal(checkParagraph('竞品有 3 家[1]。你应该投入这个市场。', 1, allowed), '竞品有 3 家[1]。')
+  const sections = cs('en', [row('A', 'a.com', { value: '$10/user' }), row('B', 'b.com', { value: '$12/user' }), row('C', 'c.com')])
+  const llm = new MockLlm((r: LlmRequest) => {
+    assert.match(r.user, /\[1\]/)
+    return { sections: { jp4: 'Three products already serve this market: A [1], B [3] and C [5]. A charges $10 per user [2][42].', jp5: 'A charges $10 [2] and B $12 [4].' }, conclusion: 'A crowded market with room at the low end. You should invest now. The key risk is price competition [2].' }
+  })
+  const n = await writeNarrative(llm, 'en', { ...idea, idea: 'SME hiring app' }, [{ jp: 'jp1', status: 'missing', claims: [], note: 'No data found for this market segment' }, ...sections])
+  assert.equal(n.references.length, 5)
+  assert.equal(n.sections[0].text, 'No data found for this market segment.')
+  assert.equal(n.sections[1].text, 'Three products already serve this market: A [1], B [3] and C [5]. A charges $10 per user [2].')
+  assert.equal(n.conclusion, 'A crowded market with room at the low end. The key risk is price competition [2].')
+})

@@ -1,6 +1,6 @@
 # startup-help-agent
 
-> Built on Capsight. A founder describes a SaaS idea → the agent combines a verified policy / regulation / market knowledge base (RAG) with Capsight's competitor research → a source-traced market report. **It presents evidence only; the founder makes the decision.**
+> Built on Capsight. A founder describes a SaaS idea → the agent combines a verified policy / regulation / market knowledge base (RAG) with Capsight's competitor research → a readable, source-traced market report: one paragraph per judgment point with numbered citations, and an LLM-written conclusion on where the idea stands in the market. **It never tells the founder to build or not; the founder decides.**
 
 ## Report structure (judgment points)
 
@@ -14,7 +14,7 @@
 | Summary | Favorable signals, risks, evidence gaps, what the founder must validate | JP1–JP5 | No go / no-go verdict | |
 
 - Every claim cites its source; claims from the knowledge base must quote the passage word for word (checked by code).
-- Summary items must cite claims; sentences that read as a verdict ("you should invest", "go / no-go"…) are removed.
+- The written report (paragraphs + conclusion) is generated only from verified claims: citation marks must point at real references, sentences with numbers found in no source are dropped, and sentences that tell the founder to invest / build / stop are removed.
 - The RAG service is separate: see [`docs/RAG-API.md`](docs/RAG-API.md). Without `RAG_URL`, JP1–JP3 say the knowledge base is not connected.
 - Code: `server/src/pipeline/report.ts`, `server/src/rag/rag.ts`, `web/src/components/ReportConsole.tsx` (the only workspace view). Tests: `server/test/report.test.ts`.
 - The competitor research pipeline runs inside the report (JP4–JP5); its full table opens under JP5 and exports to CSV.

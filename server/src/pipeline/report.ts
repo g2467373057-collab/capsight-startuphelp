@@ -9,7 +9,9 @@ import {
   type FounderIdea,
   type JpId,
   type Lang,
+  type Narrative,
   type Passage,
+  type Reference,
   type ReportResult,
   type ReportSection,
   type ReportSummary,
@@ -84,8 +86,8 @@ const T = {
     compNone: '没有找到竞品',
     writing: (jp: string) => `整理 ${jp}`,
     kept: (jp: string, ok: number, all: number) => `${jp} · ${ok}/${all} 条结论与原文一致`,
-    summary: '汇总信号、风险和证据缺口',
-    done: '报告完成：只列证据，不替你做决定',
+    summary: '撰写报告和结论',
+    done: '报告完成，做不做由你决定',
   },
   en: {
     understand: 'Reading your startup idea',
@@ -98,8 +100,8 @@ const T = {
     compNone: 'No competitors found',
     writing: (jp: string) => `Writing ${jp}`,
     kept: (jp: string, ok: number, all: number) => `${jp} · ${ok}/${all} claims match their source text`,
-    summary: 'Summarising signals, risks and evidence gaps',
-    done: 'Report ready: evidence only, the decision is yours',
+    summary: 'Writing the report and conclusion',
+    done: 'Report ready; the decision is yours',
   },
 }
 
@@ -270,6 +272,93 @@ export async function writeSummary(llm: Llm, lang: Lang, idea: IdeaPlan, section
   return { favorable: cited(raw.favorable), risks: cited(raw.risks), gaps, validate: [...ALWAYS_VALIDATE[lang], ...extra] }
 }
 
+export const NARRATIVE_HEADING: Record<Lang, Record<JpId, string>> = {
+  zh: { jp1: '市场规模与增长', jp2: '政策与法规', jp3: '政府补贴与支持', jp4: '竞争格局', jp5: '竞品定价' },
+  en: { jp1: 'Market size and growth', jp2: 'Policy and regulation', jp3: 'Government grants and support', jp4: 'Competitive landscape', jp5: 'Competitor pricing' },
+}
+
+/** Numbers every source cited by the sections (one number per URL), in report order. */
+export function numberReferences(sections: ReportSection[]): { refs: Reference[]; refOf: (url: string) => number | undefined } {
+  const refs: Reference[] = []
+  const byUrl = new Map<string, number>()
+  for (const s of sections)
+    for (const c of s.claims)
+      for (const src of c.sources) {
+        if (byUrl.has(src.url)) continue
+        const n = refs.length + 1
+        byUrl.set(src.url, n)
+        refs.push({ n, title: src.title || src.url, url: src.url, kind: src.kind, ...(c.issuer ? { issuer: c.issuer } : {}), ...(c.date ? { date: c.date } : {}) })
+      }
+  return { refs, refOf: (url) => byUrl.get(url) }
+}
+
+const splitSentences = (t: string) => t.split(/(?<=[。！？；])|(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean)
+const numbersIn = (t: string) => (t.replace(/\[\d+(?:\s*[,，]\s*\d+)*\]/g, ' ').match(/\d+(?:[.,]\d+)*/g) ?? []).map((n) => n.replace(/,/g, ''))
+
+/**
+ * Keeps a written paragraph honest: citation marks must point at real references,
+ * and a sentence that states a number found in no claim (or the idea) is dropped.
+ */
+export function checkParagraph(text: string, maxRef: number, allowedNumbers: Set<string>): string {
+  const kept: string[] = []
+  for (const sentence of splitSentences(oneLine(text, 3000))) {
+    if (VERDICT.test(sentence)) continue
+    if (numbersIn(sentence).some((n) => !allowedNumbers.has(n))) continue
+    kept.push(
+      sentence
+        .replace(/\[(\d+(?:\s*[,，]\s*\d+)*)\]/g, (_, list: string) => {
+          const ok = list.split(/[,，]/).map((x) => Number(x.trim())).filter((n) => n >= 1 && n <= maxRef)
+          return ok.length ? `[${[...new Set(ok)].join(', ')}]` : ''
+        })
+        .replace(/\s+([。，,.])/g, '$1'),
+    )
+  }
+  return kept.join(/[\u4e00-\u9fff]/.test(text) ? '' : ' ')
+}
+
+/** Paragraphs a person would read: the LLM writes from the verified claims only, citing [n]; code checks the result. */
+export async function writeNarrative(llm: Llm, lang: Lang, idea: IdeaPlan, sections: ReportSection[]): Promise<Narrative> {
+  const { refs, refOf } = numberReferences(sections)
+  const cite = (c: Claim) => [...new Set(c.sources.map((x) => refOf(x.url)).filter(Boolean))].map((n) => `[${n}]`).join('')
+  const allowed = new Set<string>([...numbersIn(idea.idea), ...numbersIn(idea.product), ...numbersIn(idea.customer)])
+  for (const s of sections) for (const c of s.claims) for (const n of numbersIn(c.text)) allowed.add(n)
+  for (const s of sections) if (s.note) for (const n of numbersIn(s.note)) allowed.add(n)
+  for (const r of refs) if (r.date) for (const n of numbersIn(r.date)) allowed.add(n)
+  // counts the report may state ("3 competitors")
+  for (let i = 0; i <= 12; i++) allowed.add(String(i))
+
+  const brief = sections
+    .map((s) => `${s.jp.toUpperCase()} ${NARRATIVE_HEADING.en[s.jp]}\n${s.claims.length ? s.claims.map((c) => `- ${c.text} ${cite(c)}${c.date ? ` (dated ${c.date})` : ''}`).join('\n') : '- (no evidence found)'}${s.note ? `\nGap: ${s.note}` : ''}`)
+    .join('\n\n')
+  type Raw = { sections?: Record<string, unknown>; conclusion?: unknown }
+  let raw: Raw = {}
+  try {
+    raw = await llm.json<Raw>({
+      task: 'report_narrative',
+      system: [
+        `You write a founder's market report in ${lang === 'zh' ? 'Chinese' : 'English'}, as a clear analyst brief a person enjoys reading.`,
+        'Use ONLY the facts in the evidence list. Do not add facts, numbers, company names or dates that are not there.',
+        'For each judgment point write one paragraph of 2–5 sentences that explains what the evidence means for this idea. Put the reference marks exactly as given (e.g. [2] or [1][3]) right after the facts they support.',
+        'Where there is no evidence, say so naturally in one sentence (e.g. "Public sources found so far do not give a size for this segment") and what that means; never write labels like "missing evidence".',
+        'conclusion: 3–5 sentences. Give your overall reading of where the idea stands in the market: how crowded it is, how heavy the regulatory load is, what support exists, where the pricing room is, the biggest opportunity and the biggest risk, and what to validate first. You may give an overall assessment (e.g. "a crowded market with room at the low-price end"), but do NOT tell the founder to build, invest, launch or stop: the founder decides.',
+        'Output JSON only: {"sections":{"jp1":"","jp2":"","jp3":"","jp4":"","jp5":""},"conclusion":""}',
+      ].join('\n'),
+      user: `Idea: ${idea.idea}\nProduct: ${idea.product} · Customer: ${idea.customer || '-'} · Market: ${idea.geography}\n\nEvidence:\n${brief}`,
+      maxTokens: 1800,
+    })
+  } catch {
+    raw = {}
+  }
+  const fallback = (s: ReportSection) =>
+    s.claims.length ? s.claims.map((c) => `${c.text.replace(/[。.]$/, '')}${cite(c)}${lang === 'zh' ? '。' : '.'}`).join(lang === 'zh' ? '' : ' ') + (s.note ? `${lang === 'zh' ? '' : ' '}${s.note}${lang === 'zh' ? '。' : '.'}` : '') : `${s.note ?? ''}${lang === 'zh' ? '。' : '.'}`
+  const out = sections.map((s) => {
+    const written = checkParagraph(String(raw.sections?.[s.jp] ?? ''), refs.length, allowed)
+    return { jp: s.jp, heading: NARRATIVE_HEADING[lang][s.jp], text: written || fallback(s) }
+  })
+  const conclusion = checkParagraph(String(raw.conclusion ?? ''), refs.length, allowed) || (lang === 'zh' ? '现有证据还不足以对市场形成整体判断，建议先补充上面列出的缺口。' : 'The evidence so far is not enough for an overall reading of the market; the gaps above come first.')
+  return { sections: out, conclusion, references: refs }
+}
+
 /** Competitor search language follows the target market: Chinese web for mainland China, English otherwise. */
 const marketLang = (geography: string, fallback: Lang): Lang => (/china|中国|大陆|mainland/i.test(geography) && !/hong kong|taiwan|香港|台湾/i.test(geography) ? 'zh' : geography ? 'en' : fallback)
 
@@ -342,6 +431,7 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
   // ---- 5. summary (no verdict)
   step(5, 'info', t.summary)
   const summary = await writeSummary(deps.llm, lang, idea, sections)
+  const narrative = await writeNarrative(deps.llm, lang, idea, sections)
   step(5, 'ok', t.done)
 
   const { questions: _q, ...founder } = idea
@@ -349,6 +439,7 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
     runId,
     kind: 'report',
     idea: founder,
+    narrative,
     sections: JP_IDS.map((jp) => sections.find((s) => s.jp === jp)!),
     summary,
     ...(competitors ? { competitors } : {}),
