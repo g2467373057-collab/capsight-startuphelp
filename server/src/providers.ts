@@ -1,6 +1,7 @@
 import type { Config } from './config.ts'
 import type { Db } from './db/db.ts'
 import { createLlm, type Llm } from './llm/llm.ts'
+import { createRag } from './rag/rag.ts'
 import type { Providers } from './runs.ts'
 import { Fetcher } from './sources/fetcher.ts'
 import { createSearch, type SearchStack } from './sources/search.ts'
@@ -16,5 +17,6 @@ export function createProviders(cfg: Config, db: Db): Providers {
     search: (lang) => (searches[lang] ??= createSearch(cfg, db, lang)),
     fetcher: new Fetcher(cfg, db),
     social: new Social(cfg, db),
+    rag: createRag(cfg),
   }
 }

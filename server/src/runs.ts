@@ -4,17 +4,20 @@ import type { Db } from './db/db.ts'
 import { newId } from './auth/crypto.ts'
 import { HttpError } from './http/http.ts'
 import type { Llm } from './llm/llm.ts'
+import { runReport } from './pipeline/report.ts'
+import type { Rag } from './rag/rag.ts'
 import { runResearch } from './pipeline/run.ts'
 import type { Fetcher } from './sources/fetcher.ts'
 import type { SearchStack } from './sources/search.ts'
 import type { Social } from './sources/social.ts'
-import type { Intent, Lang, RunEvent, RunResult } from './types.ts'
+import type { Intent, Lang, ReportResult, RunEvent, RunResult } from './types.ts'
 
 export interface Providers {
   llm(lang: Lang): Llm
   search(lang: Lang): SearchStack
   fetcher: Fetcher
   social: Social
+  rag: Rag
 }
 
 export type RunStatus = 'queued' | 'running' | 'done' | 'failed'
@@ -58,6 +61,11 @@ export class Runs {
     const admin = this.cfg.adminEmails.includes(email.toLowerCase())
     const used = (this.db.prepare("SELECT COUNT(*) AS n FROM runs WHERE user_id = ? AND created_at >= ? AND error IS NOT 'interrupted'").get(userId, this.startOfDay()) as { n: number }).n
     return { used, limit: admin ? Math.max(this.cfg.limits.runsPerUserPerDay, used + 100) : this.cfg.limits.runsPerUserPerDay, unlimited: admin, resetsAt: new Date(this.startOfDay() + 86400000).toISOString() }
+  }
+
+  /** Queues a founder market report (stored in the same table, marked by "report" in intent_json). */
+  startReport(userId: string, idea: string, lang: Lang, email = ''): string {
+    return this.start(userId, { report: true, query: idea } as unknown as Intent, lang, email)
   }
 
   start(userId: string, intent: Intent, lang: Lang, email = ''): string {
@@ -107,15 +115,19 @@ export class Runs {
     const searchBefore = { ...search.callsBy }
     const readerBefore = this.providers.fetcher.readerCalls ?? 0
     try {
-      const result = await runResearch(id, JSON.parse(row.intent_json) as Intent, {
+      const job = JSON.parse(row.intent_json) as Intent & { report?: boolean }
+      const deps = {
         llm,
         search,
         fetcher: this.providers.fetcher,
         social: this.providers.social,
         lang,
         maxRequery: this.cfg.limits.maxRequery,
-        emit: (e) => this.emit(id, e),
-      })
+        emit: (e: RunEvent) => this.emit(id, e),
+      }
+      const result: RunResult | ReportResult = job.report
+        ? await runReport(id, job.query, { ...deps, rag: this.providers.rag, topK: this.cfg.rag.topK, maxCompetitors: this.cfg.limits.maxCompetitors, forLang: (l: Lang) => ({ llm: this.providers.llm(l), search: this.providers.search(l) }) })
+        : await runResearch(id, job, deps)
       // calls sent during this run (with several runs at once these are approximate, as for the model calls)
       const searches: Record<string, number> = {}
       for (const [k, v] of Object.entries(search.callsBy)) if (v - (searchBefore[k] ?? 0) > 0) searches[k] = v - (searchBefore[k] ?? 0)
@@ -148,7 +160,7 @@ export class Runs {
       query: row.query,
       lang: row.lang as Lang,
       createdAt: new Date(row.created_at).toISOString(),
-      result: row.result_json ? (JSON.parse(row.result_json) as RunResult) : undefined,
+      result: row.result_json ? (JSON.parse(row.result_json) as RunResult | ReportResult) : undefined,
       error: row.status === 'failed' ? 'run_failed' : undefined,
     }
   }
@@ -160,7 +172,7 @@ export class Runs {
     }))
   }
 
-  subscribe(id: string, fn: (m: { type: 'event'; seq: number; event: RunEvent } | { type: 'result'; result: RunResult } | { type: 'error'; error: string }) => void) {
+  subscribe(id: string, fn: (m: { type: 'event'; seq: number; event: RunEvent } | { type: 'result'; result: RunResult | ReportResult } | { type: 'error'; error: string }) => void) {
     this.bus.on(id, fn)
     return () => this.bus.off(id, fn)
   }

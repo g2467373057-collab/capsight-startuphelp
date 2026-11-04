@@ -1,3 +1,26 @@
+# startup-help-agent
+
+> Built on Capsight. A founder describes a SaaS idea → the agent combines a verified policy / regulation / market knowledge base (RAG) with Capsight's competitor research → a source-traced market report. **It presents evidence only; the founder makes the decision.**
+
+## Report structure (judgment points)
+
+| # | Judgment point | Source | Enough evidence | If missing |
+| --- | --- | --- | --- | --- |
+| JP1 | How big is the market, and is it growing? | RAG | ≥1 official statistic or industry report | "No data found for this market segment" |
+| JP2 | Which policies and regulations apply? | RAG | Original government text, with date | "No relevant regulation found; please consult a professional" |
+| JP3 | Any government grants or support? | RAG | Original official text | "No relevant grant found" |
+| JP4 | Who are the competitors? | Capsight | ≥3 competitors from official websites | "Only n found; list may be incomplete" |
+| JP5 | How do competitors charge? | Capsight | Official prices from ≥3 competitors | "Pricing not publicly available" |
+| Summary | Favorable signals, risks, evidence gaps, what the founder must validate | JP1–JP5 | No go / no-go verdict | |
+
+- Every claim cites its source; claims from the knowledge base must quote the passage word for word (checked by code).
+- Summary items must cite claims; sentences that read as a verdict ("you should invest", "go / no-go"…) are removed.
+- The RAG service is separate: see [`docs/RAG-API.md`](docs/RAG-API.md). Without `RAG_URL`, JP1–JP3 say the knowledge base is not connected.
+- Code: `server/src/pipeline/report.ts`, `server/src/rag/rag.ts`, `web/src/components/ReportConsole.tsx`. Tests: `server/test/report.test.ts`.
+- The original competitor research mode is still available in the workspace.
+
+---
+
 # 胶囊AI · Capsight
 
 > 吃下一颗，就看清局面。 / Take one. See the whole field.

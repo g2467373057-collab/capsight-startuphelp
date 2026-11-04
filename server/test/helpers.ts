@@ -3,6 +3,7 @@ import type { AddressInfo } from 'node:net'
 import { loadConfig, type Config } from '../src/config.ts'
 import { openDb, type Db } from '../src/db/db.ts'
 import { MockLlm, type LlmRequest } from '../src/llm/llm.ts'
+import { NoRag } from '../src/rag/rag.ts'
 import type { Providers } from '../src/runs.ts'
 import { Fetcher } from '../src/sources/fetcher.ts'
 import { createSearch, type EntityResult, type SearchHit, type SearchProvider, type WikidataSite } from '../src/sources/search.ts'
@@ -75,6 +76,7 @@ export function testProviders(
     search: () => stack,
     fetcher: new Fetcher(cfg, db),
     social: new Social(cfg, db),
+    rag: new NoRag(),
   }
 }
 

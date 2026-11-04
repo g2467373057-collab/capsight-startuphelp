@@ -130,3 +130,75 @@ export interface PublicUser {
   email: string
   emailVerified: boolean
 }
+
+/* ---------- startup-help-agent: founder market report ---------- */
+
+/** The five judgment points (one report section each); the summary is built from them. */
+export type JpId = 'jp1' | 'jp2' | 'jp3' | 'jp4' | 'jp5'
+export const JP_IDS: JpId[] = ['jp1', 'jp2', 'jp3', 'jp4', 'jp5']
+/** JP1–JP3 come from the RAG knowledge base, JP4–JP5 from the competitor pipeline. */
+export const RAG_JPS: JpId[] = ['jp1', 'jp2', 'jp3']
+
+/** enough = the judgment point's evidence bar is met · partial = some evidence, bar not met · missing = none found. */
+export type EvidenceStatus = 'enough' | 'partial' | 'missing'
+
+/** A passage returned by the RAG knowledge base (see docs/RAG-API.md). */
+export interface Passage {
+  id: string
+  text: string
+  title: string
+  issuer?: string
+  /** Publication or effective date, YYYY-MM-DD or YYYY. */
+  date?: string
+  url: string
+  docId?: string
+  score?: number
+}
+
+/** One statement in the report, tied to the evidence it rests on. */
+export interface Claim {
+  text: string
+  /** Verbatim words from the source that support the claim (checked by code). */
+  quote?: string
+  sources: Source[]
+  /** For passages: issuer and date shown next to the link. */
+  issuer?: string
+  date?: string
+}
+
+export interface ReportSection {
+  jp: JpId
+  status: EvidenceStatus
+  claims: Claim[]
+  /** Fixed wording shown when the evidence bar is not met (e.g. "No relevant grant found"). */
+  note?: string
+}
+
+export interface ReportSummary {
+  favorable: string[]
+  risks: string[]
+  gaps: string[]
+  /** What the founder must validate themselves (customer pain, willingness to pay…). */
+  validate: string[]
+}
+
+export interface FounderIdea {
+  idea: string
+  product: string
+  customer: string
+  sector: string
+  geography: string
+}
+
+export interface ReportResult {
+  runId: string
+  kind: 'report'
+  idea: FounderIdea
+  sections: ReportSection[]
+  summary: ReportSummary
+  /** The competitor table behind JP4–JP5. */
+  competitors?: RunResult
+  /** False when no RAG service is connected: JP1–JP3 then say so instead of guessing. */
+  ragConnected: boolean
+  finishedAt: string
+}

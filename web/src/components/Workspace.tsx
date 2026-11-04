@@ -4,6 +4,7 @@ import { fetchHistory, fetchQuota } from '../api/client'
 import { isDemo } from '../api/http'
 import { useLang } from '../i18n'
 import Console from './Console'
+import ReportConsole from './ReportConsole'
 import { Icon } from './ui'
 
 /** The signed-in research studio: recent queries on the left, the six-step console on the right. */
@@ -33,6 +34,9 @@ export default function Workspace({
   const [history, setHistory] = useState<string[]>(() => loadHistory(user.email))
   const [pick, setPick] = useState<{ q: string; n: number } | null>(incoming)
   const [resetKey, setResetKey] = useState(0)
+  // the founder market report is the main mode; the original competitor research stays available
+  const [mode, setMode] = useState<'report' | 'research'>(incoming ? 'research' : 'report')
+  const zh = lang === 'zh'
 
   useEffect(() => {
     if (incoming) onConsume()
@@ -65,7 +69,10 @@ export default function Workspace({
           <ul className="workspace__history">
             {history.map((h) => (
               <li key={h}>
-                <button onClick={() => setPick((p) => ({ q: h, n: (p?.n ?? 0) + 1 }))} title={h}>
+                <button onClick={() => {
+                    setMode('research')
+                    setPick((p) => ({ q: h, n: (p?.n ?? 0) + 1 }))
+                  }} title={h}>
                   <Icon name="clock" size={14} />
                   <span>{h}</span>
                 </button>
@@ -90,7 +97,19 @@ export default function Workspace({
             </button>
           </div>
         )}
-        <Console key={resetKey} incoming={pick} onDone={remember} />
+        <div className="seg workspace__mode" role="tablist">
+          <button role="tab" aria-selected={mode === 'report'} className={mode === 'report' ? 'is-on' : ''} onClick={() => setMode('report')}>
+            {zh ? '创业市场报告' : 'Founder market report'}
+          </button>
+          <button role="tab" aria-selected={mode === 'research'} className={mode === 'research' ? 'is-on' : ''} onClick={() => setMode('research')}>
+            {zh ? '竞品调研' : 'Competitor research'}
+          </button>
+        </div>
+        {mode === 'report' ? (
+          <ReportConsole key={`r${resetKey}`} onDone={remember} />
+        ) : (
+          <Console key={resetKey} incoming={pick} onDone={remember} />
+        )}
       </section>
     </main>
   )

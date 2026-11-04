@@ -93,11 +93,22 @@ export function createApp(cfg: Config, db: Db, mailer: Mailer, providers: Provid
     return { runId: runs.start(user.id, intent, langOf(b.lang), user.email) }
   })
 
+  /* ---------- founder market report ---------- */
+  r.post('/reports', (c) => {
+    const user = auth.require(c, { verified: true })
+    const b = obj(c.body)
+    const idea = String(b.idea ?? '').replace(/\s+/g, ' ').trim()
+    if (idea.length < 10) throw new HttpError(400, 'idea_too_short')
+    if (idea.length > 1200) throw new HttpError(400, 'idea_too_long')
+    return { runId: runs.startReport(user.id, idea, langOf(b.lang), user.email) }
+  })
+
   r.get('/runs/:id', (c) => runs.get(c.params.id, auth.require(c).id))
 
   r.get('/runs/:id/csv', (c) => {
     const run = runs.get(c.params.id, auth.require(c).id)
     if (!run.result) throw new HttpError(409, 'not_ready')
+    if ('kind' in run.result) throw new HttpError(409, 'not_a_table')
     const csv = toCsv(run.result, langOf(c.url.searchParams.get('lang') ?? run.lang))
     c.res.writeHead(200, {
       'Content-Type': 'text/csv; charset=utf-8',

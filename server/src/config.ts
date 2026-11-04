@@ -57,6 +57,8 @@ export interface Config {
     resend?: string
     jina?: string
   }
+  /** RAG knowledge base service (built separately, see docs/RAG-API.md). Empty url = not connected. */
+  rag: { url: string; apiKey?: string; timeoutMs: number; topK: number }
   mailFrom: string
   fetch: { timeoutMs: number; maxBytes: number; userAgent: string; allowPrivate: boolean; respectRobots: boolean; reader: 'none' | 'jina' }
   cacheHours: number
@@ -162,6 +164,7 @@ export function loadConfig(): Config {
       resend: str('RESEND_API_KEY') || undefined,
       jina: str('JINA_API_KEY') || undefined,
     },
+    rag: { url: str('RAG_URL').replace(/\/$/, ''), apiKey: str('RAG_API_KEY') || undefined, timeoutMs: num('RAG_TIMEOUT_MS', 20000), topK: num('RAG_TOP_K', 5) },
     mailFrom: str('MAIL_FROM', 'Capsight <noreply@example.com>'),
     fetch: {
       timeoutMs: num('FETCH_TIMEOUT_MS', 12000),
@@ -188,6 +191,7 @@ export function configWarnings(c: Config): string[] {
     if (s === 'serper' && !c.keys.serper) w.push(`Search (${lang}): SERPER_API_KEY missing`)
     if (s === 'bocha' && !c.keys.bocha) w.push(`Search (${lang}): BOCHA_API_KEY missing`)
   }
+  if (!c.rag.url) w.push('RAG: RAG_URL not set — report sections JP1–JP3 will say the knowledge base is not connected')
   if (!c.keys.xBearer) w.push('Social: X API off (no X_BEARER_TOKEN or X_ENABLED=false) — X posts come from search instead')
   if (!c.keys.youtube) w.push('Social: YOUTUBE_API_KEY missing — YouTube will be skipped')
   if (!c.keys.redditId || !c.keys.redditSecret) w.push('Social: Reddit credentials missing — Reddit will be skipped')
