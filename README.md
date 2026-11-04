@@ -16,8 +16,8 @@
 - Every claim cites its source; claims from the knowledge base must quote the passage word for word (checked by code).
 - Summary items must cite claims; sentences that read as a verdict ("you should invest", "go / no-go"…) are removed.
 - The RAG service is separate: see [`docs/RAG-API.md`](docs/RAG-API.md). Without `RAG_URL`, JP1–JP3 say the knowledge base is not connected.
-- Code: `server/src/pipeline/report.ts`, `server/src/rag/rag.ts`, `web/src/components/ReportConsole.tsx`. Tests: `server/test/report.test.ts`.
-- The original competitor research mode is still available in the workspace.
+- Code: `server/src/pipeline/report.ts`, `server/src/rag/rag.ts`, `web/src/components/ReportConsole.tsx` (the only workspace view). Tests: `server/test/report.test.ts`.
+- The competitor research pipeline runs inside the report (JP4–JP5); its full table opens under JP5 and exports to CSV.
 
 ---
 

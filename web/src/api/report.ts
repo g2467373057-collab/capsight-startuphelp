@@ -1,5 +1,5 @@
 import { API_BASE, api, ApiError } from './http'
-import type { JpId, Lang, ReportResult, RunEvent } from './types'
+import type { JpId, Lang, ReportResult, Row, RunEvent, RunResult } from './types'
 
 export const JP_LABEL: Record<Lang, Record<JpId, string>> = {
   zh: { jp1: '市场有多大、在增长吗', jp2: '有哪些政策法规要遵守', jp3: '有没有政府补贴或支持', jp4: '竞争对手有哪些', jp5: '别人怎么收费' },
@@ -77,6 +77,34 @@ async function demoReport(idea: string, { lang, onEvent }: ReportOptions): Promi
         ? ['目标客户是否真的有这个痛点（需要客户访谈）', '客户是否愿意按你的价格付费（需要客户或交易证据）']
         : ['Whether target customers really have this pain (needs customer interviews)', 'Whether customers will pay your price (needs customer or transaction evidence)'],
     },
+    competitors: demoCompetitors(zh),
+    finishedAt: new Date().toISOString(),
+  }
+}
+
+function demoCompetitors(zh: boolean): RunResult {
+  const site = (d: string, path = '') => [{ kind: 'site' as const, url: `https://${d}${path}`, title: d }]
+  const row = (name: string, d: string, region: string, overview: string, pricing?: string): Row => ({
+    competitor: name,
+    domain: d,
+    siteMethod: 'given',
+    cells: {
+      name: { value: name, sources: site(d), status: 'verified' },
+      region: { value: region, sources: site(d, '/about'), status: 'verified' },
+      overview: { value: overview, sources: site(d, '/about'), status: 'verified' },
+      pricing: pricing ? { value: pricing, sources: site(d, '/pricing'), status: 'verified' } : { value: zh ? '暂无公开信息' : 'No public information', sources: [], status: 'missing' },
+    },
+  })
+  const rows = [
+    row('Example A', 'example.com', 'Singapore', zh ? '面向中小企业的招聘软件（演示数据）' : 'Hiring software for SMEs (demo data)'),
+    row('Example B', 'example.org', 'Singapore', zh ? '求职招聘平台（演示数据）' : 'Job board (demo data)'),
+    row('Example C', 'example.net', 'Australia', zh ? '人力资源管理套件（演示数据）' : 'HR suite (demo data)'),
+  ]
+  return {
+    runId: 'demo_c',
+    intent: { type: 'named', query: 'demo', competitors: rows.map((r) => r.competitor), timeRange: 'all', dimensions: ['name', 'region', 'overview', 'pricing'] },
+    rows,
+    stats: { sources: 9, checked: 12, requeried: 0, passed: 9, dropped: 3 },
     finishedAt: new Date().toISOString(),
   }
 }

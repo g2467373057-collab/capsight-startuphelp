@@ -3397,8 +3397,34 @@ h2 .accent {
 }
 
 /* ---------- startup-help-agent: founder market report ---------- */
-.workspace__mode {
-  margin-bottom: 14px;
+
+.rep-hint {
+  margin-top: 8px;
+}
+.rep-banner--soft {
+  margin: 16px 0 0;
+  background: rgba(74, 69, 69, 0.05);
+  color: var(--muted);
+  font-weight: 500;
+}
+.rep-live {
+  margin: 14px 0 4px;
+}
+.rep-idea {
+  margin-top: 4px;
+  font-style: italic;
+}
+.rep-comp {
+  margin-top: 10px;
+}
+.rep-comp__bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.rep-ftable {
+  margin-top: 10px;
 }
 .rep-banner {
   margin: 0 0 14px;
