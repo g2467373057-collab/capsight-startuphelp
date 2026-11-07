@@ -259,7 +259,7 @@ function SceneReport({ active = true }: { active?: boolean }) {
   const v = c.features.viz
   const L = 9400
   const { ref, t } = useLoop(L, 6500, active)
-  const rows = COMPETITORS.slice(0, 3)
+  const domains = COMPETITORS.slice(0, 3).map((r) => r.domain)
   const cursor = span(t, 3400, 4300)
   const pressed = t > 4350 && t < 4550
   const done = t >= 4500
@@ -316,20 +316,20 @@ function SceneReport({ active = true }: { active?: boolean }) {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((r, i) => (
-                  <tr key={r.name} className={`pop ${pop(1800 + i * 300)}`}>
+                {v.compRows.map(([name, region, price], i) => (
+                  <tr key={name} className={`pop ${pop(1800 + i * 300)}`}>
                     <td className="cell">
-                      <span className="cell__v">{r.name}</span>
+                      <span className="cell__v">{name}</span>
                     </td>
                     <td className="cell">
-                      <span className="cell__v">{r.region.value[lang]}</span>
+                      <span className="cell__v">{region}</span>
                     </td>
                     <td className="cell">
-                      <span className="cell__v">{r.pricing.value[lang]}</span>
+                      <span className="cell__v">{price}</span>
                       <span className="cell__meta">
                         <span className="src-pill">
                           <Icon name="site" size={12} />
-                          {r.domain}
+                          {domains[i]}
                         </span>
                       </span>
                     </td>

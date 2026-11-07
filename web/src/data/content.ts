@@ -3,7 +3,7 @@ import type { Dimension, IntentType, Lang, SourceKind, TimeRange } from '../api/
 const zh = {
   meta: { title: 'Capsight · 一句话看清你的创业想法' },
   nav: { cta: '免费开始', login: '登录', logout: '退出', home: '首页' },
-  brand: { name: 'Capsight', alt: '胶囊AI', slogan: '吃下一颗，就看清局面' },
+  brand: { name: 'Capsight', alt: '胶囊AI', slogan: '吃下一颗，看清局势' },
   hero: {
     eyebrow: '// 免费的 AI 创业调研助手',
     h1a: '你的 SaaS 创业想法，\n',
@@ -78,6 +78,11 @@ const zh = {
       concText2: '；PSG 补贴已停办，不能指望这笔钱',
       yourCall: '这是对市场现状的分析，做不做由你决定。',
       appendix: '附：竞品调研表',
+      compRows: [
+        ['Notion', '美国', 'Free / Plus / Business，按成员'],
+        ['Coda', '美国', 'Free / Pro / Team，按 Doc Maker'],
+        ['ClickUp', '美国', 'Free / Unlimited / Business，按用户'],
+      ],
       exportCsv: '导出 CSV',
       saved: '已保存',
     },
@@ -162,7 +167,7 @@ const zh = {
     },
   },
   ctaBand: {
-    eyebrow: '// 吃下一颗，就看清局面',
+    eyebrow: '// 吃下一颗，看清局势',
     title: { pre: '全流程免费，', accent: '现在就看看', post: '你的创业想法。' },
     sub: '注册后就能用：一句话描述想法，生成一份有出处的市场报告，每一步都不收费。',
     button: '免费开始',
@@ -239,7 +244,7 @@ const zh = {
     default: '出了点问题，请重试。',
   } as Record<string, string>,
   footer: {
-    tagline: '吃下一颗，就看清局面',
+    tagline: '吃下一颗，看清局势',
     contact: '商务合作 / 咨询',
     rights: '© 2026 yisa · 胶囊AI Capsight. All rights reserved.',
     demo: '演示版本 · 示例数据',
@@ -335,6 +340,11 @@ const en: Copy = {
       concText2: '; the PSG grant has ceased, so do not count on it',
       yourCall: 'This reads the market as it stands; whether to build it is your call.',
       appendix: 'Appendix: competitor table',
+      compRows: [
+        ['Notion', 'US', 'Free / Plus / Business, per member'],
+        ['Coda', 'US', 'Free / Pro / Team, per Doc Maker'],
+        ['ClickUp', 'US', 'Free / Unlimited / Business, per user'],
+      ],
       exportCsv: 'Export CSV',
       saved: 'Saved',
     },

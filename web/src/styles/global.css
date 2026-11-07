@@ -3800,3 +3800,54 @@ h2 .accent {
   font-size: 15.5px;
   font-weight: 700;
 }
+
+/* navbar slogan */
+.nav__slogan {
+  margin-left: 4px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(74, 69, 69, 0.18);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (max-width: 1100px) {
+  .nav__slogan {
+    display: none;
+  }
+}
+
+/* home demos: keep every scene inside its window */
+.story__deck .demo__body {
+  max-height: 452px;
+  overflow: hidden;
+}
+.demo__table .ftable td.cell {
+  min-width: 0;
+  max-width: none;
+  padding: 8px 10px;
+  line-height: 1.45;
+}
+.demo__table .ftable th {
+  padding: 7px 10px;
+}
+.demo__doc .demo__table .ftable {
+  font-size: 12px;
+}
+.demo__doc .ftable td.cell {
+  padding: 7px 10px;
+}
+.demo__doc .ftable td.cell .cell__meta {
+  margin-top: 3px;
+}
+.demo__doc .src-pill {
+  padding: 1px 7px;
+  font-size: 10.5px;
+}
+.demo__doc .rep-comp__bar .btn {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.demo__doc h4 {
+  margin-bottom: 6px;
+}

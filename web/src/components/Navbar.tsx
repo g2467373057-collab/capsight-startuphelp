@@ -30,6 +30,7 @@ export default function Navbar({ route, onStart }: { route: Route; onStart: () =
           {t.brand.name}
           <small className="nav__brand-alt">{t.brand.alt}</small>
         </span>
+        <span className="nav__slogan">{t.brand.slogan}</span>
       </a>
       <span className="nav__progress" ref={bar} aria-hidden />
 
