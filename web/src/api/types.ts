@@ -129,7 +129,7 @@ export interface RunOptions {
   onEvent?: (e: RunEvent) => void
 }
 
-/* ---------- startup-help-agent: founder market report ---------- */
+/* ---------- Capsight: founder market report ---------- */
 
 /** The five judgment points (one report section each); the summary is built from them. */
 export type JpId = 'jp1' | 'jp2' | 'jp3' | 'jp4' | 'jp5'

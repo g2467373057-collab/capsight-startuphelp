@@ -1,6 +1,6 @@
-# Running startup-help-agent with the knowledge base and the PR04 tests
+# Running Capsight with the knowledge base and the PR04 tests
 
-**Quickest:** `bash run-all-tests.sh` does steps 1 and 3 in one go (keys copied from the Capsight folder if missing).
+**Quickest:** `bash run-all-tests.sh` does steps 1 and 3 in one go (keys copied from your earlier Capsight folder if missing).
 
 Three parts run side by side. Use three terminal windows, from the project folder.
 

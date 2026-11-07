@@ -1,27 +1,58 @@
-# startup-help-agent
+# 胶囊AI · Capsight
 
-> Built on Capsight. A founder describes a SaaS idea → the agent combines a verified policy / regulation / market knowledge base (RAG) with Capsight's competitor research → a readable, source-traced market report: one paragraph per judgment point with numbered citations, and an LLM-written conclusion on where the idea stands in the market. **It never tells the founder to build or not; the founder decides.**
+> 一句话描述你的 SaaS 创业想法，得到一份有出处的市场调研报告。做不做，由你决定。
+> Describe your SaaS idea in one sentence; get a source-traced market report. Whether to build it is your call.
+
+Capsight takes a founder's one-sentence idea and writes a readable market report for Singapore: market size, regulations, government grants, competitors and their pricing. Every figure carries a numbered citation to an official source, every gap is stated instead of guessed, and the report never tells the founder to build or not.
+
+## How it works
+
+```
+one-sentence idea
+  → read the idea (product, customer, market)
+  → two evidence streams
+      · policy knowledge base (RAG over 40 admitted Singapore official documents) → JP1 market · JP2 regulation · JP3 grants
+      · competitor research module (official sites, search) → JP4 competitors · JP5 pricing
+  → evidence wall: a claim is kept only if its quote is found in the source; sentences with numbers found in no source,
+    or telling the founder to build / invest / stop, are removed
+  → readable report: one paragraph per judgment point with [n] citations, key takeaways, what to validate next, references
+  → the founder decides
+```
 
 ## Report structure (judgment points)
 
-| # | Judgment point | Source | Enough evidence | If missing |
+| # | Judgment point | Evidence from | Enough evidence | If missing |
 | --- | --- | --- | --- | --- |
-| JP1 | How big is the market, and is it growing? | RAG | ≥1 official statistic or industry report | "No data found for this market segment" |
-| JP2 | Which policies and regulations apply? | RAG | Original government text, with date | "No relevant regulation found; please consult a professional" |
-| JP3 | Any government grants or support? | RAG | Original official text | "No relevant grant found" |
-| JP4 | Who are the competitors? | Capsight | ≥3 competitors from official websites | "Only n found; list may be incomplete" |
-| JP5 | How do competitors charge? | Capsight | Official prices from ≥3 competitors | "Pricing not publicly available" |
-| Summary | Favorable signals, risks, evidence gaps, what the founder must validate | JP1–JP5 | No go / no-go verdict | |
+| JP1 | How big is the market, and is it growing? | Knowledge base | ≥1 official statistic or industry report | "No data found for this market segment" |
+| JP2 | Which policies and regulations apply? | Knowledge base | Original government text, with date | "No relevant regulation found; please consult a professional" |
+| JP3 | Any government grants or support? | Knowledge base | Original official text | "No relevant grant found" |
+| JP4 | Who are the competitors? | Competitor research | ≥3 competitors from official websites | "Only n found; list may be incomplete" |
+| JP5 | How do competitors charge? | Competitor research | Official prices from ≥3 competitors | "Pricing not publicly available" |
+| Summary | Signals, risks, gaps, what the founder must validate | JP1–JP5 | No go / no-go verdict | |
 
-- Every claim cites its source; claims from the knowledge base must quote the passage word for word (checked by code).
-- The written report (paragraphs + conclusion) is generated only from verified claims: citation marks must point at real references, sentences with numbers found in no source are dropped, and sentences that tell the founder to invest / build / stop are removed.
-- The RAG service is separate: see [`docs/RAG-API.md`](docs/RAG-API.md). Without `RAG_URL`, JP1–JP3 say the knowledge base is not connected.
-- Code: `server/src/pipeline/report.ts`, `server/src/rag/rag.ts`, `web/src/components/ReportConsole.tsx` (the only workspace view). Tests: `server/test/report.test.ts`.
-- The competitor research pipeline runs inside the report (JP4–JP5); its full table opens under JP5 and exports to CSV.
+## Project layout
+
+| Folder | What | Built by |
+| --- | --- | --- |
+| `web/` | Website: one-sentence input, progress, report page, exports | Li Yisha |
+| `server/` | API: idea reading, competitor research module, evidence gates, report writing | Li Yisha |
+| `rag-service/` | Knowledge base service (FastAPI + Chroma), `data/register.csv` admission register | Xu Zihan; documents and register from Seah Yee Hong's KM gate |
+| `eval/pr04/` | 50 RAG questions and 10 founder scenarios, runners and workbooks | test sets by Sasitheran Ramamoorthy |
+| `eval/batch-*` | Competitor research test runs (Gate 2) | Li Yisha |
+| `docs/`, `RUNNING.md` | RAG API contract, how to run everything | |
+
+Judgment points JP1–JP5 come from Chng Hui Mei's judgment-point table. MSI5002 Gate 3 team project, National University of Singapore.
+
+## Run it
+
+See [`RUNNING.md`](RUNNING.md). Quickest: `bash run-all-tests.sh` (knowledge base + PR04 tests), then `server: npm run dev` and `web: npm install && npm run dev`, open http://localhost:5173.
 
 ---
 
-# 胶囊AI · Capsight
+## Appendix · The competitor research module (Gate 2 version)
+
+*The section below describes Capsight before Gate 3, when competitor research was the whole product. It is now the module behind JP4 and JP5.*
+
 
 > 吃下一颗，就看清局面。 / Take one. See the whole field.
 
@@ -29,7 +60,7 @@
 
 ---
 
-## English
+### English
 
 Capsight is a free AI research assistant for **SaaS competitor research**. Ask one question in Chinese or English and it finds the competitors, collects their official pages and other public sources, checks every fact against its source page, and returns a table you can export to CSV.
 
@@ -93,7 +124,7 @@ Designed by LI YISHA (yisa): product positioning, workflow, intent branches, pri
 
 ---
 
-## 中文
+### 中文
 
 免费的 AI 调研助手：一句话提问 → 多源抓取（官网 / 相关网页 / SEO / 新闻 / 社媒）→ 事实校验 → AI 自检重查 → 字段整理 → 导出 CSV。
 

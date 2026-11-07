@@ -1,6 +1,6 @@
 # RAG API contract (for the knowledge base service)
 
-startup-help-agent calls the knowledge base for judgment points **JP1–JP3**. The service is built separately; set its address in `server/keys.env`:
+Capsight calls the knowledge base for judgment points **JP1–JP3**. The service is built separately; set its address in `server/keys.env`:
 
 ```
 RAG_URL=http://localhost:8000      # no trailing slash

@@ -1,9 +1,9 @@
 {
-  "name": "startup-help-agent-server",
+  "name": "capsight-server",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Capsight API: intent → multi-source fetch → verify → self-check → organise → CSV",
+  "description": "Capsight API: one-sentence startup idea → knowledge base + competitor research → source-traced market report",
   "engines": {
     "node": ">=22.18"
   },

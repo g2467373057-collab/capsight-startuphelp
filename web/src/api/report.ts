@@ -5,7 +5,7 @@ export const JP_LABEL: Record<Lang, Record<JpId, string>> = {
   zh: { jp1: '市场有多大、在增长吗', jp2: '有哪些政策法规要遵守', jp3: '有没有政府补贴或支持', jp4: '竞争对手有哪些', jp5: '别人怎么收费' },
   en: { jp1: 'How big is the market, and is it growing?', jp2: 'Which policies and regulations apply?', jp3: 'Any government grants or support?', jp4: 'Who are the competitors?', jp5: 'How do competitors charge?' },
 }
-export const JP_SOURCE: Record<JpId, 'RAG' | 'Capsight'> = { jp1: 'RAG', jp2: 'RAG', jp3: 'RAG', jp4: 'Capsight', jp5: 'Capsight' }
+export const JP_SOURCE: Record<JpId, 'Knowledge base' | 'Competitor research'> = { jp1: 'Knowledge base', jp2: 'Knowledge base', jp3: 'Knowledge base', jp4: 'Competitor research', jp5: 'Competitor research' }
 
 interface ReportOptions {
   lang: Lang
