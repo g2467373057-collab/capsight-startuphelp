@@ -136,7 +136,7 @@ function demoCompetitors(zh: boolean): RunResult {
   ]
   return {
     runId: 'demo_c',
-    intent: { type: 'named', query: 'demo', competitors: rows.map((r) => r.competitor), timeRange: 'all', dimensions: ['name', 'region', 'overview', 'pricing'] },
+    intent: { type: 'named', query: 'demo', competitors: rows.map((r) => r.competitor), timeRange: 'all', dimensions: ['name', 'overview', 'region', 'size', 'funding', 'pricing'] },
     rows,
     stats: { sources: 9, checked: 12, requeried: 0, passed: 9, dropped: 3 },
     finishedAt: new Date().toISOString(),

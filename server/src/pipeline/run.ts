@@ -31,7 +31,7 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
   const fields: FactField[] = [...FACT_FIELDS.filter((f) => dims.includes(f)), ...custom.map(customKey)]
   const stats: RunStats = { sources: 0, checked: 0, requeried: 0, passed: 0, dropped: 0 }
   const cdeps: CollectDeps = { fetcher: deps.fetcher, search: deps.search, social: deps.social, llm: deps.llm, topic: intent.topic, focus: intent.fields, lang, onStep: (text) => emit({ stage: 2, kind: 'info', text }) }
-  emit({ stage: 2, kind: 'info', text: t.start(intent.competitors.length) })
+  emit({ stage: 2, kind: 'info', text: t.start(intent.competitors.length, intent.dimensions.includes('social') || intent.dimensions.includes('news')) })
 
   // ---- step 2: collect, two competitors at a time
   const bundles: (Bundle | null)[] = new Array(intent.competitors.length).fill(null)

@@ -48,7 +48,7 @@ export const REASON: Record<Lang, Record<string, string>> = {
 
 export const T = {
   zh: {
-    start: (k: number) => `开始调研 ${k} 个对象：官网、相关网页、新闻、社媒`,
+    start: (k: number, social = false) => `开始调研 ${k} 个对象：官网、相关网页、搜索结果${social ? '、新闻、社媒' : ''}`,
     stepSite: (n: string) => `${n} · 正在搜索官网…`,
     stepPages: (n: string, k: number) => `${n} · 读取官网页面（${k} 页）`,
     stepSeo: (n: string) => `${n} · 查看搜索排名`,
@@ -64,7 +64,7 @@ export const T = {
     siteSnippets: (n: string, k: number) => `${n} · 从搜索引擎读取官网定价页 ${k} 条`,
     thirdParty: (n: string, k: number) => `${n} · 官网没有可读的价格，另读 ${k} 篇标有日期的第三方定价页（结果会标注）`,
     fetched: (n: string, k: number, parts: string) => `${n} · ${parts}，共 ${k} 个来源`,
-    parts: (site: number, seo: number, news: number, social: number, web = 0) => `官网 ${site} 页 / 网页 ${web} 篇 / 搜索 ${seo} 条 / 新闻 ${news} 条 / 社媒 ${social} 条`,
+    parts: (site: number, seo: number, news: number, social: number, web = 0) => [`官网 ${site} 页`, `网页 ${web} 篇`, `搜索 ${seo} 条`, news ? `新闻 ${news} 条` : '', social ? `社媒 ${social} 条` : ''].filter(Boolean).join(' / '),
     checking: (k: number) => `逐条核对 ${k} 条信息的来源 URL 与原文出处`,
     checkedOk: (ok: number, bad: number) => (bad ? `${ok} 条找到原文出处，${bad} 条需要复查` : '来源均可访问，出处已记录'),
     retry: (n: string, label: string, reason: string) => `${n} · ${label}：${reason}`,
@@ -83,7 +83,7 @@ export const T = {
     failedCompetitor: (n: string) => `${n} · 抓取失败，已跳过`,
   },
   en: {
-    start: (k: number) => `Researching ${k} subjects: websites, related pages, news, social`,
+    start: (k: number, social = false) => `Researching ${k} subjects: websites, related pages, search results${social ? ', news, social' : ''}`,
     stepSite: (n: string) => `${n} · looking for the official site…`,
     stepPages: (n: string, k: number) => `${n} · reading ${k} pages on the official site`,
     stepSeo: (n: string) => `${n} · checking search rankings`,
@@ -99,7 +99,7 @@ export const T = {
     siteSnippets: (n: string, k: number) => `${n} · read ${k} official pricing results from search`,
     thirdParty: (n: string, k: number) => `${n} · no readable price on the official site, reading ${k} dated third-party pricing pages (marked in results)`,
     fetched: (n: string, k: number, parts: string) => `${n} · ${parts} — ${k} sources`,
-    parts: (site: number, seo: number, news: number, social: number, web = 0) => `site ${site} pages / web ${web} / search ${seo} / news ${news} / social ${social}`,
+    parts: (site: number, seo: number, news: number, social: number, web = 0) => [`site ${site} pages`, `web ${web}`, `search ${seo}`, news ? `news ${news}` : '', social ? `social ${social}` : ''].filter(Boolean).join(' / '),
     checking: (k: number) => `Checking source URL and quoted origin for ${k} facts`,
     checkedOk: (ok: number, bad: number) => (bad ? `${ok} facts traced to their source, ${bad} need another look` : 'All sources reachable, origins recorded'),
     retry: (n: string, label: string, reason: string) => `${n} · ${label}: ${reason}`,

@@ -31,7 +31,7 @@ const zh = {
     sub: '四个环节，全部自动完成。',
     items: [
       { tag: '理解想法', title: '一句话说清你想做什么', body: '描述产品、目标客户和市场，AI 拆成 5 个判断点：市场规模、政策法规、政府补贴、竞争对手、竞品定价。' },
-      { tag: '两路证据', title: '政策知识库 + 竞品调研一起查', body: '市场、法规和补贴来自审核过的官方文件知识库；竞争对手和定价自动从官网、搜索和新闻里查。' },
+      { tag: '两路证据', title: '政策知识库 + 竞品调研一起查', body: '市场、法规和补贴来自审核过的官方文件知识库；竞争对手自动从官网和搜索结果里找，整理成一张表：公司介绍、国家/地区、规模、融资和定价。' },
       { tag: '校验与自检', title: '每条都有出处，对不上就剔除', body: '每句引用都要能在原文里找到，找不到出处的数字直接删掉，“建议你做”这类话也会被拦下。证据不够时写明「未找到」，不会编。' },
       { tag: '市场报告', title: '一份读得懂的报告，决定由你做', body: '先给核心结论，再按 5 个判断点写成几段话，每句标出处；最后附上竞品调研表，可导出 CSV。告诉你还要自己验证什么，但不替你下结论。' },
     ],
@@ -47,7 +47,7 @@ const zh = {
       jps: ['市场规模', '政策法规', '政府补贴', '竞争对手', '竞品定价'],
       lanes: [
         { name: '政策知识库', sub: '40 份审核过的官方文件 · 判断点 1–3' },
-        { name: '竞品调研', sub: '官网 · 搜索 · 新闻 · 判断点 4–5' },
+        { name: '竞品调研', sub: '官网 · 搜索 · 判断点 4–5' },
       ],
       found: '条证据',
       evLog: [
@@ -288,7 +288,7 @@ const en: Copy = {
     sub: 'Four stages, all automatic.',
     items: [
       { tag: 'Your idea', title: 'Say what you want to build in one sentence', body: 'Describe the product, customers and market. The AI breaks it into 5 judgment points: market size, regulations, grants, competitors and pricing.' },
-      { tag: 'Two evidence sources', title: 'Policy knowledge base + competitor research', body: 'Market, regulation and grant facts come from a knowledge base of vetted official documents; competitors and pricing are researched from official sites, search and news.' },
+      { tag: 'Two evidence sources', title: 'Policy knowledge base + competitor research', body: 'Market, regulation and grant facts come from a knowledge base of vetted official documents; competitors are found from official sites and search, and laid out in one table: overview, country, size, funding and pricing.' },
       { tag: 'Verify & self-check', title: 'Every fact sourced; mismatches dropped', body: 'Every quote must appear in its source; sentences with unsourced numbers are deleted, and "you should build it" style verdicts are blocked. When evidence is missing the report says so instead of guessing.' },
       { tag: 'Market report', title: 'A report you can read; the decision is yours', body: 'Key takeaways first, then a few cited paragraphs across the 5 judgment points, with the competitor table attached as an exportable CSV. It lists what you still need to validate, and gives no verdict.' },
     ],
@@ -304,7 +304,7 @@ const en: Copy = {
       jps: ['Market size', 'Regulations', 'Grants', 'Competitors', 'Pricing'],
       lanes: [
         { name: 'Policy knowledge base', sub: '40 vetted official documents · JP 1–3' },
-        { name: 'Competitor research', sub: 'Official sites · search · news · JP 4–5' },
+        { name: 'Competitor research', sub: 'Official sites · search · JP 4–5' },
       ],
       found: 'pieces of evidence',
       evLog: [

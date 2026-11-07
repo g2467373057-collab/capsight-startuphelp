@@ -245,3 +245,9 @@ test('a knowledge base that cannot be reached stops the report instead of report
     /rag_unreachable/,
   )
 })
+
+test('report competitor table: the find-competitors structure plus pricing, no social media or news', async () => {
+  const { REPORT_COMPETITOR_DIMS } = await import('../src/pipeline/report.ts')
+  assert.deepEqual(REPORT_COMPETITOR_DIMS, ['name', 'overview', 'region', 'size', 'funding', 'pricing'])
+  assert.ok(!REPORT_COMPETITOR_DIMS.includes('social') && !REPORT_COMPETITOR_DIMS.includes('news'))
+})

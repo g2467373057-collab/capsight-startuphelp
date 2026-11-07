@@ -5,6 +5,7 @@ import {
   JP_IDS,
   RAG_JPS,
   type Claim,
+  type Dimension,
   type EvidenceStatus,
   type FounderIdea,
   type JpId,
@@ -379,6 +380,12 @@ export async function writeNarrative(llm: Llm, lang: Lang, idea: IdeaPlan, secti
   return { sections: out, conclusion, references: refs }
 }
 
+/**
+ * The competitor table in the report: the "find competitors for me" structure (name, overview, region, size, funding),
+ * plus pricing for JP5. No social media or news.
+ */
+export const REPORT_COMPETITOR_DIMS: Dimension[] = ['name', 'overview', 'region', 'size', 'funding', 'pricing']
+
 /** Competitor search language follows the target market: Chinese web for mainland China, English otherwise. */
 const marketLang = (geography: string, fallback: Lang): Lang => (/china|中国|大陆|mainland/i.test(geography) && !/hong kong|taiwan|香港|台湾/i.test(geography) ? 'zh' : geography ? 'en' : fallback)
 
@@ -437,7 +444,7 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
     const found = await parseIntent(other.llm, other.search, ask, cl, deps.maxCompetitors)
     if (found.competitors.length) {
       step(3, 'ok', t.compFound(found.competitors.length))
-      const intent = normaliseIntent({ type: 'named', competitors: found.competitors, dimensions: ['name', 'overview', 'region', 'features', 'pricing'], topic: found.topic ?? 'SaaS' }, ask, deps.maxCompetitors)
+      const intent = normaliseIntent({ type: 'own', competitors: found.competitors, dimensions: REPORT_COMPETITOR_DIMS, topic: found.topic ?? 'SaaS' }, ask, deps.maxCompetitors)
       competitors = await runResearch(`${runId}_c`, intent, { ...deps, llm: other.llm, search: other.search, lang: cl, emit: (e) => emit({ ...e, stage: 3 }) })
     } else step(3, 'info', t.compNone)
   } catch (e) {
