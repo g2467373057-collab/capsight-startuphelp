@@ -31,11 +31,14 @@ pip install -q --upgrade pip
 pip install -q -r requirements.txt
 
 ls data/*.pdf >/dev/null 2>&1 || { echo "No PDFs in rag-service/data. Put the 40 KM Gate PDFs there and run again."; exit 1; }
-if [ ! -d chroma_db ] || [ -z "$(ls -A chroma_db 2>/dev/null)" ]; then
+if [ ! -f chroma_db/.indexed ]; then
   say "2/4 Indexing the PDFs (first time only, ~10–20 min)"
-  python rag_engine.py --rebuild
+  python rag_engine.py --rebuild | tee ../rag-index.log
+  COUNT=$(python -c "from rag_engine import RAGEngine; print(RAGEngine().count())")
+  [ "$COUNT" -gt 0 ] || { echo "Indexing produced 0 chunks; see rag-index.log and send it to the team."; exit 1; }
+  echo "$COUNT chunks" > chroma_db/.indexed
 else
-  say "2/4 Index already built (delete rag-service/chroma_db to rebuild)"
+  say "2/4 Index already built: $(cat chroma_db/.indexed) (delete rag-service/chroma_db to rebuild)"
 fi
 
 say "Starting the knowledge base on http://localhost:8000"

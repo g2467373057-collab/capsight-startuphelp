@@ -29,6 +29,15 @@ def _clean(text: str) -> str:
     return text.strip()
 
 
+def _page_number(meta: dict, index: int) -> int:
+    """1-based page number from pymupdf4llm chunk metadata, whatever the library version calls it."""
+    for key in ("page", "page_number", "page_num"):
+        value = meta.get(key)
+        if isinstance(value, int) and value > 0:
+            return value
+    return index + 1
+
+
 class RAGEngine:
     def __init__(
         self,
@@ -94,7 +103,7 @@ class RAGEngine:
       if path.suffix.lower() == ".pdf":
           # 按页提取为 Markdown 格式，完整保留表格的行列结构
           md_pages = pymupdf4llm.to_markdown(str(path), page_chunks=True)
-          for p in md_pages:
+          for i, p in enumerate(md_pages):
               text = _clean(p["text"])
               if not text:
                   continue
@@ -104,7 +113,8 @@ class RAGEngine:
                       "source_file": path.name,
                       "source_path": rel,
                       "file_type": "pdf",
-                      "page": int(p["metadata"]["page"]),  # pymupdf4llm 默认已是 1-indexed
+                      # pymupdf4llm renamed "page" to "page_number" in newer versions; fall back to position
+                      "page": _page_number(p.get("metadata", {}), i),
                   },
               ))
       else:
