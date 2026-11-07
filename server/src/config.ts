@@ -179,7 +179,7 @@ export function loadConfig(): Config {
       reader: (str('READER', 'jina') as 'none' | 'jina') || 'jina',
     },
     cacheHours: num('CACHE_HOURS', 12),
-    wikidata: bool('WIKIDATA', false), // off: competitor research uses web search only
+    wikidata: bool('WIKIDATA', true),
     xMaxPosts: Math.min(100, Math.max(5, num('X_MAX_POSTS', 5))),
   }
 }
