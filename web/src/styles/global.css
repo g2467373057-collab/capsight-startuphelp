@@ -3744,3 +3744,59 @@ h2 .accent {
   margin-bottom: 6px;
   font-size: 13px;
 }
+
+/* ---------- report appendix: competitor table, made prominent ---------- */
+.rep-comp--appendix {
+  margin-top: 34px;
+  padding: 22px 22px 18px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(225, 30, 30, 0.16);
+  box-shadow: 0 10px 34px rgba(74, 69, 69, 0.09);
+}
+.rep-comp--appendix .rep-comp__bar {
+  margin-bottom: 8px;
+}
+.rep-comp--appendix .rep-comp__bar h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 21px;
+}
+.rep-comp__count {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--red-tint);
+  color: var(--red-dark);
+  font-size: 13px;
+  font-weight: 700;
+}
+.rep-comp--appendix > p {
+  margin: 4px 0 14px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.rep-comp--appendix .ftable-wrap {
+  margin-top: 0;
+  max-height: none;
+}
+.rep-comp--appendix .ftable {
+  font-size: 14.5px;
+}
+.rep-comp--appendix .ftable th {
+  font-size: 13px;
+  padding: 12px 14px;
+  background: var(--red-tint);
+  color: var(--red-dark);
+}
+.rep-comp--appendix .ftable td {
+  padding: 14px;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.rep-comp--appendix .ftable td:first-child .cell__v {
+  font-size: 15.5px;
+  font-weight: 700;
+}

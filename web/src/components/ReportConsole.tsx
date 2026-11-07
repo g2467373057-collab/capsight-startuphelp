@@ -11,7 +11,7 @@ import { Icon } from './ui'
 const COPY = {
   zh: {
     steps: ['描述想法', '生成中', '市场报告'],
-    stages: ['', '理解想法 · 知识库', '竞品与定价', '整理判断点', '总结'],
+    stages: ['', '查知识库', '竞品调研', '撰写', '总结'],
     ask: '用一句话描述你的 SaaS 创业想法',
     hint: '说清楚做什么产品、卖给谁、在哪个市场，报告会更准。',
     start: '生成报告',
@@ -47,7 +47,7 @@ const COPY = {
   },
   en: {
     steps: ['Your idea', 'Researching', 'Market report'],
-    stages: ['', 'Idea · knowledge base', 'Competitors & pricing', 'Judgment points', 'Summary'],
+    stages: ['', 'Knowledge base', 'Competitors', 'Writing', 'Summary'],
     ask: 'Describe your SaaS startup idea in one sentence',
     hint: 'Say what the product does, who it is for and which market. The report gets sharper.',
     start: 'Generate report',
@@ -232,7 +232,6 @@ export default function ReportConsole({
   }
 
   const current = phase === 'input' ? 0 : phase === 'running' ? 1 : 2
-  const lastStage = events.length ? events[events.length - 1].stage : 2
   const comp = result?.competitors
 
   return (
@@ -246,7 +245,7 @@ export default function ReportConsole({
         <span className="console__title">{t.studio.window}</span>
       </div>
       <div className="studio__stepper">
-        <Stepper current={current} running={phase === 'running'} steps={s.steps} sub={phase === 'running' ? s.stages[lastStage - 1] : undefined} />
+        <Stepper current={current} running={phase === 'running'} steps={s.steps} />
       </div>
 
       <div className="console__body studio__body">
@@ -340,11 +339,14 @@ export default function ReportConsole({
             ))}
 
             {comp && (
-              <section className="rep-para rep-comp">
+              <section className="rep-comp rep-comp--appendix">
                 <div className="rep-comp__bar">
-                  <h3>{s.compTitle}</h3>
+                  <h3>
+                    {s.compTitle}
+                    {comp.rows.length > 0 && <span className="rep-comp__count">{lang === 'zh' ? `${comp.rows.length} 家` : `${comp.rows.length} companies`}</span>}
+                  </h3>
                   {comp.rows.length > 0 && (
-                    <button className="btn btn--glass btn--sm" onClick={() => void downloadCsv(comp, lang)}>
+                    <button className="btn btn--red" onClick={() => void downloadCsv(comp, lang)}>
                       <Icon name="download" size={14} /> {s.exportCsv}
                     </button>
                   )}
