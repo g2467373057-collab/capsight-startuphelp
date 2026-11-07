@@ -396,6 +396,8 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
   const passagesBy: Partial<Record<JpId, Passage[]>> = {}
   if (!deps.rag.connected) step(2, 'info', t.ragOff)
   else {
+    let calls = 0
+    let failures = 0
     for (const jp of RAG_JPS as ('jp1' | 'jp2' | 'jp3')[]) {
       const seen = new Set<string>()
       const list: Passage[] = []
@@ -411,11 +413,15 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
           }
         } catch {
           failed = true
+          failures++
         }
+        calls++
       }
       passagesBy[jp] = list.slice(0, deps.topK * 2)
       step(2, failed && !list.length ? 'fail' : list.length ? 'ok' : 'info', failed && !list.length ? t.ragFail(jp.toUpperCase()) : t.rag(jp.toUpperCase(), list.length))
     }
+    // Every knowledge-base call failed: the service is not running. Stop rather than report "no data found".
+    if (calls > 0 && failures === calls) throw new Error('rag_unreachable')
   }
 
   // ---- 3. JP4–JP5: competitor pipeline

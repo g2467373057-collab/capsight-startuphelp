@@ -145,7 +145,7 @@ export class Runs {
       const msg = (e as Error).message?.slice(0, 200) || 'failed'
       console.error(`[run ${id}]`, e)
       this.db.prepare("UPDATE runs SET status = 'failed', error = ?, finished_at = ? WHERE id = ?").run(msg, Date.now(), id)
-      this.bus.emit(id, { type: 'error', error: 'run_failed' })
+      this.bus.emit(id, { type: 'error', error: msg === 'rag_unreachable' ? 'rag_unreachable' : 'run_failed' })
     } finally {
       this.seq.delete(id)
     }
@@ -161,7 +161,7 @@ export class Runs {
       lang: row.lang as Lang,
       createdAt: new Date(row.created_at).toISOString(),
       result: row.result_json ? (JSON.parse(row.result_json) as RunResult | ReportResult) : undefined,
-      error: row.status === 'failed' ? 'run_failed' : undefined,
+      error: row.status === 'failed' ? (row.error === 'rag_unreachable' ? 'rag_unreachable' : 'run_failed') : undefined,
     }
   }
 

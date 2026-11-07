@@ -28,7 +28,15 @@ export async function runReport(idea: string, opts: ReportOptions): Promise<Repo
     }
     es.addEventListener('progress', (m) => opts.onEvent?.(JSON.parse((m as MessageEvent).data) as RunEvent))
     es.addEventListener('result', (m) => done(() => resolve(JSON.parse((m as MessageEvent).data) as ReportResult)))
-    es.addEventListener('failed', () => done(() => reject(new ApiError('run_failed', 500))))
+    es.addEventListener('failed', (m) => {
+      let code = 'run_failed'
+      try {
+        code = String((JSON.parse((m as MessageEvent).data) as { error?: string }).error || code)
+      } catch {
+        /* keep the generic code */
+      }
+      done(() => reject(new ApiError(code, 500)))
+    })
     es.onerror = () => {
       if (es.readyState === EventSource.CLOSED) done(() => reject(new ApiError('network', 0)))
     }

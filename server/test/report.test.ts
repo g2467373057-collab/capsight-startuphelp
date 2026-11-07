@@ -234,3 +234,14 @@ test('unreadable model output marks the section as failed analysis, not as missi
   const { section } = await writeRagSection(llm, 'en', 'jp2', idea, P, true)
   assert.match(section.note!, /Analysis failed/)
 })
+
+test('a knowledge base that cannot be reached stops the report instead of reporting "no data found"', async () => {
+  const cfg = testConfig()
+  const db = freshDb()
+  const p = testProviders(cfg, db, () => ({}), mockSearch(() => []))
+  const rag: Rag = { connected: true, retrieve: async () => { throw new TypeError('fetch failed') } }
+  await assert.rejects(
+    runReport('run_y', 'An HR SaaS for Singapore SMEs to manage hiring', { llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 1, emit: () => {}, rag, topK: 5, maxCompetitors: 4 }),
+    /rag_unreachable/,
+  )
+})
