@@ -179,7 +179,7 @@ export function loadConfig(): Config {
       reader: (str('READER', 'jina') as 'none' | 'jina') || 'jina',
     },
     cacheHours: num('CACHE_HOURS', 12),
-    wikidata: bool('WIKIDATA', true),
+    wikidata: bool('WIKIDATA', false), // off: competitor research uses web search only
     xMaxPosts: Math.min(100, Math.max(5, num('X_MAX_POSTS', 5))),
   }
 }
@@ -195,9 +195,6 @@ export function configWarnings(c: Config): string[] {
     if (s === 'bocha' && !c.keys.bocha) w.push(`Search (${lang}): BOCHA_API_KEY missing`)
   }
   if (!c.rag.url) w.push('RAG: RAG_URL not set — report sections JP1–JP3 will say the knowledge base is not connected')
-  if (!c.keys.xBearer) w.push('Social: X API off (no X_BEARER_TOKEN or X_ENABLED=false) — X posts come from search instead')
-  if (!c.keys.youtube) w.push('Social: YOUTUBE_API_KEY missing — YouTube will be skipped')
-  if (!c.keys.redditId || !c.keys.redditSecret) w.push('Social: Reddit credentials missing — Reddit will be skipped')
   if (c.requireEmailVerification && !c.keys.resend) w.push('Mail: RESEND_API_KEY missing — e-mails are only printed to the log')
   if (c.env === 'production' && !c.cookie.secure) w.push('Cookies are not Secure in production')
   return w
