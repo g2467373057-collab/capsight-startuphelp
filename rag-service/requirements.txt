@@ -1,0 +1,20 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+
+langchain>=0.3
+langchain-core>=0.3
+langchain-community>=0.3
+langchain-text-splitters>=0.3
+langchain-chroma>=0.1.4
+langchain-huggingface>=0.1
+chromadb>=0.5
+
+sentence-transformers>=3.0
+pymupdf>=1.24        # PDF loading (keeps page numbers)
+pymupdf4llm>=0.0.17
+docx2txt>=0.8        # .docx loading
+
+pytest>=8.0
+httpx>=0.27          # needed by FastAPI TestClient
+openpyxl>=3.1   # eval/pr04/fill_workbooks.py

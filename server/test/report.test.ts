@@ -4,7 +4,7 @@ import type { AddressInfo } from 'node:net'
 import { test } from 'node:test'
 import { MockLlm, type LlmRequest } from '../src/llm/llm.ts'
 import { competitorSections, MISSING_NOTE, runReport, writeRagSection, writeSummary } from '../src/pipeline/report.ts'
-import { HttpRag, NoRag, normalisePassages, type Rag } from '../src/rag/rag.ts'
+import { HttpRag, jpsFromPrefix, NoRag, normalisePassages, parseRegister, type Rag } from '../src/rag/rag.ts'
 import type { Passage, Row, RunEvent } from '../src/types.ts'
 import { freshDb, mockSearch, testConfig, testProviders } from './helpers.ts'
 
@@ -87,27 +87,57 @@ test('passages from the RAG service are cleaned; unusable ones dropped', () => {
   assert.equal(out[1].date, undefined)
 })
 
-test('HttpRag speaks the documented contract', async () => {
-  let body: Record<string, unknown> = {}
+test('HttpRag speaks the rag-service API: query, JP file filter from the register, results joined to the register', async () => {
+  const bodies: Record<string, unknown>[] = []
   let auth = ''
   const server = createServer((req, res) => {
     let raw = ''
     req.on('data', (c) => (raw += c))
     req.on('end', () => {
-      body = JSON.parse(raw)
+      bodies.push(raw ? JSON.parse(raw) : {})
       auth = String(req.headers.authorization ?? '')
-      res.writeHead(200, { 'Content-Type': 'application/json' }).end(JSON.stringify({ passages: [{ text: 'Grant covers 50%', title: 'PSG', issuer: 'EnterpriseSG', date: '2025-04-01', url: 'https://www.gobusiness.gov.sg/psg' }] }))
+      res.writeHead(200, { 'Content-Type': 'application/json' }).end(
+        JSON.stringify({
+          query: 'grants',
+          total_results: 2,
+          results: [
+            { text: 'Grant covers **50%** of costs', score: 0.8, source: { file_name: 'S05_Productivity_Solutions_Grant_PSG.pdf', file_path: 'S05_Productivity_Solutions_Grant_PSG.pdf', file_type: 'pdf', page: 3, chunk_index: 1 } },
+            { text: 'Rejected doc text', score: 0.7, source: { file_name: 'S99_Old.pdf', file_path: 'S99_Old.pdf', file_type: 'pdf', page: 1, chunk_index: 1 } },
+          ],
+          source_documents: ['S05_Productivity_Solutions_Grant_PSG.pdf'],
+        }),
+      )
     })
   })
   await new Promise<void>((r) => server.listen(0, '127.0.0.1', r))
   try {
-    const rag = new HttpRag({ url: `http://127.0.0.1:${(server.address() as AddressInfo).port}`, apiKey: 'k', timeoutMs: 3000, topK: 5 })
+    const url = `http://127.0.0.1:${(server.address() as AddressInfo).port}`
+    const register = parseRegister(
+      'file_name,doc_id,title,issuer,date,url,jp,admitted\nS05_Productivity_Solutions_Grant_PSG.pdf,S05,Productivity Solutions Grant,Enterprise Singapore,2025-04-01,https://www.gobusiness.gov.sg/psg,JP3,yes\nS99_Old.pdf,S99,Old,EnterpriseSG,2019,https://x.gov.sg,JP3,no\nD01_PDPA.pdf,D01,PDPA,PDPC,2012,https://sso.agc.gov.sg/Act/PDPA2012,JP2,yes\n',
+    )
+    const rag = new HttpRag({ url, apiKey: 'k', timeoutMs: 3000, topK: 5, register: '' }, register)
     const out = await rag.retrieve({ question: 'grants', jp: 'jp3', geography: 'Singapore', sector: 'HR', topK: 3 })
-    assert.equal(out[0].issuer, 'EnterpriseSG')
-    assert.deepEqual([body.judgment_point, body.top_k, auth], ['JP3', 3, 'Bearer k'])
+    assert.equal(out.length, 1)
+    assert.deepEqual([out[0].issuer, out[0].date, out[0].page, out[0].url], ['Enterprise Singapore', '2025-04-01', 3, 'https://www.gobusiness.gov.sg/psg'])
+    assert.deepEqual([bodies[0].query, bodies[0].top_k, bodies[0].source_files, auth], ['grants', 3, ['S05_Productivity_Solutions_Grant_PSG.pdf', 'S99_Old.pdf'].filter((f) => f !== 'S99_Old.pdf'), 'Bearer k'])
   } finally {
     server.close()
   }
+})
+
+test('without a register: file-name prefix decides the judgment point, links point at the RAG service', () => {
+  assert.deepEqual([jpsFromPrefix('I01_Digital_Economy.pdf'), jpsFromPrefix('S04_EDG.pdf'), jpsFromPrefix('D01_PDPA.pdf')], [['jp1'], ['jp3'], ['jp2']])
+  const out = normalisePassages({ results: [{ text: 'Text', score: 0.5, source: { file_name: 'D01_Personal_Data_Protection_Act_2012.pdf', page: 12, chunk_index: 2 } }] }, 5, new Map(), 'http://localhost:8000')
+  assert.equal(out[0].title, 'Personal Data Protection Act 2012')
+  assert.equal(out[0].url, 'http://localhost:8000/files/D01_Personal_Data_Protection_Act_2012.pdf#page=12')
+  assert.equal(out[0].date, undefined)
+})
+
+test('quotes still match when the PDF text carries Markdown marks', async () => {
+  const md: Passage = { id: 'x', title: 'PSG', url: 'https://www.gobusiness.gov.sg/psg', date: '2025-04-01', text: 'The grant supports **up to 50%** of qualifying costs for _pre-scoped_ solutions.' }
+  const llm = new MockLlm(() => ({ claims: [{ text: 'PSG covers up to half of costs.', passage: 'P1', quote: 'supports up to 50% of qualifying costs for pre-scoped solutions' }] }))
+  const { section } = await writeRagSection(llm, 'en', 'jp3', idea, [md], true)
+  assert.equal(section.claims.length, 1)
 })
 
 test('full report without a knowledge base or competitors: every gap is stated, nothing invented', async () => {
@@ -158,4 +188,26 @@ test('narrative: bad citations removed, sentences with unsupported numbers dropp
   assert.equal(n.sections[0].text, 'No data found for this market segment.')
   assert.equal(n.sections[1].text, 'Three products already serve this market: A [1], B [3] and C [5]. A charges $10 per user [2].')
   assert.equal(n.conclusion, 'A crowded market with room at the low end. The key risk is price competition [2].')
+})
+
+test('asking the knowledge base: only quote-matched claims answer; nothing found says so', async () => {
+  const { askKnowledgeBase } = await import('../src/pipeline/ask.ts')
+  const rag: Rag = { connected: true, retrieve: async () => [{ id: 'S10#p1', docId: 'S10', page: 1, title: 'EDGE Grant', url: 'https://www.enterprisesg.gov.sg/financial-support/edge-grant', text: 'The EDGE grant opens for applications from 30 September 2026 and supports **projects** that build capabilities.' }] }
+  const llm = new MockLlm(() => ({ claims: [{ text: 'EDGE opens on 30 September 2026.', passage: 'P1', quote: 'opens for applications from 30 September 2026' }, { text: 'It funds 90% of costs.', passage: 'P1', quote: 'funds up to 90% of qualifying costs' }] }))
+  const r = await askKnowledgeBase(llm, rag, 'When does EDGE open?')
+  assert.equal(r.claims.length, 1)
+  assert.equal(r.proposed, 2)
+  assert.equal(r.answer, 'EDGE opens on 30 September 2026 [1].')
+  assert.equal(r.claims[0].docId, 'S10')
+  const none = await askKnowledgeBase(llm, new NoRag(), 'Anything?')
+  assert.match(none.answer, /does not hold enough evidence/)
+})
+
+test('register from the KM audit: JP01-style tags, ceased schemes labelled, rejected docs excluded', () => {
+  const reg = parseRegister('file_name,doc_id,title,issuer,date,url,jp,admitted,status\nS04_EDG.pdf,S04,Enterprise Development Grant,EnterpriseSG,2026-09-29,https://www.enterprisesg.gov.sg/edg,JP03,yes,Ceased 29 Sep 2026\nI07_MTI.pdf,I07,Economic Survey,MTI,2026-02-10,https://www.mti.gov.sg,JP01,no,\n')
+  assert.deepEqual(reg.get('S04_EDG.pdf')!.jps, ['jp3'])
+  assert.equal(reg.get('S04_EDG.pdf')!.title, 'Enterprise Development Grant (Ceased 29 Sep 2026)')
+  assert.equal(reg.get('I07_MTI.pdf')!.admitted, false)
+  const out = normalisePassages({ results: [{ text: 'x', source: { file_name: 'I07_MTI.pdf', page: 2 } }] }, 5, reg, 'http://localhost:8000')
+  assert.equal(out.length, 0)
 })

@@ -1,0 +1,82 @@
+[
+ {
+  "id": "TC01",
+  "title": "Tuition centre scheduling",
+  "tests": "Can it produce a useful report with relevant sources?",
+  "prompt": "I want to build subscription software for small tuition centres in Singapore to manage student bookings, attendance, fee reminders and parent messages. Please research the market, regulations, government grants, competitors and their prices. Tell me what I still need to check.",
+  "good": "Uses sources relevant to tuition centres; does not invent demand or prices.",
+  "friend": false
+ },
+ {
+  "id": "TC02",
+  "title": "AI assistant for businesses",
+  "tests": "Does it notice missing customer details?",
+  "prompt": "I want to launch an AI assistant to help businesses save time in Singapore, but I have not decided which type of business or tasks to focus on. Please research the market, regulations, grants, competitors and prices.",
+  "good": "Asks who the customer is or clearly says the market findings are broad and uncertain.",
+  "friend": false
+ },
+ {
+  "id": "TC03",
+  "title": "Pet grooming records",
+  "tests": "Does it admit when specific evidence is missing?",
+  "prompt": "I want subscription software for independent pet grooming shops in Singapore to manage grooming records, training records and customer consent. Please research the market, applicable rules, grants, competitors and prices. Clearly say what you cannot verify.",
+  "good": "Does not invent grooming-specific requirements or exact market size.",
+  "friend": false
+ },
+ {
+  "id": "TC04",
+  "title": "SME grant finder",
+  "tests": "Does it catch outdated grant information?",
+  "prompt": "I want to build software to help Singapore SMEs find digitalisation grants. I heard new applications for EDG and PSG are still open. Please check this against current official sources and dates, then research market, regulations, competitors and prices.",
+  "good": "Checks whether the founder’s EDG/PSG claim is outdated and identifies current official information.",
+  "friend": false
+ },
+ {
+  "id": "TC05",
+  "title": "HR compliance tracker",
+  "tests": "Does it handle unclear or conflicting rules?",
+  "prompt": "I want to build HR compliance software for small Singapore employers, with staff records and reminders. Different online articles seem to disagree about employer obligations. Please check original government sources, explain which rules apply, and research market, grants, competitors and prices.",
+  "good": "Does not treat different scope or dates as a real conflict without checking.",
+  "friend": false
+ },
+ {
+  "id": "TC06",
+  "title": "Minimart inventory",
+  "tests": "Does it avoid pretending competitor research is complete?",
+  "prompt": "I want to build inventory software for independent minimarts in Singapore to track stock, expiry dates and reordering. Please research market, rules, grants, at least three relevant competitors and their prices. If fewer than three can be verified, explain the gap.",
+  "good": "Identifies genuinely relevant alternatives; states limitations rather than saying there is no competition.",
+  "friend": false
+ },
+ {
+  "id": "TC07",
+  "title": "Restaurant reservations",
+  "tests": "Does it avoid making up competitor prices?",
+  "prompt": "I want to build subscription software for independent restaurants in Singapore to manage reservations, waitlists and reminders. Please research market, rules, grants, competitors and their official prices. If a price is not public, say so.",
+  "good": "Uses official pricing pages or explicitly states prices are unavailable.",
+  "friend": false
+ },
+ {
+  "id": "TC08",
+  "title": "Friend 1 — own idea",
+  "tests": "Does the report help a real person understand the evidence and gaps?",
+  "prompt": "[Paste the friend’s exact idea and details here. Do not invent their input.]",
+  "good": "The report uses relevant evidence, admits uncertainty and helps the friend identify a next step.",
+  "friend": true
+ },
+ {
+  "id": "TC09",
+  "title": "Friend 2 — own idea",
+  "tests": "Does the report help a real person understand the evidence and gaps?",
+  "prompt": "[Paste the friend’s exact idea and details here. Do not invent their input.]",
+  "good": "The report uses relevant evidence, admits uncertainty and helps the friend identify a next step.",
+  "friend": true
+ },
+ {
+  "id": "TC10",
+  "title": "Friend 3 — own idea",
+  "tests": "Does the report help a real person understand the evidence and gaps?",
+  "prompt": "[Paste the friend’s exact idea and details here. Do not invent their input.]",
+  "good": "The report uses relevant evidence, admits uncertainty and helps the friend identify a next step.",
+  "friend": true
+ }
+]

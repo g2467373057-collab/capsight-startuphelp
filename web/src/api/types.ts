@@ -150,6 +150,8 @@ export interface Passage {
   date?: string
   url: string
   docId?: string
+  /** Page in the source PDF (1-based), when known. */
+  page?: number
   score?: number
 }
 
@@ -162,6 +164,7 @@ export interface Claim {
   /** For passages: issuer and date shown next to the link. */
   issuer?: string
   date?: string
+  page?: number
 }
 
 export interface ReportSection {
@@ -195,6 +198,7 @@ export interface Reference {
   url: string
   issuer?: string
   date?: string
+  page?: number
   kind: SourceKind
 }
 

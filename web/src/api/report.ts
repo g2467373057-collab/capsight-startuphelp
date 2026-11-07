@@ -157,7 +157,7 @@ export function reportMarkdown(r: ReportResult, lang: Lang): string {
   }
   if (n.references.length) {
     out.push('', `## ${zh ? '参考来源' : 'References'}`, '')
-    for (const ref of n.references) out.push(`[^${ref.n}]: [${ref.title}](${ref.url})${[ref.issuer, ref.date].filter(Boolean).length ? ` · ${[ref.issuer, ref.date].filter(Boolean).join(' · ')}` : ''}`)
+    for (const ref of n.references) { const meta = [ref.issuer, ref.date, ref.page ? `p. ${ref.page}` : ''].filter(Boolean); out.push(`[^${ref.n}]: [${ref.title}](${ref.url})${meta.length ? ` · ${meta.join(' · ')}` : ''}`) }
   }
   return out.join('\n') + '\n'
 }

@@ -110,7 +110,9 @@ const oneLine = (v: unknown, max: number) => String(v ?? '').replace(/\s+/g, ' '
 export const norm = (s: string) =>
   s
     .toLowerCase()
-    .replace(/[‘’“”"'`]/g, '')
+    .replace(/[‘’“”"'`*_#|>]/g, '') // quotes and Markdown marks from PDF extraction
+    .replace(/[\u2010-\u2015]/g, '-')
+    .replace(/-\s+/g, '-')
     .replace(/\s+/g, ' ')
     .trim()
 
@@ -177,7 +179,7 @@ export async function writeRagSection(llm: Llm, lang: Lang, jp: JpId, idea: Idea
         UNTRUSTED_NOTE,
         'Output JSON only: {"claims":[{"text":"","passage":"P1","quote":""}]}',
       ].join('\n'),
-      user: `Idea: ${idea.product} for ${idea.customer || 'its customers'} in ${idea.geography}\n\nPassages:\n${passages.map((p, i) => `[P${i + 1}] ${p.title}${p.issuer ? ` · ${p.issuer}` : ''}${p.date ? ` · ${p.date}` : ''}\n${p.text}`).join('\n\n---\n\n')}`,
+      user: `Idea: ${idea.product} for ${idea.customer || 'its customers'} in ${idea.geography}\n\nPassages:\n${passages.map((p, i) => `[P${i + 1}] ${p.title}${p.issuer ? ` · ${p.issuer}` : ''}${p.date ? ` · ${p.date}` : ''}${p.page ? ` · p. ${p.page}` : ''}\n${p.text}`).join('\n\n---\n\n')}`,
       maxTokens: 900,
     })
   } catch {
@@ -192,7 +194,7 @@ export async function writeRagSection(llm: Llm, lang: Lang, jp: JpId, idea: Idea
     const text = oneLine(c?.text, 400)
     const quote = oneLine(c?.quote, 400)
     if (!p || !text || norm(quote).length < 12 || !norm(p.text).includes(norm(quote)) || VERDICT.test(text)) continue
-    claims.push({ text, quote, sources: [{ kind: 'web', url: p.url, title: p.title }], ...(p.issuer ? { issuer: p.issuer } : {}), ...(p.date ? { date: p.date } : {}) })
+    claims.push({ text, quote, sources: [{ kind: 'web', url: p.url, title: p.title }], ...(p.issuer ? { issuer: p.issuer } : {}), ...(p.date ? { date: p.date } : {}), ...(p.page ? { page: p.page } : {}) })
     used.push(p)
   }
   if (!claims.length) return { section: missing(), proposed: proposed.length }
@@ -278,18 +280,20 @@ export const NARRATIVE_HEADING: Record<Lang, Record<JpId, string>> = {
 }
 
 /** Numbers every source cited by the sections (one number per URL), in report order. */
-export function numberReferences(sections: ReportSection[]): { refs: Reference[]; refOf: (url: string) => number | undefined } {
+export function numberReferences(sections: ReportSection[]): { refs: Reference[]; refOf: (url: string, page?: number) => number | undefined } {
   const refs: Reference[] = []
   const byUrl = new Map<string, number>()
+  const key = (url: string, page?: number) => `${url}|${page ?? ''}`
   for (const s of sections)
     for (const c of s.claims)
       for (const src of c.sources) {
-        if (byUrl.has(src.url)) continue
+        const k = key(src.url, c.page)
+        if (byUrl.has(k)) continue
         const n = refs.length + 1
-        byUrl.set(src.url, n)
-        refs.push({ n, title: src.title || src.url, url: src.url, kind: src.kind, ...(c.issuer ? { issuer: c.issuer } : {}), ...(c.date ? { date: c.date } : {}) })
+        byUrl.set(k, n)
+        refs.push({ n, title: src.title || src.url, url: src.url, kind: src.kind, ...(c.issuer ? { issuer: c.issuer } : {}), ...(c.date ? { date: c.date } : {}), ...(c.page ? { page: c.page } : {}) })
       }
-  return { refs, refOf: (url) => byUrl.get(url) }
+  return { refs, refOf: (url, page) => byUrl.get(key(url, page)) }
 }
 
 const splitSentences = (t: string) => t.split(/(?<=[。！？；])|(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean)
@@ -319,7 +323,7 @@ export function checkParagraph(text: string, maxRef: number, allowedNumbers: Set
 /** Paragraphs a person would read: the LLM writes from the verified claims only, citing [n]; code checks the result. */
 export async function writeNarrative(llm: Llm, lang: Lang, idea: IdeaPlan, sections: ReportSection[]): Promise<Narrative> {
   const { refs, refOf } = numberReferences(sections)
-  const cite = (c: Claim) => [...new Set(c.sources.map((x) => refOf(x.url)).filter(Boolean))].map((n) => `[${n}]`).join('')
+  const cite = (c: Claim) => [...new Set(c.sources.map((x) => refOf(x.url, c.page)).filter(Boolean))].map((n) => `[${n}]`).join('')
   const allowed = new Set<string>([...numbersIn(idea.idea), ...numbersIn(idea.product), ...numbersIn(idea.customer)])
   for (const s of sections) for (const c of s.claims) for (const n of numbersIn(c.text)) allowed.add(n)
   for (const s of sections) if (s.note) for (const n of numbersIn(s.note)) allowed.add(n)

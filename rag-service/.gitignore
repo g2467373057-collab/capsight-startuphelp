@@ -1,0 +1,9 @@
+__pycache__/
+.venv/
+chroma_db/
+.pytest_cache/
+data/*
+!data/.gitkeep
+
+# the admission register is part of the method; the PDFs stay out of git (official copies, 74 MB)
+!data/register.csv

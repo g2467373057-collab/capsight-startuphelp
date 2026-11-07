@@ -1,0 +1,616 @@
+[
+ {
+  "id": "RAG01",
+  "topic": "Cybersecurity",
+  "question": "What controls does the guidance recommend for securing AI systems?",
+  "expected": "Check security at every stage of an AI system, assess risks first, and put protections in place.",
+  "where": "C02 — C02 Section 3.1 to 3.3; pages 7 to 13",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; specific safeguards in §3.3 not checked",
+  "expected_files": [
+   "C02_Guidelines_on_Securing_AI_Systems.pdf"
+  ]
+ },
+ {
+  "id": "RAG02",
+  "topic": "Cybersecurity",
+  "question": "What priorities does Singapore’s Cybersecurity Strategy 2026 identify?",
+  "expected": "Four priorities: protect critical infrastructure, secure cyberspace, strengthen AI/quantum security, and work with global partners. Also develop people and industry.",
+  "where": "C03 — C03 chapters 3 to 8; contents pages 20 to 54",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Four pillars supported; enabler descriptions need individual checking",
+  "expected_files": [
+   "C03_Singapore_s_Cybersecurity_Strategy_2026.pdf"
+  ]
+ },
+ {
+  "id": "RAG03",
+  "topic": "Cybersecurity",
+  "question": "What is the Cyber Essentials mark intended to demonstrate?",
+  "expected": "Cyber Essentials shows an organisation has basic cybersecurity protections. It is not the higher Cyber Trust mark.",
+  "where": "C04 — C04 Sections 1 to 4; Annex A, pages 3 to 11",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; Annex A detailed requirements not checked",
+  "expected_files": [
+   "C04_CSA_Cybersecurity_Certification_Cyber_Essentials_mark_2025_2nd_ed.pdf"
+  ]
+ },
+ {
+  "id": "RAG04",
+  "topic": "Cybersecurity",
+  "question": "What is the Cyber Trust mark intended to demonstrate?",
+  "expected": "Cyber Trust is for more mature organisations and checks cybersecurity according to their risks.",
+  "where": "C05 — C05 Section 4, pages 5 to 26; Annex B page 30",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; detailed tiers/domains not independently checked",
+  "expected_files": [
+   "C05_CSA_Cybersecurity_Certification_Cyber_Trust_mark_2025_2nd_ed.pdf"
+  ]
+ },
+ {
+  "id": "RAG05",
+  "topic": "Cybersecurity",
+  "question": "What technology risk-management expectations are described, and to whom do they apply?",
+  "expected": "These guidelines cover technology risks at financial institutions, including leaders' oversight and third-party services. They do not automatically apply to every SaaS business.",
+  "where": "C08 — C08 Sections 2 to 5, pages 6 to 15",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Core supported; full operational controls not individually checked",
+  "expected_files": [
+   "C08_Technology_Risk_Management_Guidelines.pdf"
+  ]
+ },
+ {
+  "id": "RAG06",
+  "topic": "Cybersecurity",
+  "question": "What conduct does the Computer Misuse Act address, and what scope limitations matter?",
+  "expected": "The law deals with unauthorised access, changes and other misuse of computer systems. Whether it applies depends on the actual conduct.",
+  "where": "C10 — C10 Sections 3 to 8B,13",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; each offence and territorial limits not fully checked",
+  "expected_files": [
+   "C10_Computer_Misuse_Act_1993_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG07",
+  "topic": "Cybersecurity",
+  "question": "How does the companion guide explain practical implementation of AI-system security?",
+  "expected": "The companion guide gives practical AI-security examples. Its measures are voluntary guidance, not compulsory rules.",
+  "where": "C11 — C11 page 2, introductory notice",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Core supported; verify physical page number in final citation",
+  "expected_files": [
+   "C11_Companion_Guide_on_Securing_AI_Systems.pdf"
+  ]
+ },
+ {
+  "id": "RAG08",
+  "topic": "Cybersecurity",
+  "question": "Which organisations and systems fall within the Cybersecurity Code of Practice 2026?",
+  "expected": "The code is for owners of critical information infrastructure, not all SaaS companies. Some existing-owner requirements have 2027 deadlines.",
+  "where": "C12 — C12 pp2–3 Document History and Compliance Timeline; p14 §1.4.1–1.4.5",
+  "source_status": "VERIFIED — scope and date schedule",
+  "watch": "Do not treat ordinary SaaS companies as CIIOs without designation; compliance dates apply to specified provisions and existing CIIOs",
+  "expected_files": [
+   "C12_Cybersecurity_Code_of_Practice_2026.pdf"
+  ]
+ },
+ {
+  "id": "RAG09",
+  "topic": "Data protection",
+  "question": "What obligations under the PDPA could be relevant to a SaaS business handling personal data?",
+  "expected": "Possible duties include telling people why data is used, consent where needed, keeping it safe, deleting it when appropriate, and handling reportable breaches.",
+  "where": "D01 — D01 Parts 3 to 6A, Sections 11 to 26D",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Statutory headings supported; application depends on processing facts",
+  "expected_files": [
+   "D01_Personal_Data_Protection_Act_2012_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG10",
+  "topic": "Data protection",
+  "question": "How do the PDPA key-concepts guidelines explain consent and notification?",
+  "expected": "Explain when consent is needed, what people must be told, and that exceptions can apply. Consent is not automatic.",
+  "where": "D02 — D02 Part III, consent and notification chapters; D01 Sections 13 to 20",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; exact exceptions depend on facts",
+  "expected_files": [
+   "D02_Advisory_Guidelines_on_Key_Concepts_in_the_PDPA.pdf"
+  ]
+ },
+ {
+  "id": "RAG11",
+  "topic": "Data protection",
+  "question": "What does the data-breach guide say about assessing and notifying a breach?",
+  "expected": "Contain the breach, assess it, report if legally required, and evaluate improvements. Not every breach must be notified.",
+  "where": "D03 — D03 executive summary pages 4 to 6; Parts II to III pages 12 to 29",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; significant harm conditions depend on breach details",
+  "expected_files": [
+   "D03_Guide_on_Managing_and_Notifying_Data_Breaches_under_the_PDPA.pdf"
+  ]
+ },
+ {
+  "id": "RAG12",
+  "topic": "Data protection",
+  "question": "What does the AI recommendation and decision guidance say about personal data use?",
+  "expected": "Different rules can apply when personal data is used to build, test or run AI. Exceptions are conditional, not automatic.",
+  "where": "D04 — D04 Parts III to V, pages 5 to 19",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; exceptions are conditional, not blanket permissions",
+  "expected_files": [
+   "D04_Advisory_Guidelines_on_Use_of_Personal_Data_in_AI_Recommendation_and_D.pdf"
+  ]
+ },
+ {
+  "id": "RAG13",
+  "topic": "Data protection",
+  "question": "What ICT data-protection practices does this guide recommend?",
+  "expected": "Protect data by knowing your assets, securing them, updating systems, making backups and preparing a response.",
+  "where": "D05 — D05 contents pages 6 to 49",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; guidance is not certification",
+  "expected_files": [
+   "D05_Guide_to_Data_Protection_Practices_for_ICT_Systems.pdf"
+  ]
+ },
+ {
+  "id": "RAG14",
+  "topic": "Data protection",
+  "question": "What topic-specific PDPA guidance is relevant to SaaS operations?",
+  "expected": "A SaaS business may need guidance on research, anonymising data, and photos or recordings, depending on what it does.",
+  "where": "D06 — D06 Part II, Sections 2 to 4, pages 7 to 24",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; use-case relevance conditional",
+  "expected_files": [
+   "D06_Advisory_Guidelines_on_the_PDPA_for_Selected_Topics.pdf"
+  ]
+ },
+ {
+  "id": "RAG15",
+  "topic": "Data protection",
+  "question": "What components of a data protection management programme are recommended?",
+  "expected": "A data protection programme needs people in charge, rules, practical processes and ongoing checks.",
+  "where": "D08 — D08 Parts I to IV, pages 7 to 31",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; ongoing audit not established as mandatory",
+  "expected_files": [
+   "D08_Guide_to_Developing_a_Data_Protection_Management_Programme.pdf"
+  ]
+ },
+ {
+  "id": "RAG16",
+  "topic": "Data protection",
+  "question": "What safeguards and limitations does the anonymisation guide describe?",
+  "expected": "Removing names alone may not make data anonymous. Assess and reduce the chance that people can be identified again.",
+  "where": "D09 — D09 pages 6,13,18 to 25; introduction page 4",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; no automatic PDPA exemption",
+  "expected_files": [
+   "D09_Guide_to_Basic_Anonymisation.pdf"
+  ]
+ },
+ {
+  "id": "RAG17",
+  "topic": "Data protection",
+  "question": "What responsibilities arise when an organisation uses a data intermediary?",
+  "expected": "When another company processes data for you, you still need oversight, agreements, checks and an exit plan.",
+  "where": "D11 — D11 pages 4 to 8,10 to 26",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Core supported; role-specific legal duties require facts",
+  "expected_files": [
+   "D11_Guide_to_Managing_Data_Intermediaries.pdf"
+  ]
+ },
+ {
+  "id": "RAG18",
+  "topic": "AI governance",
+  "question": "What governance principles are set out in the second edition Model AI Governance Framework?",
+  "expected": "Four areas: who is responsible, when humans make decisions, how AI is managed, and what is communicated to users.",
+  "where": "G01 — G01 Section 3, pages 19 to 53",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "G01_Model_AI_Governance_Framework_2nd_ed.pdf"
+  ]
+ },
+ {
+  "id": "RAG19",
+  "topic": "AI governance",
+  "question": "What governance considerations are specific to generative AI?",
+  "expected": "Generative AI raises questions about responsibility, data quality, safety, security, testing and where generated material comes from.",
+  "where": "G02 — G02 pages 6 to 28, contents",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; individual nine-dimension descriptions not fully checked",
+  "expected_files": [
+   "G02_Model_AI_Governance_Framework_for_Generative_AI.pdf"
+  ]
+ },
+ {
+  "id": "RAG20",
+  "topic": "AI governance",
+  "question": "What priorities are described in National AI Strategy 2.0?",
+  "expected": "Three areas: AI activity in industry/government/research; people and skills; and supporting infrastructure and trust.",
+  "where": "G03 — G03 contents pages 13 to 47",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "G03_National_AI_Strategy_2_0.pdf"
+  ]
+ },
+ {
+  "id": "RAG21",
+  "topic": "AI governance",
+  "question": "What governance considerations are specific to agentic AI?",
+  "expected": "For AI agents, limit what they can do, keep people accountable, and test and monitor their actions.",
+  "where": "G07 — G07 Sections 1 to 2.2, pages 6 to 25",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; no blanket mandate for all agents",
+  "expected_files": [
+   "G07_Model_AI_Governance_Framework_for_Agentic_AI.pdf"
+  ]
+ },
+ {
+  "id": "RAG22",
+  "topic": "AI governance",
+  "question": "What does the Data Protection Trustmark certification assess?",
+  "expected": "Data Protection Trustmark is voluntary certification of organisation-wide data protection practices; updated standard includes independent checks and ongoing audits.",
+  "where": "G09 — G09 captured official IMDA page, page 1",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "G09_IMDA_Data_Protection_Trustmark_Certification.pdf"
+  ]
+ },
+ {
+  "id": "RAG23",
+  "topic": "Industry and macro",
+  "question": "What does the Singapore Digital Economy Report 2026 report about enterprise digital adoption?",
+  "expected": "In 2025, 96.4% of enterprises used at least one measured digital area and 23.5% used AI. These numbers do not prove demand for a specific SaaS idea.",
+  "where": "I01 — I01 executive summary page 3",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; not SaaS willingness to pay",
+  "expected_files": [
+   "I01_Singapore_Digital_Economy_Report_2026.pdf"
+  ]
+ },
+ {
+  "id": "RAG24",
+  "topic": "Industry and macro",
+  "question": "What support priorities are identified in the Digital Enterprise Blueprint?",
+  "expected": "Four areas: use AI, connect business solutions, improve cyber safety, and train workers.",
+  "where": "I02 — I02 contents and Focus Areas 1 to 4",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "I02_Digital_Enterprise_Blueprint.pdf"
+  ]
+ },
+ {
+  "id": "RAG25",
+  "topic": "Industry and macro",
+  "question": "What strategic priorities are presented in Smart Nation 2.0?",
+  "expected": "Three goals: Growth, Community and Trust.",
+  "where": "I03 — I03 introduction pages 4 to 9",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "I03_Smart_Nation_2_0_Report.pdf"
+  ]
+ },
+ {
+  "id": "RAG26",
+  "topic": "Industry and macro",
+  "question": "What changes or priorities are presented in the 2026 national AI strategy update?",
+  "expected": "The update sets national AI missions and refreshes supporting areas such as people, data, computing and research.",
+  "where": "I05 — I05 contents pages 5 to 41",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; sector details not checked",
+  "expected_files": [
+   "I05_Update_to_National_AI_Strategy_2026.pdf"
+  ]
+ },
+ {
+  "id": "RAG27",
+  "topic": "Industry and macro",
+  "question": "What does the enterprise infocomm usage publication measure, and for what period?",
+  "expected": "This publication tracks business use of technology over 2017–2025. In 2025, cloud use was 41% and AI use 23.5%.",
+  "where": "I06 — I06 SingStat M651551, page 1 table",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; all-enterprise denominator",
+  "expected_files": [
+   "I06_SingStat_Infocomm_Usage_by_Enterprises_2025.pdf"
+  ]
+ },
+ {
+  "id": "RAG28",
+  "topic": "Industry and macro",
+  "question": "Which economic indicators are reported in the Economic Survey of Singapore 2025?",
+  "expected": "It reports growth, jobs, trade, prices and industry performance. Real GDP grew 5.0% in 2025.",
+  "where": "I07 — I07 summary and chapters 1 to 7",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Core supported; all listed indicators not individually checked",
+  "expected_files": [
+   "I07_MTI_Economic_Survey_of_Singapore_2025.pdf"
+  ]
+ },
+ {
+  "id": "RAG29",
+  "topic": "Commercial and IP law",
+  "question": "What does the Spam Control Act address for commercial electronic messages?",
+  "expected": "The law covers certain bulk unsolicited marketing messages and address-harvesting practices; not every marketing message is banned.",
+  "where": "L03 — L03 Sections 3 to 11; Schedules 1 to 2",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; message-specific application requires facts",
+  "expected_files": [
+   "L03_Spam_Control_Act_2007_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG30",
+  "topic": "Commercial and IP law",
+  "question": "What copyright issues should a SaaS provider investigate under the Copyright Act?",
+  "expected": "Check rights to software, images, writing and datasets. Some uses have exceptions; do not assume all AI training is allowed or banned.",
+  "where": "L04 — L04 Part 2 Sections 8 to 14; substantive rights/exceptions to verify",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Core supported; no blanket rights/permissions inferred",
+  "expected_files": [
+   "L04_Copyright_Act_2021_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG31",
+  "topic": "Commercial and IP law",
+  "question": "What business practices are addressed by the Competition Act?",
+  "expected": "The Act covers anti-competitive agreements, abuse of a dominant position and harmful mergers. Ordinary competition is not automatically illegal.",
+  "where": "L08 — L08 substantive prohibitions; sections to verify",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; exemptions and case-specific analysis not determined",
+  "expected_files": [
+   "L08_Competition_Act_2004_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG32",
+  "topic": "Grants and support",
+  "question": "What eligibility and support details are stated for Startup SG Founder?",
+  "expected": "Founder supports eligible first-time founders with mentoring and matching funding; the page describes S$20,000–S$50,000 and 1:1 matching. Eligibility needs checking.",
+  "where": "S01 — S01 official captured page page 1",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; eligibility not determined",
+  "expected_files": [
+   "S01_Startup_SG_Founder.pdf"
+  ]
+ },
+ {
+  "id": "RAG33",
+  "topic": "Grants and support",
+  "question": "What is the purpose and scope of Startup SG Equity?",
+  "expected": "Equity supports selected Singapore-based deep-tech startups through investment, not every ordinary SaaS startup.",
+  "where": "S02 — S02 official captured page page 1",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; eligibility not determined",
+  "expected_files": [
+   "S02_Startup_SG_Equity.pdf"
+  ]
+ },
+ {
+  "id": "RAG34",
+  "topic": "Grants and support",
+  "question": "What support is described under Startup SG Infrastructure?",
+  "expected": "Infrastructure describes startup spaces and communities, including LaunchPad @ One-North and Singapore Water Exchange. It is not simply a cash grant.",
+  "where": "S03 — S03 official captured page page 1",
+  "source_status": "HOLD — original URL not independently verified",
+  "watch": "CAUTION: Captured Infrastructure document has a mismatched website URL. Do not treat its URL as verified.",
+  "expected_files": [
+   "S03_Startup_SG_Infrastructure.pdf"
+  ]
+ },
+ {
+  "id": "RAG35",
+  "topic": "Grants and support",
+  "question": "What does the Enterprise Development Grant document state about scheme status and timing?",
+  "expected": "EDG ended for new applications on 29 September 2026; EDGE took over from 30 September. Existing EDG cases continue processing.",
+  "where": "S04 — S04 official captured page page 1",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "S04_Enterprise_Development_Grant_EDG.pdf"
+  ]
+ },
+ {
+  "id": "RAG36",
+  "topic": "Grants and support",
+  "question": "What types of solutions or applicants are described under the Productivity Solutions Grant?",
+  "expected": "PSG supported productivity tools for SMEs but ended for new applications on 29 September 2026; EDGE is the new route.",
+  "where": "S05 — S05 official captured page page 1",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "S05_Productivity_Solutions_Grant_PSG.pdf"
+  ]
+ },
+ {
+  "id": "RAG37",
+  "topic": "Grants and support",
+  "question": "What eligibility and support are described in the EDGE Grant document?",
+  "expected": "EDGE may cover up to 70% for SMEs or 50% for non-SMEs, with an overall annual cap of S$100,000. Actual support depends on activity and eligibility.",
+  "where": "S10 — S10 official captured page page 1",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; eligibility not determined",
+  "expected_files": [
+   "S10_EDGE_Grant.pdf"
+  ]
+ },
+ {
+  "id": "RAG38",
+  "topic": "Tax and accounting",
+  "question": "What tax matters relevant to companies are addressed by the Income Tax Act?",
+  "expected": "The Act deals with income tax, exemptions and assessments. A company's actual tax depends on its circumstances and applicable year.",
+  "where": "T07 — T07 Parts 3 to 4, Sections 10 to 13; other provisions to verify",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; precise company tax application not determined",
+  "expected_files": [
+   "T07_Income_Tax_Act_1947_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG39",
+  "topic": "Tax and accounting",
+  "question": "What accounting standards and scope are described in the accounting standards guide?",
+  "expected": "Singapore has different accounting standards, including SFRS(I), FRS, Small Entities and charity standards. Which applies depends on the organisation.",
+  "where": "T08 — T08 official captured page page 1",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; applicability depends on entity",
+  "expected_files": [
+   "T08_Guide_to_Accounting_Standards.pdf"
+  ]
+ },
+ {
+  "id": "RAG40",
+  "topic": "Tax and accounting",
+  "question": "What corporate income tax rates, rebates and exemptions are described, and for which years?",
+  "expected": "Corporate tax rate is 17%. The captured IRAS page updates the YA2026 rebate to 50%, with a S$2,000 cash grant and S$40,000 combined maximum where eligible.",
+  "where": "T10 — T10 official captured page page 1",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; earlier YA2026 numbers superseded",
+  "expected_files": [
+   "T10_IRAS_CIT_Rates_Rebates_and_Tax_Exemption_Schemes.pdf"
+  ]
+ },
+ {
+  "id": "RAG41",
+  "topic": "Cybersecurity",
+  "question": "For a Singapore SaaS using AI, how do the AI-security guidelines and companion guide differ in purpose?",
+  "expected": "The first document explains what security risks to consider; the companion guide gives practical examples and says they are voluntary.",
+  "where": "C02; C11 — C02 §§3.1–3.2; C11 printed p9 §1.1 Purpose and Scope (not p2)",
+  "source_status": "VERIFIED — corrected C11 page",
+  "watch": "Earlier C11 p2 reference was inaccurate; use printed p9 §1.1",
+  "expected_files": [
+   "C02_Guidelines_on_Securing_AI_Systems.pdf",
+   "C11_Companion_Guide_on_Securing_AI_Systems.pdf"
+  ]
+ },
+ {
+  "id": "RAG42",
+  "topic": "Cybersecurity",
+  "question": "How do Cyber Essentials and Cyber Trust differ in the certification materials?",
+  "expected": "Cyber Essentials covers basic protections; Cyber Trust is for more mature organisations and considers different levels of risk.",
+  "where": "C04; C05 — C04 Section 4/Annex A; C05 Section 4/Annex B",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Core supported; tier specifics not checked",
+  "expected_files": [
+   "C04_CSA_Cybersecurity_Certification_Cyber_Essentials_mark_2025_2nd_ed.pdf",
+   "C05_CSA_Cybersecurity_Certification_Cyber_Trust_mark_2025_2nd_ed.pdf"
+  ]
+ },
+ {
+  "id": "RAG43",
+  "topic": "Data protection",
+  "question": "How do the PDPA, key-concepts guidelines and data-intermediary guide relate for a SaaS processor?",
+  "expected": "The PDPA is the law; key-concepts guidance explains it; the intermediary guide helps manage third-party data processors.",
+  "where": "D01; D02; D11 — D01 Parts 3 to 6A; D02 key concepts; D11 pages 4 to 8",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; SaaS role/obligations conditional",
+  "expected_files": [
+   "D01_Personal_Data_Protection_Act_2012_current_version.pdf",
+   "D02_Advisory_Guidelines_on_Key_Concepts_in_the_PDPA.pdf",
+   "D11_Guide_to_Managing_Data_Intermediaries.pdf"
+  ]
+ },
+ {
+  "id": "RAG44",
+  "topic": "AI governance",
+  "question": "What differences in scope are visible across the general, generative and agentic AI governance frameworks?",
+  "expected": "The general framework covers AI management; the generative framework covers content-generating AI; the agentic framework covers autonomous actions and human oversight.",
+  "where": "G01; G02; G07 — G01 Section 3; G02 executive summary; G07 Sections 1 to 2",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Core supported; framework scope not legal compliance",
+  "expected_files": [
+   "G01_Model_AI_Governance_Framework_2nd_ed.pdf",
+   "G02_Model_AI_Governance_Framework_for_Generative_AI.pdf",
+   "G07_Model_AI_Governance_Framework_for_Agentic_AI.pdf"
+  ]
+ },
+ {
+  "id": "RAG45",
+  "topic": "Industry and macro",
+  "question": "What can and cannot be inferred about SaaS demand from the digital economy report and enterprise usage statistics?",
+  "expected": "High digital or AI adoption does not prove customers want to buy a particular SaaS product. More customer evidence is needed.",
+  "where": "I01; I06 — I01 executive summary; I06 M651551 table",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported; no willingness-to-pay inference",
+  "expected_files": [
+   "I01_Singapore_Digital_Economy_Report_2026.pdf",
+   "I06_SingStat_Infocomm_Usage_by_Enterprises_2025.pdf"
+  ]
+ },
+ {
+  "id": "RAG46",
+  "topic": "Grants and support",
+  "question": "Is the Enterprise Development Grant still the current route, or does the document point to a successor?",
+  "expected": "EDG is no longer the new-application route. EDGE replaced it from 30 September 2026, while existing EDG cases continue.",
+  "where": "S04; S10 — S04 page 1; S10 page 1",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported",
+  "expected_files": [
+   "S04_Enterprise_Development_Grant_EDG.pdf",
+   "S10_EDGE_Grant.pdf"
+  ]
+ },
+ {
+  "id": "RAG47",
+  "topic": "Commercial and IP law",
+  "question": "Does the Spam Control Act establish that every SaaS marketing message is prohibited? Explain the applicable scope.",
+  "expected": "No. The law targets certain unsolicited bulk commercial messages. Whether a particular message is covered needs checking.",
+  "where": "L03 — L03 Sections 3 to 11; Schedules 1 to 2",
+  "source_status": "SUPPORTED — conditional/limited",
+  "watch": "Supported; individual message application conditional",
+  "expected_files": [
+   "L03_Spam_Control_Act_2007_current_version.pdf"
+  ]
+ },
+ {
+  "id": "RAG48",
+  "topic": "Grants and support",
+  "question": "Can these KM documents prove that my unnamed startup is definitely eligible for every listed grant?",
+  "expected": "No. Without facts about the startup, the documents cannot confirm eligibility for every grant; some schemes have also closed.",
+  "where": "S01; S02; S03; S05; S10 — S01 to S03 page 1; S05 page 1; S10 page 1",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported withholding; S03 URL provenance discrepancy",
+  "expected_files": [
+   "S01_Startup_SG_Founder.pdf",
+   "S02_Startup_SG_Equity.pdf",
+   "S03_Startup_SG_Infrastructure.pdf",
+   "S05_Productivity_Solutions_Grant_PSG.pdf",
+   "S10_EDGE_Grant.pdf"
+  ]
+ },
+ {
+  "id": "RAG49",
+  "topic": "Industry and macro",
+  "question": "If a broad national AI strategy and a sector usage report appear to differ, can one be treated as a direct measure of the other?",
+  "expected": "No automatic contradiction: one document sets national goals, another measures actual technology use. Compare definitions and dates first.",
+  "where": "G03; I06 — G03 strategy overview; I06 M651551 table",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported distinction; no contradiction inferred without same measure",
+  "expected_files": [
+   "G03_National_AI_Strategy_2_0.pdf",
+   "I06_SingStat_Infocomm_Usage_by_Enterprises_2025.pdf"
+  ]
+ },
+ {
+  "id": "RAG50",
+  "topic": "Tax and accounting",
+  "question": "What will Singapore’s corporate income tax rebate be in 2030? Answer only if the KM provides a verified basis.",
+  "expected": "Not known from the library. It gives YA2026 figures, not a verified 2030 rebate. Capsight should say it cannot confirm.",
+  "where": "T10; T07 — T10 page 1 (YA2026); T07 Income Tax Act",
+  "source_status": "SUPPORTED — core answer",
+  "watch": "Supported withholding future-year prediction",
+  "expected_files": [
+   "T10_IRAS_CIT_Rates_Rebates_and_Tax_Exemption_Schemes.pdf",
+   "T07_Income_Tax_Act_1947_current_version.pdf"
+  ]
+ }
+]

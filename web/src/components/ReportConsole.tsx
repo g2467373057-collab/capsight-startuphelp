@@ -366,7 +366,7 @@ export default function ReportConsole({
                       </a>
                       <span className="rep-muted">
                         {' '}
-                        · {[r.issuer, r.date, host(r.url)].filter(Boolean).join(' · ')}
+                        · {[r.issuer, r.date, r.page ? (lang === 'zh' ? `第 ${r.page} 页` : `p. ${r.page}`) : '', host(r.url)].filter(Boolean).join(' · ')}
                       </span>
                     </li>
                   ))}
