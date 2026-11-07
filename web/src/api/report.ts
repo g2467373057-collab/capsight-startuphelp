@@ -1,5 +1,6 @@
 import { API_BASE, api, ApiError } from './http'
-import type { JpId, Lang, ReportResult, Row, RunEvent, RunResult } from './types'
+import { columnsOf, type Cell, type JpId, type Lang, type ReportResult, type Row, type RunEvent, type RunResult } from './types'
+import { colLabel } from './client'
 
 export const JP_LABEL: Record<Lang, Record<JpId, string>> = {
   zh: { jp1: '市场有多大、在增长吗', jp2: '有哪些政策法规要遵守', jp3: '有没有政府补贴或支持', jp4: '竞争对手有哪些', jp5: '别人怎么收费' },
@@ -151,6 +152,21 @@ export function reportMarkdown(r: ReportResult, lang: Lang): string {
   out.push(`${zh ? '目标客户' : 'Customer'}: ${r.idea.customer || '—'} · ${zh ? '市场' : 'Market'}: ${r.idea.geography} · ${r.finishedAt.slice(0, 10)}`, '')
   out.push(`## ${zh ? '核心结论' : 'Key takeaways'}`, '', cite(n.conclusion), '', `> ${zh ? '这是对市场现状的分析，做不做由你决定。' : 'This reads the market as it stands; whether to build it is your call.'}`)
   n.sections.forEach((s, i) => out.push('', `## ${i + 1}. ${s.heading}`, '', cite(s.text)))
+  const comp = r.competitors
+  if (comp?.rows.length) {
+    const cols = columnsOf(comp.intent).filter((c) => comp.rows.some((row) => row.cells[c]))
+    const cellText = (c: Cell | undefined) => {
+      if (!c || c.status === 'missing') return zh ? '暂无公开信息' : 'No public information'
+      const parts = [c.value, ...(c.items ?? []).map((it) => [it.label, it.text].filter(Boolean).join(': '))].filter(Boolean)
+      const src = c.sources[0]?.url ?? c.items?.[0]?.url
+      const text = parts.join('; ').replace(/\|/g, '/').replace(/\s+/g, ' ').slice(0, 220)
+      return src ? `${text} ([${zh ? '来源' : 'source'}](${src}))` : text
+    }
+    out.push('', `## ${zh ? '附：竞品调研表' : 'Appendix: competitor table'}`, '')
+    out.push(zh ? `竞品调研模块找到 ${comp.rows.length} 家相关竞品，下表每格都附来源；完整版可在网页上导出 CSV。` : `The competitor research module found ${comp.rows.length} relevant competitors; each cell links its source. The full table can be exported as CSV from the web page.`, '')
+    out.push(`| ${cols.map((c) => colLabel(lang, c)).join(' | ')} |`, `|${cols.map(() => ' --- ').join('|')}|`)
+    for (const row of comp.rows) out.push(`| ${cols.map((c) => (c === 'name' && !row.cells.name ? row.competitor : cellText(row.cells[c]))).join(' | ')} |`)
+  }
   if (r.summary.validate.length) {
     out.push('', `## ${zh ? '接下来建议你自己验证' : 'What to validate next yourself'}`, '')
     for (const v of r.summary.validate) out.push(`- ${v}`)

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { colLabel, downloadCsv } from '../api/client'
 import { ApiError, isDemo } from '../api/http'
 import { downloadMarkdown, runReport } from '../api/report'
-import type { Lang, Reference, ReportResult, RunEvent, RunResult } from '../api/types'
+import { columnsOf, type Lang, type Reference, type ReportResult, type RunEvent, type RunResult } from '../api/types'
 import { errorText } from '../data/content'
 import { useLang } from '../i18n'
 import { CellView } from './CellView'
@@ -39,8 +39,10 @@ const COPY = {
     again: '新的想法',
     ragOff: '说明：政策知识库还在接入中，所以市场规模、政策和补贴三部分暂时没有资料可引用。',
     tooShort: '请多写几个字，至少说明产品做什么、卖给谁。',
-    details: (n: number) => `查看竞品明细表（${n} 家）`,
-    hideDetails: '收起竞品明细',
+    compTitle: '附：竞品调研表',
+    compIntro: (n: number, names: string, priced: number) =>
+      `竞品调研模块找到 ${n} 家相关竞品：${names}。其中 ${priced} 家在官网公开了价格，其余写“暂无公开信息”。下表每一格都来自对方官网或公开报道，点格子里的来源可以核对原文。表格可以导出成 CSV，用 Excel 打开继续补充。`,
+    compNone: '竞品调研模块这次没有找到能在官网核实的竞品，所以没有附表。',
     demo: '演示数据，仅用于展示报告结构。',
   },
   en: {
@@ -73,8 +75,10 @@ const COPY = {
     again: 'New idea',
     ragOff: 'Note: the policy knowledge base is still being connected, so the market, policy and grant sections have no documents to cite yet.',
     tooShort: 'Please write a bit more: at least what the product does and who it is for.',
-    details: (n: number) => `Competitor details (${n})`,
-    hideDetails: 'Hide competitor details',
+    compTitle: 'Appendix: competitor table',
+    compIntro: (n: number, names: string, priced: number) =>
+      `The competitor research module found ${n} relevant competitors: ${names}. ${priced} of them publish prices on their own site; the rest show "No public information". Every cell below comes from the company's site or public coverage, and its source link lets you check the original. Export the table as CSV to keep working on it in Excel.`,
+    compNone: 'The competitor research module found no competitor it could verify on an official site this time, so there is no table.',
     demo: 'Demo data, only to show the report structure.',
   },
 } satisfies Record<Lang, unknown>
@@ -112,9 +116,17 @@ function Cited({ text, refs }: { text: string; refs: Reference[] }) {
   )
 }
 
-/** The competitor research behind JP4–JP5, folded into the report. */
+/** Competitors whose pricing cell holds something verified (not just "no public information"). */
+export function pricedCount(run: RunResult): number {
+  return run.rows.filter((r) => {
+    const c = r.cells.pricing
+    return !!c && c.status !== 'missing' && (!!c.items?.length || (!!c.value && !c.gaps?.length))
+  }).length
+}
+
+/** The competitor research behind JP4–JP5, appended to the report as its structured table. */
 function CompetitorTable({ run, lang }: { run: RunResult; lang: Lang }) {
-  const cols = ['name', 'region', 'overview', 'pricing'].filter((c) => run.rows.some((r) => r.cells[c]))
+  const cols = columnsOf(run.intent).filter((c) => run.rows.some((r) => r.cells[c]))
   return (
     <div className="ftable-wrap rep-ftable">
       <table className="ftable">
@@ -171,7 +183,6 @@ export default function ReportConsole({
   const [events, setEvents] = useState<RunEvent[]>([])
   const [result, setResult] = useState<ReportResult | null>(null)
   const [error, setError] = useState('')
-  const [showComp, setShowComp] = useState(false)
   const logRef = useRef<HTMLOListElement>(null)
 
   useEffect(() => {
@@ -188,7 +199,6 @@ export default function ReportConsole({
     setError('')
     setEvents([])
     setResult(null)
-    setShowComp(false)
     setPhase('running')
     try {
       const r = await runReport(q, { lang, onEvent: (e) => setEvents((prev) => [...prev, e]) })
@@ -326,23 +336,29 @@ export default function ReportConsole({
                 <p>
                   <Cited text={sec.text} refs={result.narrative.references} />
                 </p>
-                {sec.jp === 'jp5' && comp && comp.rows.length > 0 && (
-                  <div className="rep-comp">
-                    <div className="rep-comp__bar">
-                      <button className="log-toggle" onClick={() => setShowComp((v) => !v)}>
-                        {showComp ? s.hideDetails : s.details(comp.rows.length)}
-                      </button>
-                      {showComp && (
-                        <button className="btn btn--glass btn--sm" onClick={() => void downloadCsv(comp, lang)}>
-                          <Icon name="download" size={14} /> {s.exportCsv}
-                        </button>
-                      )}
-                    </div>
-                    {showComp && <CompetitorTable run={comp} lang={lang} />}
-                  </div>
-                )}
               </section>
             ))}
+
+            {comp && (
+              <section className="rep-para rep-comp">
+                <div className="rep-comp__bar">
+                  <h3>{s.compTitle}</h3>
+                  {comp.rows.length > 0 && (
+                    <button className="btn btn--glass btn--sm" onClick={() => void downloadCsv(comp, lang)}>
+                      <Icon name="download" size={14} /> {s.exportCsv}
+                    </button>
+                  )}
+                </div>
+                {comp.rows.length > 0 ? (
+                  <>
+                    <p>{s.compIntro(comp.rows.length, comp.rows.map((r) => r.competitor).join(lang === 'zh' ? '、' : ', '), pricedCount(comp))}</p>
+                    <CompetitorTable run={comp} lang={lang} />
+                  </>
+                ) : (
+                  <p className="rep-muted">{s.compNone}</p>
+                )}
+              </section>
+            )}
 
             {result.summary.validate.length > 0 && (
               <section className="rep-para">

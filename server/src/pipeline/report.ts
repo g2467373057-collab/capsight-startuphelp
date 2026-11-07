@@ -431,7 +431,7 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
     const found = await parseIntent(other.llm, other.search, ask, cl, deps.maxCompetitors)
     if (found.competitors.length) {
       step(3, 'ok', t.compFound(found.competitors.length))
-      const intent = normaliseIntent({ type: 'named', competitors: found.competitors, dimensions: ['name', 'overview', 'region', 'pricing'], topic: found.topic ?? 'SaaS' }, ask, deps.maxCompetitors)
+      const intent = normaliseIntent({ type: 'named', competitors: found.competitors, dimensions: ['name', 'overview', 'region', 'features', 'pricing'], topic: found.topic ?? 'SaaS' }, ask, deps.maxCompetitors)
       competitors = await runResearch(`${runId}_c`, intent, { ...deps, llm: other.llm, search: other.search, lang: cl, emit: (e) => emit({ ...e, stage: 3 }) })
     } else step(3, 'info', t.compNone)
   } catch (e) {

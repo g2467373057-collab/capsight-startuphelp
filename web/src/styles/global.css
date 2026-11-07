@@ -3421,7 +3421,11 @@ h2 .accent {
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
+}
+.rep-comp__bar h3 {
+  margin: 0;
 }
 .rep-ftable {
   margin-top: 10px;
@@ -3686,4 +3690,57 @@ h2 .accent {
 }
 .rep-refs a {
   color: var(--ink);
+}
+
+/* ---------- home demos: report flow (Nov 2026) ---------- */
+.demo__lane-sub {
+  display: block;
+  margin: -2px 0 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.demo__draft p:not(.pane__label) {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.demo__strike {
+  transition: color 0.4s var(--ease), background 0.4s var(--ease);
+  background: rgba(255, 196, 0, 0.18);
+  border-radius: 3px;
+}
+.demo__strike.is-cut {
+  background: transparent;
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+}
+.demo__strike-note {
+  margin-left: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--red-dark);
+  animation: rise 0.4s var(--ease) both;
+}
+.demo__doc h4 {
+  margin: 2px 0 8px;
+  font-size: 15px;
+}
+.demo__conc {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+}
+.demo__conc h3 {
+  font-size: 13px !important;
+  margin-bottom: 4px !important;
+}
+.demo__conc p {
+  font-size: 12.5px !important;
+  line-height: 1.7 !important;
+}
+.demo__appbar {
+  margin-bottom: 6px;
+  font-size: 13px;
 }
