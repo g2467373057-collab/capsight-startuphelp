@@ -1,14 +1,14 @@
 import type { Dimension, IntentType, Lang, SourceKind, TimeRange } from '../api/types'
 
 const zh = {
-  meta: { title: 'Capsight · 一句话看清你的创业想法' },
+  meta: { title: 'Capsight · 一句话，看清你的创业想法' },
   nav: { cta: '免费开始', login: '登录', logout: '退出', home: '首页' },
   brand: { name: 'Capsight', alt: '胶囊AI', slogan: '吃下一颗，看清局势' },
   hero: {
     eyebrow: '// 免费的 AI 创业调研助手',
-    h1a: '你的 SaaS 创业想法，\n',
+    h1a: '',
     h1accent: '一句话',
-    h1b: '看清市场',
+    h1b: '，看清\n你的创业想法',
     sub: '用一句话描述你的想法，自动生成结构化的市场报告：市场规模、政策法规、政府补贴、竞争对手、竞品定价。每条信息附出处，证据不够就直接告诉你。只摆证据，做不做由你决定。',
     placeholder: '例如：我想为新加坡中小企业做一个订阅制招聘平台',
     go: '生成报告',
@@ -268,9 +268,9 @@ const en: Copy = {
   brand: { name: 'Capsight', alt: '胶囊AI', slogan: 'Take one. See the whole field.' },
   hero: {
     eyebrow: '// FREE AI STARTUP RESEARCH',
-    h1a: 'See the market for your SaaS idea in ',
-    h1accent: 'one sentence',
-    h1b: '.',
+    h1a: '',
+    h1accent: 'One sentence',
+    h1b: '\nto see your startup idea clearly.',
     sub: 'Describe your idea in one sentence and get a structured market report: market size, regulations, government grants, competitors and their pricing. Every fact cited; gaps stated plainly. Evidence only: whether to build it is your call.',
     placeholder: 'e.g. A subscription recruitment platform for Singapore SMEs',
     go: 'Generate report',

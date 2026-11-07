@@ -57,13 +57,16 @@ export function TitleLines({ title }: { title: Title }) {
   const parts = title.pre.split('\n')
   const last = parts.pop() ?? ''
   const lines: ReactNode[] = parts.map((p) => p)
+  // a line break may also come after the accent ("一句话，\n看清你的创业想法")
+  const [postFirst, ...postRest] = title.post.split('\n')
   lines.push(
     <>
       {last}
       <span className="accent">{title.accent}</span>
-      {title.post}
+      {postFirst}
     </>,
   )
+  lines.push(...postRest)
   return (
     <>
       {lines.map((l, i) => (
