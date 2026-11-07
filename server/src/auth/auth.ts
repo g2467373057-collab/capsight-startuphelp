@@ -72,8 +72,29 @@ export class Auth {
         .get(sha256(token), Date.now()) as UserRow | undefined
       user = row ? toPublic(row) : null
     }
+    if (!user) user = this.localUser(ctx)
     ctx.state.user = user
     return user
+  }
+
+  /** LOCAL_AUTO_LOGIN: a request from this computer itself (not via a proxy) uses that account, created if missing. */
+  private localUser(ctx: Ctx): PublicUser | null {
+    const email = this.cfg.localAutoLogin
+    if (!email || !isEmail(email)) return null
+    const addr = ctx.req.socket.remoteAddress ?? ''
+    const loopback = addr === '127.0.0.1' || addr === '::1' || addr === '::ffff:127.0.0.1'
+    if (!loopback || ctx.req.headers['x-forwarded-for']) return null
+    let row = this.userByEmail(email)
+    if (!row) {
+      this.db
+        .prepare('INSERT INTO users (id, email, name, password_hash, email_verified, created_at) VALUES (?, ?, ?, ?, 1, ?)')
+        .run(newId('usr'), email, 'Admin', '!local-auto-login', Date.now())
+      row = this.userByEmail(email)
+    } else if (!row.email_verified) {
+      this.db.prepare('UPDATE users SET email_verified = 1 WHERE id = ?').run(row.id)
+      row = this.userByEmail(email)
+    }
+    return row ? toPublic(row) : null
   }
 
   require(ctx: Ctx, opts: { verified?: boolean } = {}): PublicUser {

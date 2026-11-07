@@ -42,6 +42,8 @@ export interface Config {
   requireEmailVerification: boolean
   /** Accounts (by e-mail) without the per-user daily limit, e.g. the operator testing the app. */
   adminEmails: string[]
+  /** Local use only: requests from this computer (loopback, no proxy) are signed in as this e-mail without a password. */
+  localAutoLogin: string
   limits: { runsPerUserPerDay: number; runsPerDayGlobal: number; maxCompetitors: number; concurrency: number; maxRequery: number }
   llm: Record<Lang, LlmConfig>
   search: Record<Lang, SearchProviderName>
@@ -125,7 +127,8 @@ export function loadConfig(): Config {
     host: str('HOST', '0.0.0.0'),
     appUrl,
     allowedOrigins: list('ALLOWED_ORIGINS', [appUrl]),
-    adminEmails: list('ADMIN_EMAILS', []).map((e) => e.toLowerCase()),
+    adminEmails: [...list('ADMIN_EMAILS', []), str('LOCAL_AUTO_LOGIN')].filter(Boolean).map((e) => e.toLowerCase()),
+    localAutoLogin: env === 'production' ? '' : str('LOCAL_AUTO_LOGIN').toLowerCase(),
     dbPath: str('DB_PATH', resolve(process.cwd(), 'data/capsight.db')),
     staticDir: str('STATIC_DIR', resolve(process.cwd(), '../web/dist')),
     cookie: {

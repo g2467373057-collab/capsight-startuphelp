@@ -225,3 +225,27 @@ test('admin dashboard: page views keep the path and a hashed visitor id only, an
     s.app.server.close()
   }
 })
+
+test('LOCAL_AUTO_LOGIN: this computer is signed in as the admin without a password; proxied requests are not', async () => {
+  const s = await boot({ localAutoLogin: 'g2467373057@gmail.com', adminEmails: ['g2467373057@gmail.com'], requireEmailVerification: true })
+  try {
+    const me = (await s.call('GET', '/auth/me')).json.user
+    assert.equal(me.email, 'g2467373057@gmail.com')
+    assert.equal(me.emailVerified, true)
+    assert.equal((await s.call('GET', '/quota')).json.unlimited, true)
+    assert.equal((await s.call('GET', '/auth/me', undefined, { 'X-Forwarded-For': '1.2.3.4' })).json.user, null)
+    const login = await s.call('POST', '/auth/login', { email: 'g2467373057@gmail.com', password: '!local-auto-login' }, { 'X-Forwarded-For': '1.2.3.4' })
+    assert.equal(login.status, 401)
+  } finally {
+    s.app.server.close()
+  }
+})
+
+test('LOCAL_AUTO_LOGIN off: nobody is signed in', async () => {
+  const s = await boot({ localAutoLogin: '' })
+  try {
+    assert.equal((await s.call('GET', '/auth/me')).json.user, null)
+  } finally {
+    s.app.server.close()
+  }
+})
