@@ -9,7 +9,11 @@
   "watch": "Core supported; specific safeguards in §3.3 not checked",
   "expected_files": [
    "C02_Guidelines_on_Securing_AI_Systems.pdf"
-  ]
+  ],
+  "reference_answer": "Apply a lifecycle approach, begin with an AI-security risk assessment, and implement controls for AI-specific threats.",
+  "acceptable_rule": "Correctly explains lifecycle approach; AI security risk assessment; AI-specific safeguards; supports the material points with C02 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits the lifecycle or risk-assessment element, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about lifecycle approach; AI security risk assessment; AI-specific safeguards; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG02",
@@ -21,7 +25,11 @@
   "watch": "Four pillars supported; enabler descriptions need individual checking",
   "expected_files": [
    "C03_Singapore_s_Cybersecurity_Strategy_2026.pdf"
-  ]
+  ],
+  "reference_answer": "Four pillars: defend critical infrastructure; secure wider cyberspace; strengthen AI/quantum capabilities; global partnerships. Enablers: ecosystem and workforce.",
+  "acceptable_rule": "Correctly explains four pillars: critical infrastructure, wider cyberspace, AI/quantum, global partnerships; workforce/ecosystem enablers; supports the material points with C03 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one pillar or the enablers, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about four pillars: critical infrastructure, wider cyberspace, AI/quantum, global partnerships; workforce/ecosystem enablers; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG03",
@@ -33,7 +41,11 @@
   "watch": "Core supported; Annex A detailed requirements not checked",
   "expected_files": [
    "C04_CSA_Cybersecurity_Certification_Cyber_Essentials_mark_2025_2nd_ed.pdf"
-  ]
+  ],
+  "reference_answer": "Cyber Essentials is CSA’s baseline cybersecurity certification focused on foundational measures for organisations. Do not conflate with higher Cyber Trust tiers.",
+  "acceptable_rule": "Correctly explains foundational Cyber Essentials measures; distinguish Cyber Trust; supports the material points with C04 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits the distinction from Cyber Trust, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about foundational Cyber Essentials measures; distinguish Cyber Trust; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG04",
@@ -45,7 +57,11 @@
   "watch": "Core supported; detailed tiers/domains not independently checked",
   "expected_files": [
    "C05_CSA_Cybersecurity_Certification_Cyber_Trust_mark_2025_2nd_ed.pdf"
-  ]
+  ],
+  "reference_answer": "Cyber Trust is risk-based and tiered; uses preparedness domains and organisational risk assessment.",
+  "acceptable_rule": "Correctly explains risk-based Cyber Trust certification; tiers and preparedness domains; supports the material points with C05 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits tiers or risk assessment, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about risk-based Cyber Trust certification; tiers and preparedness domains; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG05",
@@ -57,7 +73,11 @@
   "watch": "Core supported; full operational controls not individually checked",
   "expected_files": [
    "C08_Technology_Risk_Management_Guidelines.pdf"
-  ]
+  ],
+  "reference_answer": "MAS TRM covers governance, third-party risk, risk framework, secure development and operational controls; scope must be tied to MAS-regulated financial institutions, not all SaaS firms.",
+  "acceptable_rule": "Correctly explains MAS financial-institution scope; governance and third-party/operational technology risk; supports the material points with C08 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits MAS-specific applicability, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about MAS financial-institution scope; governance and third-party/operational technology risk; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG06",
@@ -69,7 +89,11 @@
   "watch": "Core supported; each offence and territorial limits not fully checked",
   "expected_files": [
    "C10_Computer_Misuse_Act_1993_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "The Act addresses unauthorised access, modification, interception, obstruction and disclosure of access codes; distinguish defined offences and territorial reach.",
+  "acceptable_rule": "Correctly explains unauthorised access/modification and other defined computer offences; scope matters; supports the material points with C10 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits offence boundaries or scope, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about unauthorised access/modification and other defined computer offences; scope matters; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG07",
@@ -81,7 +105,11 @@
   "watch": "Core supported; verify physical page number in final citation",
   "expected_files": [
    "C11_Companion_Guide_on_Securing_AI_Systems.pdf"
-  ]
+  ],
+  "reference_answer": "The companion gives practical AI-security mitigation examples; it expressly says it is informational, non-mandatory, non-prescriptive and non-exhaustive.",
+  "acceptable_rule": "Correctly explains practical AI-security mitigations; expressly informational and non-mandatory; supports the material points with C11 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits non-mandatory status, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about practical AI-security mitigations; expressly informational and non-mandatory; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG08",
@@ -93,7 +121,11 @@
   "watch": "Do not treat ordinary SaaS companies as CIIOs without designation; compliance dates apply to specified provisions and existing CIIOs",
   "expected_files": [
    "C12_Cybersecurity_Code_of_Practice_2026.pdf"
-  ]
+  ],
+  "reference_answer": "The code addresses critical information infrastructure owners (CIIOs) and relevant CII/interconnected systems, not every SaaS provider; check applicability and phased compliance dates.",
+  "acceptable_rule": "Correctly explains critical information infrastructure owner scope; systems covered; phased dates; supports the material points with C12 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits applicability or compliance timing, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about critical information infrastructure owner scope; systems covered; phased dates; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG09",
@@ -105,7 +137,11 @@
   "watch": "Statutory headings supported; application depends on processing facts",
   "expected_files": [
    "D01_Personal_Data_Protection_Act_2012_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "Potential PDPA duties include accountability, consent/notification, purpose limitation, protection, retention, overseas transfers and breach notification; applicability depends on role and activity.",
+  "acceptable_rule": "Correctly explains PDPA accountability, consent/notification, protection, retention, transfer and breach duties; role-specific applicability; supports the material points with D01 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one or more important duties or role limitations, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about PDPA accountability, consent/notification, protection, retention, transfer and breach duties; role-specific applicability; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG10",
@@ -117,7 +153,11 @@
   "watch": "Core supported; exact exceptions depend on facts",
   "expected_files": [
    "D02_Advisory_Guidelines_on_Key_Concepts_in_the_PDPA.pdf"
-  ]
+  ],
+  "reference_answer": "Explain when consent is required and what purpose notification means, including exceptions/deemed consent; do not claim blanket consent for every use.",
+  "acceptable_rule": "Correctly explains consent and purpose notification; deemed consent/exceptions are conditional; supports the material points with D02 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits exceptions or notification, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about consent and purpose notification; deemed consent/exceptions are conditional; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG11",
@@ -129,7 +169,11 @@
   "watch": "Core supported; significant harm conditions depend on breach details",
   "expected_files": [
    "D03_Guide_on_Managing_and_Notifying_Data_Breaches_under_the_PDPA.pdf"
-  ]
+  ],
+  "reference_answer": "The breach guide recommends C.A.R.E. response steps: Contain, Assess, Report, Evaluate; distinguish a breach from a notifiable breach and assess thresholds.",
+  "acceptable_rule": "Correctly explains Contain, Assess, Report, Evaluate; not every breach is notifiable; supports the material points with D03 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits notification threshold distinction, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about Contain, Assess, Report, Evaluate; not every breach is notifiable; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG12",
@@ -141,7 +185,11 @@
   "watch": "Core supported; exceptions are conditional, not blanket permissions",
   "expected_files": [
    "D04_Advisory_Guidelines_on_Use_of_Personal_Data_in_AI_Recommendation_and_D.pdf"
-  ]
+  ],
+  "reference_answer": "Guidance distinguishes development/testing/monitoring from deployment; addresses business improvement/research exceptions, consent, notification, accountability and vendor practices.",
+  "acceptable_rule": "Correctly explains separate AI development/testing from deployment; exceptions, consent and accountability; supports the material points with D04 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits development versus deployment distinction, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about separate AI development/testing from deployment; exceptions, consent and accountability; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG13",
@@ -153,7 +201,11 @@
   "watch": "Supported; guidance is not certification",
   "expected_files": [
    "D05_Guide_to_Data_Protection_Practices_for_ICT_Systems.pdf"
-  ]
+  ],
+  "reference_answer": "Organises ICT protection practices as Assets, Secure/Protect, Update, Backup and Respond; recommendations are practices rather than automatic proof of PDPA compliance.",
+  "acceptable_rule": "Correctly explains Assets, Secure/Protect, Update, Backup, Respond; practices are not proof of compliance; supports the material points with D05 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one practice area or compliance caveat, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about Assets, Secure/Protect, Update, Backup, Respond; practices are not proof of compliance; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG14",
@@ -165,7 +217,11 @@
   "watch": "Supported; use-case relevance conditional",
   "expected_files": [
    "D06_Advisory_Guidelines_on_the_PDPA_for_Selected_Topics.pdf"
-  ]
+  ],
+  "reference_answer": "Selected topics include analytics/research, anonymisation and photography/video/audio; relevance to SaaS depends on processing use case.",
+  "acceptable_rule": "Correctly explains analytics/research, anonymisation and recording topics; apply only where relevant; supports the material points with D06 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits a topic or use-case applicability, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about analytics/research, anonymisation and recording topics; apply only where relevant; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG15",
@@ -177,7 +233,11 @@
   "watch": "Supported; ongoing audit not established as mandatory",
   "expected_files": [
    "D08_Guide_to_Developing_a_Data_Protection_Management_Programme.pdf"
-  ]
+  ],
+  "reference_answer": "A DPMP covers governance/risk assessment, policies/practices, processes and ongoing maintenance/audit.",
+  "acceptable_rule": "Correctly explains governance/risk, policy/practices, processes, maintenance/audit; supports the material points with D08 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one programme component, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about governance/risk, policy/practices, processes, maintenance/audit; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG16",
@@ -189,7 +249,11 @@
   "watch": "Supported; no automatic PDPA exemption",
   "expected_files": [
    "D09_Guide_to_Basic_Anonymisation.pdf"
-  ]
+  ],
+  "reference_answer": "Distinguish de-identification from anonymisation; steps: know data, de-identify, apply techniques, compute risk, manage re-identification/disclosure risk. No automatic PDPA compliance.",
+  "acceptable_rule": "Correctly explains de-identification versus anonymisation; five-step workflow and re-identification risk; no automatic compliance; supports the material points with D09 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits re-identification risk or compliance caveat, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about de-identification versus anonymisation; five-step workflow and re-identification risk; no automatic compliance; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG17",
@@ -201,7 +265,11 @@
   "watch": "Core supported; role-specific legal duties require facts",
   "expected_files": [
    "D11_Guide_to_Managing_Data_Intermediaries.pdf"
-  ]
+  ],
+  "reference_answer": "Data controllers retain accountability when outsourcing; manage intermediaries through governance, contracting/policies, service management and exit. A processor has its own PDPA duties.",
+  "acceptable_rule": "Correctly explains controller accountability and intermediary duties; governance, service and exit management; supports the material points with D11 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits controller/intermediary role distinction, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about controller accountability and intermediary duties; governance, service and exit management; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG18",
@@ -213,7 +281,11 @@
   "watch": "Supported",
   "expected_files": [
    "G01_Model_AI_Governance_Framework_2nd_ed.pdf"
-  ]
+  ],
+  "reference_answer": "Framework addresses internal governance, level of human involvement, operations management and stakeholder communication.",
+  "acceptable_rule": "Correctly explains internal governance, human involvement, operations, stakeholder communication; supports the material points with G01 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one of four governance areas, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about internal governance, human involvement, operations, stakeholder communication; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG19",
@@ -225,7 +297,11 @@
   "watch": "Core supported; individual nine-dimension descriptions not fully checked",
   "expected_files": [
    "G02_Model_AI_Governance_Framework_for_Generative_AI.pdf"
-  ]
+  ],
+  "reference_answer": "Generative AI framework covers accountability, data, trusted development/deployment, incident reporting, testing, security, provenance, safety/alignment and public good.",
+  "acceptable_rule": "Correctly explains generative-AI accountability, data, deployment, incident, testing, security, provenance and safety; supports the material points with G02 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one or more key governance dimensions, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about generative-AI accountability, data, deployment, incident, testing, security, provenance and safety; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG20",
@@ -237,7 +313,11 @@
   "watch": "Supported",
   "expected_files": [
    "G03_National_AI_Strategy_2_0.pdf"
-  ]
+  ],
+  "reference_answer": "NAIS 2.0 organises work around activity drivers (industry, government, research), people/communities (talent, capabilities, placemaking) and infrastructure (compute, data, trusted environment).",
+  "acceptable_rule": "Correctly explains activity drivers, people/communities and infrastructure; relevant subareas; supports the material points with G03 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one of three strategy systems, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about activity drivers, people/communities and infrastructure; relevant subareas; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG21",
@@ -249,7 +329,11 @@
   "watch": "Supported; no blanket mandate for all agents",
   "expected_files": [
    "G07_Model_AI_Governance_Framework_for_Agentic_AI.pdf"
-  ]
+  ],
+  "reference_answer": "Agentic AI framework highlights bounding risks and permissions upfront, meaningful human accountability/oversight and risks from autonomous or multi-agent actions.",
+  "acceptable_rule": "Correctly explains agent permissions and risk boundaries; meaningful human oversight; autonomous/multi-agent risk; supports the material points with G07 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits permissions or oversight, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about agent permissions and risk boundaries; meaningful human oversight; autonomous/multi-agent risk; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG22",
@@ -261,7 +345,11 @@
   "watch": "Supported",
   "expected_files": [
    "G09_IMDA_Data_Protection_Trustmark_Certification.pdf"
-  ]
+  ],
+  "reference_answer": "DPTM is voluntary enterprise-wide data-protection certification; SS 714:2025 introduces accredited assessment and annual surveillance audits.",
+  "acceptable_rule": "Correctly explains voluntary enterprise-wide DPTM; SS 714:2025; assessment and surveillance audits; supports the material points with G09 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits voluntary status or assessment, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about voluntary enterprise-wide DPTM; SS 714:2025; assessment and surveillance audits; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG23",
@@ -273,7 +361,11 @@
   "watch": "Supported; not SaaS willingness to pay",
   "expected_files": [
    "I01_Singapore_Digital_Economy_Report_2026.pdf"
-  ]
+  ],
+  "reference_answer": "2026 report says 2025 enterprise adoption of at least one of six digital areas was 96.4%, up from 95.1% in 2024; AI adoption 23.5% versus 14.7%. These are not SaaS demand measures.",
+  "acceptable_rule": "Correctly explains 96.4% enterprise digital adoption in 2025 versus 95.1% in 2024; AI 23.5% versus 14.7%; no demand inference; supports the material points with I01 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one year/comparison or demand caveat, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about 96.4% enterprise digital adoption in 2025 versus 95.1% in 2024; AI 23.5% versus 14.7%; no demand inference; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG24",
@@ -285,7 +377,11 @@
   "watch": "Supported",
   "expected_files": [
    "I02_Digital_Enterprise_Blueprint.pdf"
-  ]
+  ],
+  "reference_answer": "Four focus areas: be smarter with AI, scale faster through integration, be safer through cyber resilience, and upskill workers.",
+  "acceptable_rule": "Correctly explains four priorities: smarter AI, scale faster, safer cybersecurity, upskill workers; supports the material points with I02 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one focus area, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about four priorities: smarter AI, scale faster, safer cybersecurity, upskill workers; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG25",
@@ -297,7 +393,11 @@
   "watch": "Supported",
   "expected_files": [
    "I03_Smart_Nation_2_0_Report.pdf"
-  ]
+  ],
+  "reference_answer": "Smart Nation 2.0 prioritises Growth, Community and Trust, with citizen outcomes and responsible digital development.",
+  "acceptable_rule": "Correctly explains Growth, Community and Trust; supports the material points with I03 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one of the three goals, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about Growth, Community and Trust; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG26",
@@ -309,7 +409,11 @@
   "watch": "Core supported; sector details not checked",
   "expected_files": [
    "I05_Update_to_National_AI_Strategy_2026.pdf"
-  ]
+  ],
+  "reference_answer": "2026 refresh prioritises national AI missions, government adoption, research, talent, compute, data, trusted environment and ecosystem integration.",
+  "acceptable_rule": "Correctly explains AI missions, public-sector use, research, talent, compute/data, trust and integration; supports the material points with I05 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one or more strategic elements, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about AI missions, public-sector use, research, talent, compute/data, trust and integration; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG27",
@@ -321,7 +425,11 @@
   "watch": "Supported; all-enterprise denominator",
   "expected_files": [
    "I06_SingStat_Infocomm_Usage_by_Enterprises_2025.pdf"
-  ]
+  ],
+  "reference_answer": "Annual percentages of enterprises using computers, internet, cloud, e-payment, analytics and AI, 2017–2025. In 2025: cloud 41%, AI 23.5%; not customer willingness to pay.",
+  "acceptable_rule": "Correctly explains annual enterprise technology-use percentages 2017–2025; 2025 cloud 41% and AI 23.5%; not willingness-to-pay; supports the material points with I06 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits measurement period or limits, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about annual enterprise technology-use percentages 2017–2025; 2025 cloud 41% and AI 23.5%; not willingness-to-pay; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG28",
@@ -333,7 +441,11 @@
   "watch": "Core supported; all listed indicators not individually checked",
   "expected_files": [
    "I07_MTI_Economic_Survey_of_Singapore_2025.pdf"
-  ]
+  ],
+  "reference_answer": "2025 economic survey covers GDP/growth, labour, productivity, trade, costs/prices, sector performance and outlook; 2025 real GDP growth 5.0%.",
+  "acceptable_rule": "Correctly explains GDP/growth, labour/productivity, trade, sector outlook; 2025 real GDP growth 5.0%; supports the material points with I07 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits indicator breadth or year, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about GDP/growth, labour/productivity, trade, sector outlook; 2025 real GDP growth 5.0%; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG29",
@@ -345,7 +457,11 @@
   "watch": "Supported; message-specific application requires facts",
   "expected_files": [
    "L03_Spam_Control_Act_2007_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "Regulates bulk unsolicited commercial electronic messages and address harvesting/dictionary attacks; scope, exclusions and Second Schedule requirements matter.",
+  "acceptable_rule": "Correctly explains bulk unsolicited commercial electronic messages; harvesting/dictionary attacks; exclusions and schedule; supports the material points with L03 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits bulk/unsolicited scope or exclusions, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about bulk unsolicited commercial electronic messages; harvesting/dictionary attacks; exclusions and schedule; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG30",
@@ -357,7 +473,11 @@
   "watch": "Core supported; no blanket rights/permissions inferred",
   "expected_files": [
    "L04_Copyright_Act_2021_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "Investigate copyright in software/code, text, images, datasets and reuse; permissions and exceptions depend on work and use, not a blanket ban on all AI training.",
+  "acceptable_rule": "Correctly explains copyright in software and content; rights, permissions and exceptions depend on actual use; supports the material points with L04 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits exceptions or work-specific scope, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about copyright in software and content; rights, permissions and exceptions depend on actual use; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG31",
@@ -369,7 +489,11 @@
   "watch": "Supported; exemptions and case-specific analysis not determined",
   "expected_files": [
    "L08_Competition_Act_2004_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "Covers anti-competitive agreements, abuse of dominance and merger issues; do not assume ordinary competitive pricing is automatically prohibited.",
+  "acceptable_rule": "Correctly explains anti-competitive agreements, abuse of dominance and merger control; not all pricing unlawful; supports the material points with L08 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits one prohibited category or nuance, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about anti-competitive agreements, abuse of dominance and merger control; not all pricing unlawful; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG32",
@@ -381,7 +505,11 @@
   "watch": "Supported; eligibility not determined",
   "expected_files": [
    "S01_Startup_SG_Founder.pdf"
-  ]
+  ],
+  "reference_answer": "Supports first-time entrepreneurs with mentorship and startup grants; page states S$20k–S$50k at 1:1 matching from Apr 2024 and AMP route. Eligibility is case-specific.",
+  "acceptable_rule": "Correctly explains first-time founder support; AMP mentorship; S$20k–S$50k grant and 1:1 matching; case-specific eligibility; supports the material points with S01 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits AMP/matching or eligibility caveat, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about first-time founder support; AMP mentorship; S$20k–S$50k grant and 1:1 matching; case-specific eligibility; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG33",
@@ -393,7 +521,11 @@
   "watch": "Supported; eligibility not determined",
   "expected_files": [
    "S02_Startup_SG_Equity.pdf"
-  ]
+  ],
+  "reference_answer": "Government co-investment and other investment routes target Singapore-based deep-tech startups with research-driven IP and growth potential, not all SaaS companies.",
+  "acceptable_rule": "Correctly explains Singapore-based deep-tech, research IP; government investment pathways; not all SaaS; supports the material points with S02 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits deep-tech restriction, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about Singapore-based deep-tech, research IP; government investment pathways; not all SaaS; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG34",
@@ -405,7 +537,11 @@
   "watch": "CAUTION: Captured Infrastructure document has a mismatched website URL. Do not treat its URL as verified.",
   "expected_files": [
    "S03_Startup_SG_Infrastructure.pdf"
-  ]
+  ],
+  "reference_answer": "Startup spaces and ecosystems include LaunchPad @ One-North and Singapore Water Exchange; infrastructure support is not necessarily a cash grant.",
+  "acceptable_rule": "Correctly explains startup spaces such as LaunchPad and Singapore Water Exchange; not automatically a cash grant; supports the material points with S03 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits infrastructure versus cash distinction, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about startup spaces such as LaunchPad and Singapore Water Exchange; not automatically a cash grant; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG35",
@@ -417,7 +553,11 @@
   "watch": "Supported",
   "expected_files": [
    "S04_Enterprise_Development_Grant_EDG.pdf"
-  ]
+  ],
+  "reference_answer": "EDG supported transformation projects but page states EDG/MRA/PSG ceased 29 Sep 2026; from 30 Sep apply under EDGE. Existing submissions/projects continue.",
+  "acceptable_rule": "Correctly explains EDG ceased 29 Sep 2026 for new applications; EDGE from 30 Sep; existing projects continue; supports the material points with S04 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits transition date or existing-project exception, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about EDG ceased 29 Sep 2026 for new applications; EDGE from 30 Sep; existing projects continue; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG36",
@@ -429,7 +569,11 @@
   "watch": "Supported",
   "expected_files": [
    "S05_Productivity_Solutions_Grant_PSG.pdf"
-  ]
+  ],
+  "reference_answer": "PSG previously supported pre-approved IT solutions/equipment for local SMEs; page says new applications moved to EDGE from 30 Sep 2026.",
+  "acceptable_rule": "Correctly explains previous PSG pre-approved IT/equipment support; new applications move to EDGE from 30 Sep 2026; supports the material points with S05 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits scheme closure/transition, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about previous PSG pre-approved IT/equipment support; new applications move to EDGE from 30 Sep 2026; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG37",
@@ -441,7 +585,11 @@
   "watch": "Supported; eligibility not determined",
   "expected_files": [
    "S10_EDGE_Grant.pdf"
-  ]
+  ],
+  "reference_answer": "EDGE offers support across business activities; captured page states up to 70% SMEs, 50% non-SMEs and annual total cap S$100k, varying by activity. Eligibility not guaranteed.",
+  "acceptable_rule": "Correctly explains EDGE activity-specific support; up to 70% SMEs/50% non-SMEs; S$100k annual cap; no blanket eligibility; supports the material points with S10 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits activity-specific limitation or annual cap, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about EDGE activity-specific support; up to 70% SMEs/50% non-SMEs; S$100k annual cap; no blanket eligibility; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG38",
@@ -453,7 +601,11 @@
   "watch": "Core supported; precise company tax application not determined",
   "expected_files": [
    "T07_Income_Tax_Act_1947_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "Income Tax Act addresses taxable income, exemptions, assessments and corporate taxation; tax rate/rebate specifics should be checked against the applicable provisions and IRAS guidance.",
+  "acceptable_rule": "Correctly explains taxable income, exemptions, assessments; defer precise rate/rebate to relevant provisions and IRAS; supports the material points with T07 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits distinction between statute and IRAS detail, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about taxable income, exemptions, assessments; defer precise rate/rebate to relevant provisions and IRAS; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG39",
@@ -465,7 +617,11 @@
   "watch": "Supported; applicability depends on entity",
   "expected_files": [
    "T08_Guide_to_Accounting_Standards.pdf"
-  ]
+  ],
+  "reference_answer": "ACRA page links to SFRS(I), FRS, SFRS for Small Entities and Charities Accounting Standard; applicable standards depend on entity and reporting period.",
+  "acceptable_rule": "Correctly explains SFRS(I), FRS, Small Entities and Charities standards; depends on entity and period; supports the material points with T08 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits applicability by entity/period, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about SFRS(I), FRS, Small Entities and Charities standards; depends on entity and period; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG40",
@@ -477,7 +633,11 @@
   "watch": "Supported; earlier YA2026 numbers superseded",
   "expected_files": [
    "T10_IRAS_CIT_Rates_Rebates_and_Tax_Exemption_Schemes.pdf"
-  ]
+  ],
+  "reference_answer": "IRAS page states flat 17% corporate income tax; YA2026 enhanced rebate 50% and cash grant S$2,000 with combined cap S$40,000. Do not extend YA2026 figures to other years.",
+  "acceptable_rule": "Correctly explains 17% CIT; YA2026 enhanced 50% rebate, S$2k cash grant, S$40k combined cap; time-bound; supports the material points with T10 and an appropriate page or section; avoids unsupported eligibility or scope claims.",
+  "partial_rule": "Main conclusion is correct but omits YA2026 limitation or one benefit figure, or source citation is incomplete; no material contradiction.",
+  "reject_rule": "Incorrect or materially misleading about 17% CIT; YA2026 enhanced 50% rebate, S$2k cash grant, S$40k combined cap; time-bound; invents an unsupported requirement, number, eligibility conclusion or citation; or fails to answer."
  },
  {
   "id": "RAG41",
@@ -490,7 +650,11 @@
   "expected_files": [
    "C02_Guidelines_on_Securing_AI_Systems.pdf",
    "C11_Companion_Guide_on_Securing_AI_Systems.pdf"
-  ]
+  ],
+  "reference_answer": "C02 supplies lifecycle/risk-based security guidance; C11 supplies non-mandatory practical implementation measures. Neither alone establishes legal compliance.",
+  "acceptable_rule": "Identifies both documents and their different roles; cites both; avoids mandatory/compliance claims.",
+  "partial_rule": "Distinguishes the two broadly but misses a source, practical role, or non-mandatory status.",
+  "reject_rule": "Conflates their purposes, claims C11 is mandatory, or invents legal compliance."
  },
  {
   "id": "RAG42",
@@ -503,7 +667,11 @@
   "expected_files": [
    "C04_CSA_Cybersecurity_Certification_Cyber_Essentials_mark_2025_2nd_ed.pdf",
    "C05_CSA_Cybersecurity_Certification_Cyber_Trust_mark_2025_2nd_ed.pdf"
-  ]
+  ],
+  "reference_answer": "Cyber Essentials covers foundational measures; Cyber Trust uses risk-based tiers and preparedness domains. Do not equate certification levels.",
+  "acceptable_rule": "Accurately contrasts foundational measures and tiered risk-based preparedness with both citations.",
+  "partial_rule": "Gets the main distinction but omits tiers, domains, or one citation.",
+  "reject_rule": "Claims the marks are equivalent or asserts certification without evidence."
  },
  {
   "id": "RAG43",
@@ -517,7 +685,11 @@
    "D01_Personal_Data_Protection_Act_2012_current_version.pdf",
    "D02_Advisory_Guidelines_on_Key_Concepts_in_the_PDPA.pdf",
    "D11_Guide_to_Managing_Data_Intermediaries.pdf"
-  ]
+  ],
+  "reference_answer": "PDPA establishes obligations; D02 interprets key concepts including consent/notification; D11 addresses management of outsourced data intermediaries and division of responsibilities.",
+  "acceptable_rule": "Distinguishes statute, interpretive guidance and intermediary-management guide; avoids assigning roles without facts.",
+  "partial_rule": "Explains sources but leaves controller/intermediary roles or applicability unclear.",
+  "reject_rule": "Claims all SaaS providers have the same role or incorrectly transfers all responsibilities."
  },
  {
   "id": "RAG44",
@@ -531,7 +703,11 @@
    "G01_Model_AI_Governance_Framework_2nd_ed.pdf",
    "G02_Model_AI_Governance_Framework_for_Generative_AI.pdf",
    "G07_Model_AI_Governance_Framework_for_Agentic_AI.pdf"
-  ]
+  ],
+  "reference_answer": "G01 covers general AI governance; G02 addresses generative AI risks such as hallucinations/provenance; G07 addresses agentic permissions, autonomy and oversight.",
+  "acceptable_rule": "Identifies all three scopes and gives grounded distinctive issues with source references.",
+  "partial_rule": "Correct broad distinctions but misses one framework or its specific focus.",
+  "reject_rule": "Treats all three as identical or fabricates mandatory legal requirements."
  },
  {
   "id": "RAG45",
@@ -544,7 +720,11 @@
   "expected_files": [
    "I01_Singapore_Digital_Economy_Report_2026.pdf",
    "I06_SingStat_Infocomm_Usage_by_Enterprises_2025.pdf"
-  ]
+  ],
+  "reference_answer": "I01 and I06 measure enterprise digital/AI adoption, not founder-specific SaaS demand or willingness to pay; state period, denominator and definition.",
+  "acceptable_rule": "Uses both sources in scope and explicitly rejects inference of product-specific demand.",
+  "partial_rule": "Reports adoption trends but weakly states denominator/year or demand limitation.",
+  "reject_rule": "Claims adoption statistics prove SaaS sales, customers or willingness to pay."
  },
  {
   "id": "RAG46",
@@ -557,7 +737,11 @@
   "expected_files": [
    "S04_Enterprise_Development_Grant_EDG.pdf",
    "S10_EDGE_Grant.pdf"
-  ]
+  ],
+  "reference_answer": "No: S04 says EDG ceased on 29 Sep 2026, and S10 identifies EDGE from 30 Sep. Ongoing EDG projects/submissions can still be processed.",
+  "acceptable_rule": "Correct dates, successor scheme, ongoing-project exception, and both citations.",
+  "partial_rule": "Correctly names EDGE but omits dates, existing-project exception, or citation.",
+  "reject_rule": "Says EDG remains open for new applications or misstates the transition."
  },
  {
   "id": "RAG47",
@@ -569,7 +753,11 @@
   "watch": "Supported; individual message application conditional",
   "expected_files": [
    "L03_Spam_Control_Act_2007_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "No. The Act addresses specified bulk unsolicited commercial electronic messages, with definitions, exclusions and compliance requirements; it is not a blanket ban on all SaaS marketing.",
+  "acceptable_rule": "Rejects blanket ban and explains scope, exclusions/conditions with statutory references.",
+  "partial_rule": "Rejects blanket ban but gives only a vague description of scope.",
+  "reject_rule": "Claims all marketing is banned or that the Act never applies to SaaS marketing."
  },
  {
   "id": "RAG48",
@@ -585,7 +773,11 @@
    "S03_Startup_SG_Infrastructure.pdf",
    "S05_Productivity_Solutions_Grant_PSG.pdf",
    "S10_EDGE_Grant.pdf"
-  ]
+  ],
+  "reference_answer": "No. These are different programmes with separate scope, timing and eligibility; unnamed startup facts cannot prove eligibility. PSG has ceased for new applications in this captured version.",
+  "acceptable_rule": "Explicit no; explains missing applicant facts, differing scheme conditions and PSG/EDGE currency.",
+  "partial_rule": "Says eligibility is uncertain but omits why, or fails to address outdated PSG route.",
+  "reject_rule": "Declares the unnamed startup eligible for any/all schemes or invents its facts."
  },
  {
   "id": "RAG49",
@@ -598,7 +790,11 @@
   "expected_files": [
    "G03_National_AI_Strategy_2_0.pdf",
    "I06_SingStat_Infocomm_Usage_by_Enterprises_2025.pdf"
-  ]
+  ],
+  "reference_answer": "No. National strategy describes objectives; enterprise usage statistics measure reported adoption. Apparent differences require definition/year/denominator checks, not treating one as a direct measure of the other.",
+  "acceptable_rule": "Distinguishes strategy from measured statistics and cautions on year/definition/denominator.",
+  "partial_rule": "Recognises different source types but does not explain the measurement limitation.",
+  "reject_rule": "Uses strategic ambitions as observed usage data or asserts a contradiction without checking."
  },
  {
   "id": "RAG50",
@@ -611,6 +807,10 @@
   "expected_files": [
    "T10_IRAS_CIT_Rates_Rebates_and_Tax_Exemption_Schemes.pdf",
    "T07_Income_Tax_Act_1947_current_version.pdf"
-  ]
+  ],
+  "reference_answer": "Not established. The KM contains specific YA2026 rebate information, not a verified rebate for 2030. Answer “not verified / insufficient evidence” rather than extrapolate.",
+  "acceptable_rule": "Explicitly withholds 2030 amount and explains why YA2026 information cannot establish it.",
+  "partial_rule": "Says unknown but does not identify the time mismatch or cite available sources.",
+  "reject_rule": "Invents a 2030 rebate or presents the YA2026 rate as applying in 2030."
  }
 ]

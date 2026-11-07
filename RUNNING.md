@@ -37,7 +37,9 @@ With 1 and the keys in place (the server does not need to be running):
 ```bash
 bash eval/pr04/run-pr04.sh rag50      # 50 RAG questions asked straight to the knowledge base
 bash eval/pr04/run-pr04.sh founder    # reports for TC01–TC07
-python3 eval/pr04/fill_workbooks.py eval/pr04/runs/<folder>   # copies the workbook, fills answers / report files
+python3 eval/pr04/fill_workbooks.py eval/pr04/runs/<folder>   # copies the workbook, fills answers + AI pre-score
+# after Sasi has filled "Your result" (human score) in the filled RAG workbook:
+python3 eval/pr04/score_rag50.py eval/pr04/runs/<rag50 folder>/PR04_50_RAG_Question_Bank_filled.xlsx
 ```
 
 Each run folder holds `results.json/.csv` (or `TC0x.md` reports), `summary.md`, and a filled copy of the PR04 workbook.
@@ -46,7 +48,7 @@ What is automatic and what is not:
 
 | | automatic | by a person |
 |---|---|---|
-| RAG 50 | hit@k (expected document retrieved), answer cites expected document, claims dropped by the quote gate | Acceptable / Partial / Reject per question (F1) |
+| RAG 50 | hit@k, answer cites expected document, claims dropped by the quote gate, AI pre-score (suggestion only) | Acceptable / Partial / Reject per question (F1); override rate vs the AI pre-score |
 | Founder TC01–07 | report, references, JP status table | Good / Partly / Wrong per JP; claim spot-checks (F2, F3) |
 | Friends TC08–10 | — | the friend runs it on the website and rates it 1–5 (F4) |
 

@@ -26,6 +26,10 @@ if run.name.startswith("rag50"):
     head = [str(c.value or "").strip() for c in ws[1]]
     col = {name: head.index(name) + 1 for name in head if name}
     results = {r["id"]: r for r in json.loads((run / "results.json").read_text())}
+    # two extra columns at the end, clearly marked; the human result columns stay empty
+    pre_col = ws.max_column + 1
+    ws.cell(1, pre_col).value = "AI pre-score (to confirm, NOT the result)"
+    ws.cell(1, pre_col + 1).value = "AI pre-score reason"
     n = 0
     for row in range(2, ws.max_row + 1):
         rid = ws.cell(row, 1).value
@@ -35,6 +39,8 @@ if run.name.startswith("rag50"):
         ws.cell(row, col["Capsight answer (paste)"]).value = r["answer"]
         ws.cell(row, col["Sources Capsight gave"]).value = r["sources"] or "(no verified source)"
         ws.cell(row, col["Tester / date"]).value = stamp
+        ws.cell(row, pre_col).value = r.get("ai_prescore", "")
+        ws.cell(row, pre_col + 1).value = r.get("ai_prescore_reason", "")
         n += 1
     wb.save(dst)
     print(f"filled {n} rows → {dst}")

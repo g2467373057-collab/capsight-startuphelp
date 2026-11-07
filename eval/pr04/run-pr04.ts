@@ -51,7 +51,7 @@ try {
 }
 
 if (kind === 'rag50') {
-  type Q = { id: string; topic: string; question: string; expected: string; expected_files: string[] }
+  type Q = { id: string; topic: string; question: string; expected: string; expected_files: string[]; reference_answer: string; acceptable_rule: string; partial_rule: string; reject_rule: string }
   const all = JSON.parse(readFileSync(join(here, 'rag50-questions.json'), 'utf8')) as Q[]
   const qs = only.length ? all.filter((q) => only.includes(q.id)) : all
   const llm = providers.llm('en')
@@ -71,14 +71,15 @@ if (kind === 'rag50') {
     const citedCodes = [...new Set((r?.claims ?? []).map((c) => c.docId ?? ''))]
     const hit = expected.some((e) => retrievedCodes.includes(e))
     const cited = expected.some((e) => citedCodes.includes(e))
+    const pre = r ? await preScore(llm, q, r) : { score: 'Reject', reason: `No answer: ${error}` }
     const sources = (r?.claims ?? []).map((c, i) => `[${i + 1}] ${c.docId ?? ''} ${c.title}${c.page ? `, p. ${c.page}` : ''}: "${c.quote}"`).join('\n')
-    results.push({ id: q.id, topic: q.topic, question: q.question, answer: r?.answer ?? `ERROR: ${error}`, sources, expected_docs: expected.join(' '), retrieved_docs: retrievedCodes.join(' '), hit_at_k: hit, cited_expected: cited, verified_claims: r?.claims.length ?? 0, proposed_claims: r?.proposed ?? 0, seconds: Math.round((Date.now() - t0) / 1000), error, detail: r })
-    console.log(`${q.id}  hit:${hit ? 'Y' : 'n'}  cited:${cited ? 'Y' : 'n'}  claims ${r?.claims.length ?? 0}/${r?.proposed ?? 0}  ${error}`)
+    results.push({ id: q.id, topic: q.topic, question: q.question, answer: r?.answer ?? `ERROR: ${error}`, sources, expected_docs: expected.join(' '), retrieved_docs: retrievedCodes.join(' '), hit_at_k: hit, cited_expected: cited, verified_claims: r?.claims.length ?? 0, proposed_claims: r?.proposed ?? 0, ai_prescore: pre.score, ai_prescore_reason: pre.reason, seconds: Math.round((Date.now() - t0) / 1000), error, detail: r })
+    console.log(`${q.id}  hit:${hit ? 'Y' : 'n'}  cited:${cited ? 'Y' : 'n'}  claims ${r?.claims.length ?? 0}/${r?.proposed ?? 0}  AI pre-score: ${pre.score}  ${error}`)
   }
   writeFileSync(join(outDir, 'results.json'), JSON.stringify(results, null, 1))
   writeFileSync(
     join(outDir, 'results.csv'),
-    csv(['id', 'topic', 'question', 'answer', 'sources', 'expected_docs', 'retrieved_docs', 'hit_at_k', 'cited_expected', 'verified_claims', 'proposed_claims', 'seconds'], results.map((r) => [r.id, r.topic, r.question, r.answer, r.sources, r.expected_docs, r.retrieved_docs, r.hit_at_k ? 'Y' : 'N', r.cited_expected ? 'Y' : 'N', r.verified_claims, r.proposed_claims, r.seconds])),
+    csv(['id', 'topic', 'question', 'answer', 'sources', 'expected_docs', 'retrieved_docs', 'hit_at_k', 'cited_expected', 'verified_claims', 'proposed_claims', 'ai_prescore_to_confirm', 'ai_prescore_reason', 'seconds'], results.map((r) => [r.id, r.topic, r.question, r.answer, r.sources, r.expected_docs, r.retrieved_docs, r.hit_at_k ? 'Y' : 'N', r.cited_expected ? 'Y' : 'N', r.verified_claims, r.proposed_claims, r.ai_prescore, r.ai_prescore_reason, r.seconds])),
   )
   const n = results.length
   const pct = (k: number) => `${k}/${n} (${Math.round((k / n) * 100)}%)`
@@ -93,6 +94,8 @@ if (kind === 'rag50') {
     `| Verified answer cites an expected source document | ${pct(results.filter((r) => r.cited_expected).length)} |`,
     `| Answered with ≥1 verified claim | ${pct(results.filter((r) => (r.verified_claims as number) > 0).length)} |`,
     `| Claims dropped by the quote gate | ${results.reduce((a, r) => a + (r.proposed_claims as number) - (r.verified_claims as number), 0)} of ${results.reduce((a, r) => a + (r.proposed_claims as number), 0)} proposed |`,
+    ``,
+    `| AI pre-score (NOT the result; a person confirms every row) | Acceptable ${results.filter((r) => r.ai_prescore === 'Acceptable').length} · Partial ${results.filter((r) => r.ai_prescore === 'Partial').length} · Reject ${results.filter((r) => r.ai_prescore === 'Reject').length} |`,
     ``,
     `Not yet measured: answer correctness (Acceptable / Partial / Reject) — scored by a person in PR04_50_RAG_Question_Bank (filled copy in this folder). F1 needs ≥85% correct and 0 fabricated sources.`,
   ]
@@ -138,6 +141,31 @@ if (kind === 'rag50') {
   process.exit(1)
 }
 process.exit(0)
+
+/**
+ * AI pre-score: a second model call compares the answer with the team's reference answer and scoring rules.
+ * It only suggests a score for the human scorer to confirm or overrule; it is never reported as the result.
+ */
+async function preScore(llm: ReturnType<typeof providers.llm>, q: { question: string; reference_answer: string; acceptable_rule: string; partial_rule: string; reject_rule: string }, r: { answer: string; claims: { quote: string; docId?: string; page?: number }[] }) {
+  try {
+    const out = await llm.json<{ score?: string; reason?: string }>({
+      task: 'pr04_prescore',
+      system: [
+        'You pre-score one answer for a human test reviewer, who will confirm or overrule you.',
+        'Compare the system answer with the reference answer and apply the scoring rules exactly as written.',
+        'Acceptable: main facts right, important points covered, evidence supports it. Partial: some facts right but an important point or source support is missing. Reject: wrong, invented, misleading evidence, or misses the main point.',
+        'An answer saying the knowledge base has no evidence is Reject unless the reference answer also says the documents do not cover it.',
+        'Be strict. Output JSON only: {"score":"Acceptable|Partial|Reject","reason":"one sentence naming what is right or missing"}',
+      ].join('\n'),
+      user: `Question: ${q.question}\n\nReference answer: ${q.reference_answer}\nAcceptable if: ${q.acceptable_rule}\nPartial if: ${q.partial_rule}\nReject if: ${q.reject_rule}\n\nSystem answer: ${r.answer}\nQuotes it rests on: ${r.claims.map((c) => `${c.docId ?? ''} p.${c.page ?? '?'}: "${c.quote}"`).join(' | ') || '(none)'}`,
+      maxTokens: 200,
+    })
+    const score = ['Acceptable', 'Partial', 'Reject'].find((x) => x.toLowerCase() === String(out.score ?? '').trim().toLowerCase())
+    return score ? { score, reason: String(out.reason ?? '').replace(/\s+/g, ' ').slice(0, 300) } : { score: 'Needs review', reason: 'pre-score unreadable' }
+  } catch {
+    return { score: 'Needs review', reason: 'pre-score call failed' }
+  }
+}
 
 function reportMd(r: Awaited<ReturnType<typeof runReport>>, tc: { id: string; title: string; prompt: string }) {
   const n = r.narrative
