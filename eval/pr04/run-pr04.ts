@@ -50,6 +50,14 @@ try {
   process.exit(1)
 }
 
+// pre-flight: one tiny model call, so an empty balance or a bad key stops the run before it produces fake "not found" answers
+try {
+  await providers.llm('en').json({ task: 'preflight', system: 'Reply with JSON {"ok":true}.', user: 'ping', maxTokens: 10 })
+} catch (e) {
+  console.error(`The language model call failed: ${(e as Error).message.slice(0, 200)}\nCheck the DeepSeek balance and key in server/keys.env, then run again.`)
+  process.exit(1)
+}
+
 if (kind === 'rag50') {
   type Q = { id: string; topic: string; question: string; expected: string; expected_files: string[]; reference_answer: string; acceptable_rule: string; partial_rule: string; reject_rule: string }
   const all = JSON.parse(readFileSync(join(here, 'rag50-questions.json'), 'utf8')) as Q[]
@@ -71,7 +79,11 @@ if (kind === 'rag50') {
     const citedCodes = [...new Set((r?.claims ?? []).map((c) => c.docId ?? ''))]
     const hit = expected.some((e) => retrievedCodes.includes(e))
     const cited = expected.some((e) => citedCodes.includes(e))
-    const pre = r ? await preScore(llm, q, r) : { score: 'Reject', reason: `No answer: ${error}` }
+    if (error) {
+      console.error(`\n${q.id} failed: ${error.slice(0, 200)}\nStopping: a failed model call is not an answer. Fix the cause (balance, key, network) and run again.`)
+      process.exit(1)
+    }
+    const pre = r ? await preScore(llm, q, r) : { score: 'Needs review', reason: 'no answer' }
     const sources = (r?.claims ?? []).map((c, i) => `[${i + 1}] ${c.docId ?? ''} ${c.title}${c.page ? `, p. ${c.page}` : ''}: "${c.quote}"`).join('\n')
     results.push({ id: q.id, topic: q.topic, question: q.question, answer: r?.answer ?? `ERROR: ${error}`, sources, expected_docs: expected.join(' '), retrieved_docs: retrievedCodes.join(' '), hit_at_k: hit, cited_expected: cited, verified_claims: r?.claims.length ?? 0, proposed_claims: r?.proposed ?? 0, ai_prescore: pre.score, ai_prescore_reason: pre.reason, seconds: Math.round((Date.now() - t0) / 1000), error, detail: r })
     console.log(`${q.id}  hit:${hit ? 'Y' : 'n'}  cited:${cited ? 'Y' : 'n'}  claims ${r?.claims.length ?? 0}/${r?.proposed ?? 0}  AI pre-score: ${pre.score}  ${error}`)

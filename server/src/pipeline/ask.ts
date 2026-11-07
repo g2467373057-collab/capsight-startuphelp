@@ -1,7 +1,7 @@
 import { UNTRUSTED_NOTE, type Llm } from '../llm/llm.ts'
 import type { Rag } from '../rag/rag.ts'
 import type { Passage } from '../types.ts'
-import { norm } from './report.ts'
+import { isFatal, norm } from './report.ts'
 
 /**
  * Ask the knowledge base one question directly (used by the PR04 50-question RAG test).
@@ -48,7 +48,8 @@ export async function askKnowledgeBase(llm: Llm, rag: Rag, question: string, top
       user: `Question: ${question}\n\nPassages:\n${passages.map((p, i) => `[P${i + 1}] ${p.title}${p.page ? ` · p. ${p.page}` : ''}\n${p.text}`).join('\n\n---\n\n')}`,
       maxTokens: 1000,
     })
-  } catch {
+  } catch (e) {
+    if (isFatal(e)) throw e
     raw = {}
   }
   const proposed = Array.isArray(raw.claims) ? raw.claims : []

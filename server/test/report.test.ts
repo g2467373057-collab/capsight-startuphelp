@@ -211,3 +211,26 @@ test('register from the KM audit: JP01-style tags, ceased schemes labelled, reje
   const out = normalisePassages({ results: [{ text: 'x', source: { file_name: 'I07_MTI.pdf', page: 2 } }] }, 5, reg, 'http://localhost:8000')
   assert.equal(out.length, 0)
 })
+
+test('a model outage stops the report instead of reporting "no data found"', async () => {
+  const cfg = testConfig()
+  const db = freshDb()
+  const p = testProviders(cfg, db, () => {
+    throw new Error('llm_http_402: {"error":{"message":"Insufficient Balance"}}')
+  }, mockSearch(() => []))
+  await assert.rejects(
+    runReport('run_x', 'An HR SaaS for Singapore SMEs to manage hiring', { llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 1, emit: () => {}, rag: new NoRag(), topK: 5, maxCompetitors: 4 }),
+    /llm_http_402/,
+  )
+  const { askKnowledgeBase } = await import('../src/pipeline/ask.ts')
+  const rag: Rag = { connected: true, retrieve: async () => [P[0]] }
+  await assert.rejects(askKnowledgeBase(p.llm('en'), rag, 'q?'), /llm_http_402/)
+})
+
+test('unreadable model output marks the section as failed analysis, not as missing data', async () => {
+  const llm = new MockLlm(() => {
+    throw new Error('not json')
+  })
+  const { section } = await writeRagSection(llm, 'en', 'jp2', idea, P, true)
+  assert.match(section.note!, /Analysis failed/)
+})

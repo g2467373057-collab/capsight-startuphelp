@@ -51,6 +51,7 @@ export const MISSING_NOTE = {
     jp5: '价格未公开',
     jp5Partial: (n: number, m: number) => `仅 ${n} 家（共 ${m} 家）公开了官方价格，其余价格未公开`,
     jp2Undated: '来源未注明日期，请确认该法规仍然有效',
+    failed: '这一部分分析失败（模型返回无法读取），不代表没有资料',
     ragOff: '（知识库尚未接入）',
   },
   en: {
@@ -61,6 +62,7 @@ export const MISSING_NOTE = {
     jp5: 'Pricing not publicly available',
     jp5Partial: (n: number, m: number) => `Official prices found for only ${n} of ${m} competitors; the rest: pricing not publicly available`,
     jp2Undated: 'Source date not stated; check that the regulation is still in force',
+    failed: 'Analysis failed for this section (unreadable model output); this is not a finding that no data exists',
     ragOff: ' (knowledge base not connected)',
   },
 }
@@ -105,6 +107,15 @@ const T = {
   },
 }
 
+/**
+ * A model or network failure (out of credit, bad key, timeout, service down) must stop the report:
+ * otherwise every section would read "no data found", which is a false finding.
+ */
+export function isFatal(e: unknown): boolean {
+  const m = e instanceof Error ? e.message : String(e)
+  return /^llm_http_|fetch failed|timeout|aborted|ECONN|ENOTFOUND/i.test(m) || (e instanceof Error && (e.name === 'TypeError' || e.name === 'AbortError' || e.name === 'TimeoutError'))
+}
+
 const oneLine = (v: unknown, max: number) => String(v ?? '').replace(/\s+/g, ' ').trim().slice(0, max)
 /** Lower-cased, whitespace- and quote-normalised text for "is this quote really in the source" checks. */
 export const norm = (s: string) =>
@@ -141,7 +152,8 @@ export async function understandIdea(llm: Llm, idea: string, lang: Lang): Promis
       user: `Founder idea: ${idea}`,
       maxTokens: 600,
     })
-  } catch {
+  } catch (e) {
+    if (isFatal(e)) throw e
     raw = {}
   }
   const product = oneLine(raw.product, 80) || oneLine(idea, 60)
@@ -182,8 +194,10 @@ export async function writeRagSection(llm: Llm, lang: Lang, jp: JpId, idea: Idea
       user: `Idea: ${idea.product} for ${idea.customer || 'its customers'} in ${idea.geography}\n\nPassages:\n${passages.map((p, i) => `[P${i + 1}] ${p.title}${p.issuer ? ` · ${p.issuer}` : ''}${p.date ? ` · ${p.date}` : ''}${p.page ? ` · p. ${p.page}` : ''}\n${p.text}`).join('\n\n---\n\n')}`,
       maxTokens: 900,
     })
-  } catch {
-    raw = {}
+  } catch (e) {
+    if (isFatal(e)) throw e
+    // the model answered but not in a usable form: say the analysis failed, never "no data found"
+    return { section: { jp, status: 'missing', claims: [], note: notes.failed }, proposed: 0 }
   }
   const proposed = Array.isArray(raw.claims) ? raw.claims : []
   const claims: Claim[] = []
@@ -254,7 +268,8 @@ export async function writeSummary(llm: Llm, lang: Lang, idea: IdeaPlan, section
         user: `Idea: ${idea.product} for ${idea.customer || 'its customers'} in ${idea.geography}\n\nClaims:\n${numbered.map((c) => `[${c.id}] (${c.jp.toUpperCase()}) ${c.text}`).join('\n')}`,
         maxTokens: 800,
       })
-    } catch {
+    } catch (e) {
+      if (isFatal(e)) throw e
       raw = {}
     }
   }
@@ -350,7 +365,8 @@ export async function writeNarrative(llm: Llm, lang: Lang, idea: IdeaPlan, secti
       user: `Idea: ${idea.idea}\nProduct: ${idea.product} · Customer: ${idea.customer || '-'} · Market: ${idea.geography}\n\nEvidence:\n${brief}`,
       maxTokens: 1800,
     })
-  } catch {
+  } catch (e) {
+    if (isFatal(e)) throw e
     raw = {}
   }
   const fallback = (s: ReportSection) =>
@@ -418,7 +434,8 @@ export async function runReport(runId: string, ideaText: string, deps: ReportDep
       const intent = normaliseIntent({ type: 'named', competitors: found.competitors, dimensions: ['name', 'overview', 'region', 'pricing'], topic: found.topic ?? 'SaaS' }, ask, deps.maxCompetitors)
       competitors = await runResearch(`${runId}_c`, intent, { ...deps, llm: other.llm, search: other.search, lang: cl, emit: (e) => emit({ ...e, stage: 3 }) })
     } else step(3, 'info', t.compNone)
-  } catch {
+  } catch (e) {
+    if (isFatal(e)) throw e
     step(3, 'fail', t.compNone)
   }
 
