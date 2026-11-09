@@ -95,11 +95,11 @@ Test sets written by Sasitheran Ramamoorthy; runs on the integrated system. Raw 
 
 | Part | Folder | Owner |
 | --- | --- | --- |
-| System design and build (website + server), RAG and search-API integration, test runs | `web/`, `server/`, `eval/pr04/` runners | Li Yisha |
+| **Lead:** system design and build (website + server, report pipeline, evidence gates), team task plan, test logic (F1–F4), integration of the RAG module and search APIs, all test runs; reviewed the judgment points | `web/`, `server/`, `eval/pr04/` runners and results | Li Yisha |
 | Judgment points JP1–JP5 and evidence bars | report structure above | Chng Hui Mei |
 | Document discovery, audit and admission (KM gate) | `eval/pr02-km-gate/`, `rag-service/data/register.csv` | Seah Yee Hong |
 | Knowledge-base service (FastAPI + Chroma, BGE embeddings) | `rag-service/` | Xu Zihan |
-| Test sets: 50 RAG questions, 10 founder scenarios | `eval/pr04/` | Sasitheran Ramamoorthy |
+| Test questions (50 RAG questions, 10 founder scenarios) and the independent number check | `eval/pr04/` | Sasitheran Ramamoorthy |
 
 ## 6. Run it
 
