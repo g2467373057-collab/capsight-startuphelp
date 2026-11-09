@@ -1,160 +1,137 @@
-# 胶囊AI · Capsight
+# Capsight-StartupHelp: SG SaaS-Focused Startup Research Agent
 
-> 一句话描述你的 SaaS 创业想法，得到一份有出处的市场调研报告。做不做，由你决定。
-> Describe your SaaS idea in one sentence; get a source-traced market report. Whether to build it is your call.
+> A founder writes one sentence about a SaaS idea. Capsight returns a readable Singapore market report in about two minutes, where every figure is cited to its source and every gap is stated. **The report never tells the founder whether to build. The founder decides.**
 
-Capsight takes a founder's one-sentence idea and writes a readable market report for Singapore: market size, regulations, government grants, competitors and their pricing. Every figure carries a numbered citation to an official source, every gap is stated instead of guessed, and the report never tells the founder to build or not.
+MSI5002 Gate 3 team project, National University of Singapore (November 2026).
+Team: Li Yisha · Chng Hui Mei (Angie) · Seah Yee Hong (Yvonne) · Xu Zihan · Sasitheran Ramamoorthy.
 
-## How it works
+---
+
+## 1. What the system does
+
+Capsight-StartupHelp is **one system with two research modules** that feed one report:
+
+| Module | What it answers | How |
+| --- | --- | --- |
+| **Policy knowledge base (RAG)** | JP1 market size and growth · JP2 regulations · JP3 government grants | Retrieval over **40 Singapore official documents** that passed a human admission gate (statutes, PDPC/IMDA/CSA guidelines, Enterprise Singapore grants, SingStat and MTI reports) |
+| **Competitor research** | JP4 competitors · JP5 competitor pricing | Web search for competitors, confirmation of each company's official site, then a structured table read from public pages |
 
 ```
-one-sentence idea
-  → read the idea (product, customer, market)
-  → two evidence streams
-      · policy knowledge base (RAG over 40 admitted Singapore official documents) → JP1 market · JP2 regulation · JP3 grants
-      · competitor research module (official sites, search) → JP4 competitors · JP5 pricing
-  → evidence wall: a claim is kept only if its quote is found in the source; sentences with numbers found in no source,
-    or telling the founder to build / invest / stop, are removed
-  → readable report: one paragraph per judgment point with [n] citations, key takeaways, what to validate next, references
-  → the founder decides
+Founder's one-sentence idea
+   │
+   ▼  Read the idea: product, customer, sector, market (shown on the report so a misread is visible)
+   │
+   ├──► Policy knowledge base (RAG) ──► JP1 market · JP2 regulation · JP3 grants
+   │       only documents admitted by the KM gate; passages carry document, page, issuer, date
+   │
+   ├──► Competitor research ──► JP4 competitors · JP5 pricing
+   │       search → official site (confirmed by search results and Wikidata) → read public pages
+   │       → table: overview · country/region · size · funding · pricing
+   │
+   ▼  Evidence gates (run in code, not by the model)
+   │   • a claim is kept only if its quoted text is found in the source passage
+   │   • a sentence with a number that appears in no source is removed
+   │   • "build / invest / stop" verdict wording is removed
+   │   • a model or knowledge-base outage stops the report; it is never reported as "no data"
+   │
+   ▼  Report: key takeaways · one cited paragraph per judgment point · competitor table (CSV export)
+   │          · what to validate next · numbered references (document, page, issuer, date)
+   │
+   ▼  The founder decides
 ```
 
-## Report structure (judgment points)
+The language model (DeepSeek) reads the idea, extracts candidate facts and writes the paragraphs. **Code decides what is kept.**
 
-| # | Judgment point | Evidence from | Enough evidence | If missing |
+## 2. Report structure (judgment points)
+
+| # | Judgment point | Evidence from | Counts as enough evidence | If missing, the report says |
 | --- | --- | --- | --- | --- |
 | JP1 | How big is the market, and is it growing? | Knowledge base | ≥1 official statistic or industry report | "No data found for this market segment" |
-| JP2 | Which policies and regulations apply? | Knowledge base | Original government text, with date | "No relevant regulation found; please consult a professional" |
+| JP2 | Which policies and regulations apply? | Knowledge base | Original government text, with its date | "No relevant regulation found; please consult a professional" |
 | JP3 | Any government grants or support? | Knowledge base | Original official text | "No relevant grant found" |
-| JP4 | Who are the competitors? | Competitor research | ≥3 competitors from official websites | "Only n found; list may be incomplete" |
+| JP4 | Who are the competitors? | Competitor research | ≥3 competitors confirmed on their official sites | "Only n found; list may be incomplete" |
 | JP5 | How do competitors charge? | Competitor research | Official prices from ≥3 competitors | "Pricing not publicly available" |
-| Summary | Signals, risks, gaps, what the founder must validate | JP1–JP5 | No go / no-go verdict | |
+| Summary | Signals, risks, gaps, what the founder must validate | JP1–JP5 | **No go / no-go verdict** | |
 
-## Project layout
+## 3. Test results (PR04, In-vitro, 8 Nov 2026)
 
-| Folder | What | Built by |
+Test sets written by Sasitheran Ramamoorthy; runs on the integrated system. Raw files: [`eval/pr04/runs/`](eval/pr04/runs/).
+
+**Knowledge base: 50 questions asked directly to the RAG module**
+
+| Measure | Result |
+| --- | --- |
+| Retrieval returned an expected document (hit@6) | 49/50 (98%) |
+| Answer cites an expected document | 43/50 (86%) |
+| Answered with at least one verified claim | 46/50 (92%); the other 4 said "not found" instead of guessing |
+| Claims removed by the quote gate | 16 of 213 proposed |
+| Cited-document precision / recall / F1 | 0.75 / 0.72 / 0.74 |
+| Fabricated sources | 0 (a quote not found in its source is never kept) |
+
+**Founder reports: scenarios TC01–TC07 (fictional ideas written by the team)**
+
+| Measure | Result |
+| --- | --- |
+| Judgment points with enough evidence | 34/35 (97%); TC06 pricing partial, flagged in the report |
+| Competitor-table values that passed the quote check | 147/168 (88%) |
+| Pricing details filled, all from official sites | 124/168 (74%); 0 third-party prices |
+| References per report | 17–26 |
+| Time per report | 98–174 seconds |
+| Ceased grants flagged | TC04 states that EDG and PSG ceased on 29 Sep 2026 |
+
+**What these numbers prove, and what they do not.** They show that answers are traceable to admitted sources and that nothing is fabricated. They do not show that every answer is complete or that the report helps a real founder decide. Real-founder tests (TC08–TC10, In-vivo) are run separately.
+
+**Known limits.** JP1 can cite national digital-economy data when no sector-specific figure exists, while still marked "enough". The knowledge base has no Ministry of Manpower employment law. Retrieval has no reranker (retrieval precision 0.51); this is the next step, to be tested on new questions rather than tuned on these 50.
+
+## 4. Governance
+
+- **Admission gate (PR02):** no document enters the knowledge base without issuer, date, official URL and judgment-point tag, and a human admit decision. Four audit runs and the final registry check are in [`eval/pr02-km-gate/`](eval/pr02-km-gate/). Ceased schemes (EDG, PSG) are admitted as history only and labelled as ceased in every citation.
+- **Public sources only:** the system reads public web pages and admitted public documents. The founder's idea sentence is sent to the language model and search APIs to run the research; nothing else about the founder is collected. API keys stay in a local `keys.env` that is never committed.
+- **The founder decides:** the verdict filter removes build/invest/stop wording, and every report states that the decision is the founder's.
+
+## 5. Who built what
+
+| Part | Folder | Owner |
 | --- | --- | --- |
-| `web/` | Website: one-sentence input, progress, report page, exports | Li Yisha |
-| `server/` | API: idea reading, competitor research module, evidence gates, report writing | Li Yisha |
-| `rag-service/` | Knowledge base service (FastAPI + Chroma), `data/register.csv` admission register | Xu Zihan; documents and register from Seah Yee Hong's KM gate |
-| `eval/pr04/` | 50 RAG questions and 10 founder scenarios, runners and workbooks | test sets by Sasitheran Ramamoorthy |
-| `eval/batch-*` | Competitor research test runs (Gate 2) | Li Yisha |
-| `docs/`, `RUNNING.md` | RAG API contract, how to run everything | |
+| System design and build (website + server), RAG and search-API integration, test runs | `web/`, `server/`, `eval/pr04/` runners | Li Yisha |
+| Judgment points JP1–JP5 and evidence bars | report structure above | Chng Hui Mei |
+| Document discovery, audit and admission (KM gate) | `eval/pr02-km-gate/`, `rag-service/data/register.csv` | Seah Yee Hong |
+| Knowledge-base service (FastAPI + Chroma, BGE embeddings) | `rag-service/` | Xu Zihan |
+| Test sets: 50 RAG questions, 10 founder scenarios | `eval/pr04/` | Sasitheran Ramamoorthy |
 
-Judgment points JP1–JP5 come from Chng Hui Mei's judgment-point table. MSI5002 Gate 3 team project, National University of Singapore.
+## 6. Run it
 
-## Run it
-
-See [`RUNNING.md`](RUNNING.md). Quickest: `bash run-all-tests.sh` (knowledge base + PR04 tests), then `server: npm run dev` and `web: npm install && npm run dev`, open http://localhost:5173.
-
----
-
-## Appendix · The competitor research module (Gate 2 version)
-
-*The section below describes Capsight before Gate 3, when competitor research was the whole product. It is now the module behind JP4 and JP5.*
-
-
-> 吃下一颗，就看清局面。 / Take one. See the whole field.
-
-[English](#english) · [中文](#中文)
-
----
-
-### English
-
-Capsight is a free AI research assistant for **SaaS competitor research**. Ask one question in Chinese or English and it finds the competitors, collects their official pages and other public sources, checks every fact against its source page, and returns a table you can export to CSV.
-
-**Two ways to ask**
-- **You don't know your competitors yet.** Describe your product (e.g. "We build online collaborative docs, find our competitors"). Capsight lists the competitors, each with a short introduction, country/region, company size and funding.
-- **You know who they are.** Name them (e.g. "Compare Asana, Monday.com and Trello pricing"). Capsight looks up the overview, region, features, pricing, social accounts and recent news.
-- A "find competitors" result has a one-click button to look up the details of the competitors it found. You don't have to start over.
-
-**Pricing in a fixed six-part template:** plans and prices, pricing unit, billing, extra costs, free tier and trial, current offer.
-
-**Every value has a source.** A value is shown only if the program finds its quoted text on the source page; otherwise the cell reads "暂无公开信息" (no public information). The official site of each company has to be confirmed by search results, Google's knowledge panel, Wikidata or the site itself. Directory, download, review and news sites are never treated as official. If a vendor publishes no price on its own site, Capsight may use a third-party pricing page updated within the last 12 months, and always labels it as third-party with that date.
-
-### How it works
-
-Question → intent (find competitors / named competitors) → official site → collect pages → extract a value and its exact quote → code checks the quote is on the page → re-query a failed value at most twice → table + CSV.
-
-The language model ([DeepSeek](https://www.deepseek.com/)) reads and proposes; code decides what is kept. Search uses Serper (Google) and Bocha (Chinese web), plus Wikidata and Jina Reader for pages that load prices with JavaScript.
-
-### Evaluation
-
-The test sets, results and the proof bar (thresholds dated before each test) are in [`eval/`](eval/).
-
-| Test | Version | Result |
-| --- | --- | --- |
-| Batch A, 10 questions, 19 Oct 2026 | v1 | Official site correct for 17 of 31 companies |
-| Batch B, same 10 questions, 25 Oct 2026 | v2.3 | Official site correct for 32 of 33; pricing template 3.95 of 6 slots filled per company |
-| Batch C, 48 products in 8 SaaS scenarios, 25 Oct 2026 | v2.4 | Intent branch right in 64 of 64 questions; official site right in 68 of 72 look-ups, no look-alike sites |
-
-Known gaps: pricing for several Chinese collaboration suites (e.g. 钉钉, 小鱼易连) is often not found, and some fixes in v2.4 and v2.5 are covered by unit tests but not yet re-run on real questions.
-
-### Project layout
-
-- `web/`: website front end (Vite + React + TypeScript).
-- `server/`: API server (Node.js + TypeScript, no third-party dependencies): fetching, verification and accounts.
-- `eval/`: test sets, batch results, proof bar and design notes.
-
-### Quick start
-
-Requires Node.js 22.18 or later.
+Requires Node.js 22.18+ and Python 3.10+. API keys (DeepSeek, Serper, Jina) go in `server/keys.env`. Full steps: [`RUNNING.md`](RUNNING.md).
 
 ```bash
-# Put your API keys in server/keys.env first (see server/README.md), then:
-cd server && npm run dev                        # API at http://localhost:8787
-cd web && npm install && npm run dev            # website at http://localhost:5173 (/api is proxied to the server)
+# 1. Knowledge base (first run builds the index from the 40 admitted PDFs in rag-service/data/)
+cd rag-service && python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt && uvicorn main:app --port 8000
 
-# Share with friends for testing: one command creates a public link (needs: brew install cloudflared)
-bash share.sh
+# 2. Server and website
+cd server && npm start                     # http://localhost:8787
+cd web && npm install && npm run dev       # http://localhost:5173
 
-# Offline demo with built-in sample data
-cd web && VITE_API_BASE=demo npm run dev
-
-# Run the automated tests
+# 3. Automated tests (68 tests of the evidence gates, RAG adapter and report pipeline)
 cd server && npm test
+
+# 4. PR04 test sets
+bash eval/pr04/run-pr04.sh rag50
+bash eval/pr04/run-pr04.sh founder
 ```
 
-Deployment and the list of API keys are in `server/README.md`.
+The PDFs are not stored in this repository; each row of `rag-service/data/register.csv` links to the official source.
 
-### Credits
+## 7. Repository map
 
-Designed by LI YISHA (yisa): product positioning, workflow, intent branches, pricing template, front-end design and interaction, brand, test sets and evaluation. Code written with AI assistance to that design. Built as a course project for MSI5002, National University of Singapore.
+| Path | What |
+| --- | --- |
+| `web/` | Website: one-sentence input, progress, report page, CSV/Markdown export (Vite + React + TypeScript) |
+| `server/` | API: idea reading, competitor research module, evidence gates, report writing (Node.js + TypeScript) |
+| `rag-service/` | Knowledge-base service and the admission register |
+| `eval/pr04/` | PR04 test sets, runners, workbooks and run results |
+| `eval/pr02-km-gate/` | PR02 KM gate audit runs and registry check |
+| `eval/batch-*` | Competitor-research test batches from Gate 2 (before integration) |
+| `docs/RAG-API.md` | The contract between the server and the knowledge base |
 
----
-
-### 中文
-
-免费的 AI 调研助手：一句话提问 → 多源抓取（官网 / 相关网页 / SEO / 新闻 / 社媒）→ 事实校验 → AI 自检重查 → 字段整理 → 导出 CSV。
-
-定位：**SaaS 竞品调研**（这一版先把它跑通，其他调研场景以后再做）。
-- 不知道竞品：描述你的产品，列出竞品清单和公司介绍。
-- 知道竞品：点名就查公司介绍、地区、功能、定价（6 栏模板：套餐与单价 / 计价单位 / 计费方式 / 附加成本 / 免费策略 / 当前优惠）、社媒和最新动态。
-- 每条信息都要能在原网页里找到引用，否则写「暂无公开信息」；官网读不到价格时才用 12 个月内的第三方定价页，并标注出来。
-
-### 目录
-
-- `web/`：网站前端（Vite + React + TypeScript）。
-- `server/`：后端 API（Node.js + TypeScript，无第三方依赖），负责真实抓取、校验和账号。
-- `eval/`：测试集、每轮测试结果、证明标准和设计记录。
-
-### 快速开始
-
-```bash
-# 先在 server/keys.env 填好 Key，然后：
-cd server && npm run dev                        # 后端 http://localhost:8787
-cd web && npm install && npm run dev            # 前端 http://localhost:5173（/api 自动转发到后端）
-
-# 给同学用：一条命令，生成公网链接（需要 brew install cloudflared）
-bash share.sh
-
-# 只想看离线演示（内置示例数据）
-cd web && VITE_API_BASE=demo npm run dev
-```
-
-部署和 Key 清单见 `server/README.md`。
-
----
-
-© 2026 yisa. All rights reserved.
+The competitor research module started as Li Yisha's Gate 2 project (repository `capsight`); in this system it is the module behind JP4 and JP5.

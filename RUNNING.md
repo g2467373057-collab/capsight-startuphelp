@@ -1,4 +1,4 @@
-# Running Capsight with the knowledge base and the PR04 tests
+# Running Capsight-StartupHelp with the knowledge base and the PR04 tests
 
 **Quickest:** `bash run-all-tests.sh` does steps 1 and 3 in one go (keys copied from your earlier Capsight folder if missing).
 
@@ -46,12 +46,14 @@ python3 eval/pr04/score_rag50.py eval/pr04/runs/<rag50 folder>/PR04_50_RAG_Quest
 
 Each run folder holds `results.json/.csv` (or `TC0x.md` reports), `summary.md`, and a filled copy of the PR04 workbook.
 
-What is automatic and what is not:
+What is measured and by whom:
 
-| | automatic | by a person |
+| | measured by the system | checked by a person |
 |---|---|---|
-| RAG 50 | hit@k, answer cites expected document, claims dropped by the quote gate, AI pre-score (suggestion only) | Acceptable / Partial / Reject per question (F1); override rate vs the AI pre-score |
-| Founder TC01–07 | report, references, JP status table | Good / Partly / Wrong per JP; claim spot-checks (F2, F3) |
-| Friends TC08–10 | — | the friend runs it on the website and rates it 1–5 (F4) |
+| RAG 50 | hit@k, answer cites an expected document, answered with a verified claim, claims dropped by the quote gate, cited-document F1 | Sasitheran confirms the reported numbers against the run files and checks 10 random quotes against the original pages (0 fabricated) |
+| Founder TC01–07 | report, references, judgment-point coverage, competitor values passing the quote check | same number check |
+| Friends TC08–10 | — | a real founder runs their own idea on the website and rates "helps me decide" 1–5 (F4) |
+
+The AI pre-score column in the RAG workbook is a suggestion only and is not reported as a result.
 
 All runs are In-vitro (team-written questions and fictional ideas) except TC08–10.
