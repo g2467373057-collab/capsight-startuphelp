@@ -79,7 +79,7 @@ Test sets written by Sasitheran Ramamoorthy; runs on the integrated system. Raw 
 | Time per report | 98–174 seconds |
 | Ceased grants flagged | TC04 states that EDG and PSG ceased on 29 Sep 2026 |
 
-**What these numbers prove, and what they do not.** They show that answers are traceable to admitted sources and that nothing is fabricated. They do not show that every answer is complete or that the report helps a real founder decide. Real-founder tests (TC08–TC10, In-vivo) are run separately.
+**What these numbers prove, and what they do not.** They show that answers are traceable to admitted sources and that nothing is fabricated. They do not show that every answer is complete or that the report helps a real founder decide. Real-founder tests (TC08–TC10, In-vivo) are planned and were not run before Gate 3, so falsifier F4 is still open.
 
 **Run note.** The 8 Nov founder run (TC01–TC07) ran with the Wikidata cross-check for official sites switched off by mistake (logged as ISS-05; the setting is on in this repository).
 
