@@ -1,0 +1,1016 @@
+{
+ "runId": "TC03_2026-11-07T18-44-41",
+ "kind": "report",
+ "idea": {
+  "idea": "I want subscription software for independent pet grooming shops in Singapore to manage grooming records, training records and customer consent. Please research the market, applicable rules, grants, competitors and prices. Clearly say what you cannot verify.",
+  "product": "Pet grooming shop management software",
+  "customer": "Independent pet grooming shops",
+  "sector": "Pet grooming",
+  "geography": "Singapore"
+ },
+ "narrative": {
+  "sections": [
+   {
+    "jp": "jp1",
+    "heading": "Market size and growth",
+    "text": "The evidence available on market size is macro-level and does not describe the pet grooming sector itself. Singapore's services exports grew 2.3 per cent year-on-year in the fourth quarter of 2025 and 3.5 per cent for the full year, slowing from 13.2 per cent in 2024 [1], while the accommodation sector grew 6.6 per cent in the fourth quarter and 3.1 per cent for the full year, easing from 5.0 per cent [2]. These figures suggest a broadly expanding but decelerating services economy, which is at best a background signal for demand. Public sources found so far do not give a count of independent pet grooming shops in Singapore, their revenue, or software spend, so the actual addressable market for this product cannot be sized from the evidence provided."
+   },
+   {
+    "jp": "jp2",
+    "heading": "Policy and regulation",
+    "text": "The regulatory picture that can be verified is about data protection rather than grooming-specific licensing. The Personal Data Protection Act 2012 governs how organisations collect, use and disclose individuals' personal data [3], and an organisation collecting personal data from outside Singapore for its own purposes must comply with all Data Protection Provisions from the time the data enters Singapore [4]. For a product holding grooming records, training records and customer consent, this points to consent capture and data-handling compliance as core product requirements rather than optional features. The evidence does not cover any grooming-specific licensing, animal welfare or record-keeping rules, so whether shops face sector-specific obligations beyond PDPA cannot be confirmed here."
+   },
+   {
+    "jp": "jp3",
+    "heading": "Government grants and support",
+    "text": "The grant landscape has recently shifted in a way that matters for how shops might pay for software. The Productivity Solutions Grant ceased on 29 September 2026 [5], and from 30 September onwards Singapore companies apply for business grant support under the EDGE Grant [5], which covers 8 business areas and over 150 activities [6]. For context, the PSG had offered up to 50% of eligible costs for local SMEs, with up to $30,000 [5]. The evidence does not say whether software subscriptions such as this one fall within the EDGE Grant's covered activities, so it is not possible to confirm that a shop could offset the cost through the scheme."
+   },
+   {
+    "jp": "jp4",
+    "heading": "Competitive landscape",
+    "text": "The competitive field is already populated by established, multi-vertical pet-care platforms. MoeGo is an all-in-one pet care business software for grooming salons, mobile groomers, boarding, daycare and retail, covering booking, scheduling, payments and marketing [7][8]. Gingr serves boarding kennels, doggy daycare, grooming salons, training and dog park businesses with bookings, payments, PreCheck and report cards [9][10], while DaySmart Pet covers scheduling, reminders, payments, marketing and reporting for grooming shops, mobile groomers, kennels, daycare and boarding [11][12][13]. Pawfinity is US-made cloud software for grooming salons, mobile grooming, kennels, daycare, training and sitting [14][15][16]. All four are broad international platforms rather than Singapore-specific tools, and the evidence does not show any of them offering Singapore-localised consent or training-record handling, which is the gap this idea could occupy."
+   },
+   {
+    "jp": "jp5",
+    "heading": "Competitor pricing",
+    "text": "Published pricing shows the incumbents sit at mid-to-premium monthly price points. MoeGo's mobile grooming tiers run Basic $49, Growth $99, Ultimate $159 and Enterprise custom, with boarding/daycare tiers priced on demo [17]. Gingr lists Spa at $109/month ($100 annual), Play at $169/month ($142 annual) and Stay at $179/month ($154 annual, including Integrated Payments), with Enterprise on contact [18][19]. DaySmart Pet runs Basic $29, Deluxe $69, Deluxe Growth $149 and Premium $199, with Premium Growth on request [20][21], and Pawfinity charges $100/month billed annually ($110 monthly) for Royal, $55/month annually ($60 monthly) for Groom & Train and the same for Stay & Play [22][14]. The lowest entry point visible is DaySmart's $29 Basic tier [20], which suggests room for a lower-priced, Singapore-focused subscription, though the evidence does not show what each tier includes or how local demand responds to these prices."
+   }
+  ],
+  "conclusion": "This is a crowded market at the platform level, with four established international players already covering grooming, boarding and training workflows [7][9][11][14], but none of the evidence shows a Singapore-localised offer built around consent and training records. The regulatory load that can be verified is data protection under the PDPA, including obligations when personal data is brought into Singapore [3][4], which is a manageable but real compliance requirement rather than a sector-specific licensing burden. Support exists in the form of the EDGE Grant, which replaced the PSG from 30 September 2026 [5][6], though it is unconfirmed whether software subscriptions qualify. Pricing room appears to sit at the low end, since the cheapest visible tier is $29/month against incumbents mostly at $49–$199 [17][20][22], and the biggest opportunity is a low-cost, PDPA-aligned tool for independent shops, while the biggest risk is that international platforms add localisation faster than a new entrant gains traction. The first thing to validate is whether independent Singapore shops will pay for consent and training-record features that the incumbents do not visibly advertise, and at what price point.",
+  "references": [
+   {
+    "n": 1,
+    "title": "Economic Survey of Singapore 2025",
+    "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+    "kind": "web",
+    "issuer": "Ministry of Trade and Industry",
+    "date": "2026-02-10",
+    "page": 44
+   },
+   {
+    "n": 2,
+    "title": "Economic Survey of Singapore 2025",
+    "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+    "kind": "web",
+    "issuer": "Ministry of Trade and Industry",
+    "date": "2026-02-10",
+    "page": 74
+   },
+   {
+    "n": 3,
+    "title": "Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/advisory-guidelines-on-the-use-of-personal-data-in-ai-recommendation-and-decision-systems.pdf",
+    "kind": "web",
+    "issuer": "PDPC",
+    "date": "2024-03-01",
+    "page": 3
+   },
+   {
+    "n": 4,
+    "title": "Advisory Guidelines on Key Concepts in the PDPA",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+    "kind": "web",
+    "issuer": "PDPC",
+    "date": "2026-04-29",
+    "page": 36
+   },
+   {
+    "n": 5,
+    "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-29",
+    "page": 1
+   },
+   {
+    "n": 6,
+    "title": "EDGE Grant (web page captured to PDF)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-30",
+    "page": 1
+   },
+   {
+    "n": 7,
+    "title": "Website · All-in-One Pet Business Software | MoeGo",
+    "url": "https://www.moego.pet",
+    "kind": "site"
+   },
+   {
+    "n": 8,
+    "title": "Ranks #3 for “what is MoeGo”",
+    "url": "https://apps.apple.com/us/app/moego-pet-business-suite/id1561621817",
+    "kind": "seo"
+   },
+   {
+    "n": 9,
+    "title": "Website · Pet Business Software for Boarding & Daycare | Gingr",
+    "url": "https://www.gingrapp.com",
+    "kind": "site"
+   },
+   {
+    "n": 10,
+    "title": "Website · Learn More About Gingr",
+    "url": "https://www.gingrapp.com/about-us",
+    "kind": "site"
+   },
+   {
+    "n": 11,
+    "title": "Website · Pet Business Software for Groomers | DaySmart Pet",
+    "url": "https://www.daysmart.com/pet/",
+    "kind": "site"
+   },
+   {
+    "n": 12,
+    "title": "Website · About Us – Daysmart",
+    "url": "https://www.daysmart.com/about/",
+    "kind": "site"
+   },
+   {
+    "n": 13,
+    "title": "Website · Support Center",
+    "url": "https://www.daysmart.com/pet/support-center/",
+    "kind": "site"
+   },
+   {
+    "n": 14,
+    "title": "Website · Pawfinity Pet Grooming Software, Kennel Software, & POS - FR",
+    "url": "https://www.pawfinity.com",
+    "kind": "site"
+   },
+   {
+    "n": 15,
+    "title": "Website · About - Pawfinity",
+    "url": "https://www.pawfinity.com/about/",
+    "kind": "site"
+   },
+   {
+    "n": 16,
+    "title": "Website · Free Data Import - Easily Import Client And Pet Information ",
+    "url": "https://www.pawfinity.com/features/free-data-import-for-client-and-pet-information/",
+    "kind": "site"
+   },
+   {
+    "n": 17,
+    "title": "Website · Pet Grooming Software Pricing & Plans | MoeGo",
+    "url": "https://www.moego.pet/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 18,
+    "title": "Website · Pricing for Pet Care Software Solutions | Gingr",
+    "url": "https://www.gingrapp.com/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 19,
+    "title": "Website · Contact Us - Gingr Dog Boarding and Day Care Software",
+    "url": "https://www.gingrapp.com/contact",
+    "kind": "site"
+   },
+   {
+    "n": 20,
+    "title": "Website · Pet Pricing",
+    "url": "https://www.daysmart.com/pet/pricing/",
+    "kind": "site"
+   },
+   {
+    "n": 21,
+    "title": "Ranks #3 for “DaySmart Pet pricing plans per user per month billed annually free plan”",
+    "url": "https://help.daysmartpet.com/en/articles/16551547-pet-cloud-subscription-plans-features",
+    "kind": "seo"
+   },
+   {
+    "n": 22,
+    "title": "Website · Pawfinity Software Pricing & FREE TRIAL",
+    "url": "https://www.pawfinity.com/pricing",
+    "kind": "site"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "jp": "jp1",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "Singapore's services exports grew by 2.3 per cent year-on-year in the fourth quarter of 2025.",
+     "quote": "Services exports grew by 2.3 per cent year-on-year in the fourth quarter, extending the 2.4 per cent growth in the preceding quarter.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 44
+    },
+    {
+     "text": "For the full year of 2025, Singapore's services exports expanded by 3.5 per cent, slowing from the 13.2 per cent increase in 2024.",
+     "quote": "For the full year of 2025, services exports expanded by 3.5 per cent, slowing from the 13.2 per cent increase in 2024.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 44
+    },
+    {
+     "text": "Singapore's accommodation sector grew by 6.6 per cent year-on-year in the fourth quarter of 2025.",
+     "quote": "The accommodation sector grew by 6.6 per cent year-on-year in the fourth quarter of 2025, improving from the 4.6 per cent expansion in the previous quarter.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 74
+    },
+    {
+     "text": "For the full year of 2025, Singapore's accommodation sector expanded by 3.1 per cent, easing from the 5.0 per cent growth in 2024.",
+     "quote": "For the whole of 2025, the sector expanded by 3.1 per cent, easing from the 5.0 per cent growth in 2024.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 74
+    }
+   ]
+  },
+  {
+   "jp": "jp2",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "Singapore's Personal Data Protection Act 2012 governs the collection, use and disclosure of individuals' personal data by organisations.",
+     "quote": "The Personal Data Protection Act 2012 ( the “PDPA” ) establishes a general data protection law in Singapore that governs the collection, use and disclosure of an individual’s personal data by organisations",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/advisory-guidelines-on-the-use-of-personal-data-in-ai-recommendation-and-decision-systems.pdf",
+       "title": "Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2024-03-01",
+     "page": 3
+    },
+    {
+     "text": "An organisation in Singapore collecting personal data from outside Singapore for its own purposes must comply with all Data Protection Provisions from the time it brings the data into Singapore.",
+     "quote": "the organisation is required to comply with all Data Protection Provisions from the time it seeks to collect the personal data (if such collection occurs in Singapore) or from the time it brings the personal data into Singapore",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+       "title": "Advisory Guidelines on Key Concepts in the PDPA"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2026-04-29",
+     "page": 36
+    }
+   ]
+  },
+  {
+   "jp": "jp3",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The Productivity Solutions Grant (PSG) ceased on 29 September 2026.",
+     "quote": "EDG, MRA and PSG ceased on 29 September 2026.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+       "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "From 30 September onwards, Singapore companies apply for business grant support under the EDGE Grant.",
+     "quote": "From 30 September onwards, apply for business grant support under the EDGE Grant.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+       "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "The EDGE Grant covers 8 business areas and over 150 activities.",
+     "quote": "The EDGE Grant covers 8 business areas, and over 150 activities to help your business grow.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+       "title": "EDGE Grant (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-30",
+     "page": 1
+    },
+    {
+     "text": "The PSG offered up to 50% of eligible costs for local SMEs, with up to $30,000.",
+     "quote": "Up to 50% of eligible costs for local SMEs - Receive up to $30,000 and improve your business productivity.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+       "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    }
+   ]
+  },
+  {
+   "jp": "jp4",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "MoeGo: MoeGo is an all-in-one pet care business software for grooming salons, mobile groomers, boarding, daycare and retail, covering booking, scheduling, payments and marketing.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.moego.pet",
+       "title": "Website · All-in-One Pet Business Software | MoeGo"
+      },
+      {
+       "kind": "seo",
+       "url": "https://apps.apple.com/us/app/moego-pet-business-suite/id1561621817",
+       "title": "Ranks #3 for “what is MoeGo”"
+      }
+     ]
+    },
+    {
+     "text": "Gingr: Pet-care management software for boarding kennels, doggy daycare, grooming salons, training and dog park businesses, covering bookings, payments, PreCheck and report cards.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.gingrapp.com",
+       "title": "Website · Pet Business Software for Boarding & Daycare | Gingr"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.gingrapp.com/about-us",
+       "title": "Website · Learn More About Gingr"
+      }
+     ]
+    },
+    {
+     "text": "DaySmart Pet: DaySmart Pet is pet business management software for grooming shops, mobile groomers, kennels, daycare and boarding businesses, covering scheduling, reminders, payments, marketing and reporting.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.daysmart.com/pet/",
+       "title": "Website · Pet Business Software for Groomers | DaySmart Pet"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.daysmart.com/about/",
+       "title": "Website · About Us – Daysmart"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.daysmart.com/pet/support-center/",
+       "title": "Website · Support Center"
+      }
+     ]
+    },
+    {
+     "text": "Pawfinity: US-made cloud business management software for pet service businesses, covering grooming salons, mobile grooming, kennels, dog daycare, training, sitting and related specialties.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.pawfinity.com",
+       "title": "Website · Pawfinity Pet Grooming Software, Kennel Software, & POS - FR"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.pawfinity.com/about/",
+       "title": "Website · About - Pawfinity"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.pawfinity.com/features/free-data-import-for-client-and-pet-information/",
+       "title": "Website · Free Data Import - Easily Import Client And Pet Information "
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "jp": "jp5",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "MoeGo: Mobile grooming: Basic $49 / Growth $99 / Ultimate $159 / Enterprise Custom；Boarding/Daycare: Growth / Ultimate / Enterprise（均 Book a demo）",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.moego.pet/pricing",
+       "title": "Website · Pet Grooming Software Pricing & Plans | MoeGo"
+      }
+     ]
+    },
+    {
+     "text": "Gingr: Spa $109/month（年付 $100）/ Play $169/month（年付 $142）/ Stay $179/month（年付 $154，含 Integrated Payments）/ Enterprise Contact Us",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.gingrapp.com/pricing",
+       "title": "Website · Pricing for Pet Care Software Solutions | Gingr"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.gingrapp.com/contact",
+       "title": "Website · Contact Us - Gingr Dog Boarding and Day Care Software"
+      }
+     ]
+    },
+    {
+     "text": "DaySmart Pet: Basic $29 / Deluxe $69 / Deluxe Growth $149 / Premium $199 / Premium Growth Contact for pricing",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.daysmart.com/pet/pricing/",
+       "title": "Website · Pet Pricing"
+      },
+      {
+       "kind": "seo",
+       "url": "https://help.daysmartpet.com/en/articles/16551547-pet-cloud-subscription-plans-features",
+       "title": "Ranks #3 for “DaySmart Pet pricing plans per user per month billed annually free plan”"
+      }
+     ]
+    },
+    {
+     "text": "Pawfinity: Royal Package $100/month billed annually ($110 monthly); Groom & Train $55/month annually ($60 monthly); Stay & Play $55/month annually ($60 monthly)",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.pawfinity.com/pricing",
+       "title": "Website · Pawfinity Software Pricing & FREE TRIAL"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.pawfinity.com",
+       "title": "Website · Pawfinity Pet Grooming Software, Kennel Software, & POS - FR"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "favorable": [
+   "Singapore's services exports continued to grow in 2025, indicating a generally expanding services economy. [JP1]",
+   "The accommodation sector's growth suggests continued consumer spending on service experiences. [JP1]",
+   "The EDGE Grant provides business grant support covering many activities that could fund software adoption. [JP3]",
+   "Several established pet-care software products exist, showing the category is commercially viable. [JP4]"
+  ],
+  "risks": [
+   "Services export growth slowed sharply in 2025 versus 2024, signalling softer momentum. [JP1]",
+   "Accommodation sector growth also eased in 2025, pointing to cooling service-sector demand. [JP1]",
+   "The PSG grant that offered up to 50% cost support to SMEs has ceased, removing a funding channel. [JP3]",
+   "Multiple established international competitors already serve grooming businesses with broad feature sets. [JP4]"
+  ],
+  "gaps": [],
+  "validate": [
+   "Whether target customers really have this pain (needs customer interviews)",
+   "Whether customers will pay your price (needs customer or transaction evidence)",
+   "Check whether the EDGE Grant covers software purchase or subscription costs relevant to grooming shops.",
+   "Compare competitor pricing tiers (e.g., $29–$199/month) against what Singapore grooming shops currently pay.",
+   "Confirm how PDPA obligations would apply to customer and pet data stored in your software."
+  ]
+ },
+ "competitors": {
+  "runId": "TC03_2026-11-07T18-44-41_c",
+  "intent": {
+   "type": "own",
+   "query": "We are building Pet grooming shop management software for Independent pet grooming shops in Singapore. Find our competitors",
+   "competitors": [
+    "MoeGo",
+    "Gingr",
+    "DaySmart Pet",
+    "Pawfinity"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding",
+    "pricing"
+   ],
+   "topic": "宠物美容店管理软件"
+  },
+  "rows": [
+   {
+    "competitor": "MoeGo",
+    "domain": "moego.pet",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "MoeGo",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.moego.pet",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "MoeGo is an all-in-one pet care business software for grooming salons, mobile groomers, boarding, daycare and retail, covering booking, scheduling, payments and marketing.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.moego.pet",
+        "title": "Website · All-in-One Pet Business Software | MoeGo"
+       },
+       {
+        "kind": "seo",
+        "url": "https://apps.apple.com/us/app/moego-pet-business-suite/id1561621817",
+        "title": "Ranks #3 for “what is MoeGo”"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "美国 · 洛杉矶（加州），主要服务美国宠物护理商家",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://www.linkedin.com/company/moego",
+        "title": "Ranks #2 for “MoeGo company headquarters”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.crunchbase.com/organization/moego",
+        "title": "Ranks #3 for “MoeGo company headquarters”"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "51–200 employees (LinkedIn, 2026)",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://www.linkedin.com/company/moego",
+        "title": "Ranks #1 for “MoeGo number of employees company size”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://pitchbook.com/profiles/company/489908-35",
+        "title": "Ranks #2 for “MoeGo number of employees company size”"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "2024 年 3 月 A 轮 2400 万美元，Base10 Partners、Digitalis Ventures 等投资",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://marketingreport.one/news/pet-grooming-software-moego-secures-24m-series-a-funding-to-revolutionize-pet-care-economy.html",
+        "title": "Ranks #3 for “MoeGo funding round raised investors valuation”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://tracxn.com/d/companies/moego/__KHSyZaiRnmBVNsN3RhyF0tTjS-VzeHaTbKjHNlzeRWM/funding-and-investors",
+        "title": "Ranks #2 for “MoeGo funding round raised investors valuation”"
+       }
+      ],
+      "status": "verified"
+     },
+     "pricing": {
+      "value": "Mobile grooming: Basic $49 / Growth $99 / Ultimate $159 / Enterprise Custom；Boarding/Daycare: Growth / Ultimate / Enterprise（均 Book a demo）",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.moego.pet/pricing",
+        "title": "Website · Pet Grooming Software Pricing & Plans | MoeGo"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "按每辆移动美容车每月计费（per van），Basic 限 1 名成员",
+        "url": "https://www.moego.pet/pricing"
+       },
+       {
+        "label": "Billing",
+        "text": "价格以 USD / month 标示，未说明年付与月付差异",
+        "url": "https://www.moego.pet/pricing"
+       }
+      ],
+      "gaps": [
+       "Extra costs",
+       "Free tier & trial",
+       "Current offer"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Gingr",
+    "domain": "gingrapp.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Gingr",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Pet-care management software for boarding kennels, doggy daycare, grooming salons, training and dog park businesses, covering bookings, payments, PreCheck and report cards.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com",
+        "title": "Website · Pet Business Software for Boarding & Daycare | Gingr"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com/about-us",
+        "title": "Website · Learn More About Gingr"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "美国 · 亚特兰大（2 Ravinia Drive, Suite 500, Atlanta, GA 30346），面向全球宠物护理企业",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com/about-us",
+        "title": "Website · Learn More About Gingr"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "80 名全职美国员工（官网 About 页面）",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com/about-us",
+        "title": "Website · Learn More About Gingr"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "pricing": {
+      "value": "Spa $109/month（年付 $100）/ Play $169/month（年付 $142）/ Stay $179/month（年付 $154，含 Integrated Payments）/ Enterprise Contact Us",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com/pricing",
+        "title": "Website · Pricing for Pet Care Software Solutions | Gingr"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.gingrapp.com/contact",
+        "title": "Website · Contact Us - Gingr Dog Boarding and Day Care Software"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "按设施每月订阅，按业务类型（美容培训、日托、寄养）选择方案",
+        "url": "https://www.gingrapp.com/pricing"
+       },
+       {
+        "label": "Billing",
+        "text": "月付或年付；年付更便宜，Spa 省 9%（$108/yr）、Play 省 19%（$324/yr）、Stay 省 16%（$300/yr），美元计价",
+        "url": "https://www.gingrapp.com/pricing"
+       },
+       {
+        "label": "Extra costs",
+        "text": "Integrated Payment Processing、Employee Scheduling、2-Way SMS、Messaging Bundle；设置与数据导入服务费用视需求而定",
+        "url": "https://www.gingrapp.com/pricing"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "未提及免费方案；提供免费演示（Book a Demo / free demo access）",
+        "url": "https://www.gingrapp.com/contact"
+       },
+       {
+        "label": "Current offer",
+        "text": "年付折扣：Spa 省 9%（$108/yr）、Play 省 19%（$324/yr）、Stay 省 16%（$300/yr）",
+        "url": "https://www.gingrapp.com/pricing"
+       }
+      ],
+      "gaps": []
+     }
+    }
+   },
+   {
+    "competitor": "DaySmart Pet",
+    "domain": "daysmart.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "DaySmart Pet",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/pet/",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "DaySmart Pet is pet business management software for grooming shops, mobile groomers, kennels, daycare and boarding businesses, covering scheduling, reminders, payments, marketing and reporting.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/pet/",
+        "title": "Website · Pet Business Software for Groomers | DaySmart Pet"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/about/",
+        "title": "Website · About Us – Daysmart"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/pet/support-center/",
+        "title": "Website · Support Center"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "美国 · 密歇根州安娜堡（Ann Arbor, MI），服务全球小型企业客户",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://www.linkedin.com/company/daysmart",
+        "title": "Ranks #2 for “DaySmart Pet company headquarters”"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/blog/daysmart-software-celebrates-milestone-2018-and-20-years-of-fueling-small-business-growth/",
+        "title": "Website · DaySmart Software Celebrates Milestone 2018 and 20 Years of "
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "201–500 employees (LinkedIn, 2026); 80 employees in two U.S. offices in 2018",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://www.linkedin.com/company/daysmart",
+        "title": "Ranks #2 for “DaySmart Pet number of employees company size”"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/blog/daysmart-software-celebrates-milestone-2018-and-20-years-of-fueling-small-business-growth/",
+        "title": "Website · DaySmart Software Celebrates Milestone 2018 and 20 Years of "
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "2019 growth recapitalization with LLR Partners and Parthenon Capital; PitchBook reports $191M raised from LLR, Parthenon and Sixth Street",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://www.daysmart.com/blog/daysmart-software-completes-growth-recapitalization-with-llr-partners-and-parthenon-capital/",
+        "title": "Ranks #2 for “DaySmart Pet funding round raised investors valuation”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://pitchbook.com/profiles/company/128673-01",
+        "title": "Ranks #4 for “DaySmart Pet funding round raised investors valuation”"
+       }
+      ],
+      "status": "verified"
+     },
+     "pricing": {
+      "value": "Basic $29 / Deluxe $69 / Deluxe Growth $149 / Premium $199 / Premium Growth Contact for pricing",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.daysmart.com/pet/pricing/",
+        "title": "Website · Pet Pricing"
+       },
+       {
+        "kind": "seo",
+        "url": "https://help.daysmartpet.com/en/articles/16551547-pet-cloud-subscription-plans-features",
+        "title": "Ranks #3 for “DaySmart Pet pricing plans per user per month billed annually free plan”"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per month per business; Basic includes 1 user, Deluxe and Deluxe Growth 3 users, Premium 6 users, Premium Growth unlimited users",
+        "url": "https://www.daysmart.com/pet/pricing/"
+       },
+       {
+        "label": "Billing",
+        "text": "Monthly prices in USD; each plan is cheaper with DaySmart payments: Basic $29 vs $39, Deluxe $69 vs $89, Deluxe Growth $149 vs $169, Premium $199 vs $219",
+        "url": "https://www.daysmart.com/pet/pricing/"
+       },
+       {
+        "label": "Extra costs",
+        "text": "Website Builder is an add-on on all plans; extra users $9/mo each; additional text/email messages; boarding calendars $25/month each",
+        "url": "https://www.daysmart.com/pet/pricing/"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "14-day free trial; no free plan",
+        "url": "https://www.daysmart.com/pet/pricing/"
+       }
+      ],
+      "gaps": [
+       "Current offer"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Pawfinity",
+    "domain": "pawfinity.com",
+    "siteMethod": "search_domain",
+    "cells": {
+     "name": {
+      "value": "Pawfinity",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "US-made cloud business management software for pet service businesses, covering grooming salons, mobile grooming, kennels, dog daycare, training, sitting and related specialties.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com",
+        "title": "Website · Pawfinity Pet Grooming Software, Kennel Software, & POS - FR"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com/about/",
+        "title": "Website · About - Pawfinity"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com/features/free-data-import-for-client-and-pet-information/",
+        "title": "Website · Free Data Import - Easily Import Client And Pet Information "
+       }
+      ],
+      "status": "requeried"
+     },
+     "region": {
+      "value": "美国（创始人于南卡罗来纳州默特尔比奇创办宠物店起家），软件在美国开发与支持，用户遍布12个国家",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com/about",
+        "title": "Website · About - Pawfinity"
+       }
+      ],
+      "status": "requeried"
+     },
+     "size": {
+      "value": "2–5 employees (Startup MB directory); ZoomInfo lists 11–50 employees",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://www.startupmb.com/companies/pawfinity",
+        "title": "Third party · Startup MB — Mapping the Myrtle Beach Startup Ecosystem"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.zoominfo.com/c/pawfinity-co/398080980",
+        "title": "Ranks #1 for “Pawfinity number of employees company size”"
+       }
+      ],
+      "status": "requeried"
+     },
+     "funding": {
+      "value": "自筹/未融资：Pawfinity 为私人所有、自筹资金，未接受任何外部资本。",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com/about/",
+        "title": "Website · About - Pawfinity"
+       }
+      ],
+      "status": "requeried"
+     },
+     "pricing": {
+      "value": "Royal Package $100/month billed annually ($110 monthly); Groom & Train $55/month annually ($60 monthly); Stay & Play $55/month annually ($60 monthly)",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com/pricing",
+        "title": "Website · Pawfinity Software Pricing & FREE TRIAL"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.pawfinity.com",
+        "title": "Website · Pawfinity Pet Grooming Software, Kennel Software, & POS - FR"
+       }
+      ],
+      "status": "requeried",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Flat-rate per business subscription; unlimited clients, pets, appointments and inventory at no extra cost",
+        "url": "https://www.pawfinity.com/pricing"
+       },
+       {
+        "label": "Billing",
+        "text": "Monthly or annual billing; annual saves 10%. Prices in USD, EUR, CAD, GBP, AUD; non-USD monthly rates include a 2% exchange fee",
+        "url": "https://www.pawfinity.com/pricing"
+       },
+       {
+        "label": "Extra costs",
+        "text": "SMS $0.05 to $0.035 USD per outbound message by volume tier; Secure Document Storage from $5.00 USD base plus $0.80/GB; Precision Location $5.00 USD…",
+        "url": "https://www.pawfinity.com/pricing"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "7-day free trial, no credit card required; Royal Package includes up to 250 complimentary SMS credits monthly",
+        "url": "https://www.pawfinity.com/pricing"
+       },
+       {
+        "label": "Current offer",
+        "text": "Annual billing saves 10% versus monthly; no other discount stated",
+        "url": "https://www.pawfinity.com/pricing"
+       }
+      ],
+      "gaps": []
+     }
+    }
+   }
+  ],
+  "stats": {
+   "sources": 118,
+   "checked": 24,
+   "requeried": 5,
+   "passed": 23,
+   "dropped": 1,
+   "pricingSlots": {
+    "filled": 20,
+    "total": 24
+   },
+   "pricingThirdParty": 0
+  },
+  "finishedAt": "2026-11-07T18:49:30.679Z"
+ },
+ "ragConnected": true,
+ "finishedAt": "2026-11-07T18:49:47.264Z"
+}

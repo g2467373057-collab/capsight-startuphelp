@@ -1,0 +1,809 @@
+{
+ "runId": "TC06_2026-11-07T18-44-41",
+ "kind": "report",
+ "idea": {
+  "idea": "I want to build inventory software for independent minimarts in Singapore to track stock, expiry dates and reordering. Please research market, rules, grants, at least three relevant competitors and their prices. If fewer than three can be verified, explain the gap.",
+  "product": "Inventory software for minimarts",
+  "customer": "Independent minimarts",
+  "sector": "Retail software",
+  "geography": "Singapore"
+ },
+ "narrative": {
+  "sections": [
+   {
+    "jp": "jp1",
+    "heading": "Market size and growth",
+    "text": "The closest official signal for this idea is trade activity rather than minimart software spend: Singapore's wholesale trade sector grew 6.1 per cent across 2025, after 5.6 per cent in 2024, and accelerated to 9.9 per cent year-on-year in the fourth quarter of 2025 [1]. That tells us the distribution layer these shops buy from is expanding, which is a supportive backdrop for stock-tracking tools, but it is not a measure of demand for minimart software itself. The digital side is also growing, with the information and communications sector's real value added up 6.1% in 2025 against 5.0% GDP growth, and its GDP share rising from 5.9% to 6.3% [2]. Public sources found so far do not give a count of independent minimarts in Singapore or a dollar size for this software segment, so the addressable market still has to be sized from the ground up."
+   },
+   {
+    "jp": "jp2",
+    "heading": "Policy and regulation",
+    "text": "The regulatory load here looks light and mostly indirect. The Personal Data Protection Act 2012 is the general law governing how organisations collect, use and disclose personal data [3], which matters if the product stores supplier contacts, staff records or loyalty data. Notably, the PDPC's 2026 guidance recommends keeping an inventory of personal data, and says this can be done with spreadsheets or asset inventory software [4] — a mild tailwind, since it makes structured record-keeping a recognised compliance habit. Nothing in the evidence points to sector-specific licensing or food-safety rules that would apply to inventory software for minimarts, so the main obligation is sensible data handling rather than a heavy compliance programme."
+   },
+   {
+    "jp": "jp3",
+    "heading": "Government grants and support",
+    "text": "The grant picture changed recently and that matters for how a minimart would pay for this. The Productivity Solutions Grant previously covered up to 50% of eligible costs for local SMEs, capped at $30,000 [5], but PSG, EDG and MRA ceased on 29 September 2026, with applications from 30 September moving to the EDGE Grant [5]. The EDGE Grant, run by Enterprise Singapore, spans 8 business areas and over 150 activities including Automation & Digitalisation [6], which is the bucket this product would sit in. The catch is that large-scale digital transformation under EDGE is assessed case by case [7], so a small minimart purchase may not get the same automatic support the old PSG gave — worth confirming with the scheme before quoting subsidy-inclusive pricing."
+   },
+   {
+    "jp": "jp4",
+    "heading": "Competitive landscape",
+    "text": "The named competitors are mostly general inventory platforms rather than minimart specialists. Cin7 is cloud inventory management and small business ERP connecting sales channels, suppliers and warehouses for real-time stock visibility, aimed at product sellers and wholesalers [9][10]; Zoho Inventory targets small and growing businesses tracking stock, orders, warehouses and fulfilment [11][12]; and Unleashed serves manufacturers, wholesalers and distributors with real-time stock, purchasing, production and reporting [13][14]. None of the evidence describes expiry-date tracking or the reorder rhythms of a convenience shop, which is the specific job this idea addresses. One listed competitor, WhiteBox, is a technical interview prep platform [8] and is not a real comparable, so the verified relevant set is three, not four."
+   },
+   {
+    "jp": "jp5",
+    "heading": "Competitor pricing",
+    "text": "Only two of the four competitors have official prices in the evidence, and one of those is not a genuine comparable. WhiteBox lists Free $0/mo, Ultra Premium $21/mo (27% off from $29/mo) and DSA Premium with Mindsolve at $9/mo or $79/yr [8], but as an interview prep tool it says nothing about inventory software pricing. Pricing for Cin7 and Unleashed is not publicly available in the sources found, so the mid and upper range for this category cannot be verified from evidence."
+   }
+  ],
+  "conclusion": "This looks like a crowded general inventory-software market with a thin, specific opening at the low-price end for shops that care about expiry dates and simple reordering. The regulatory load is light — mainly PDPA data handling [3], with the PDPC's own guidance nudging businesses toward keeping data inventories [4] — and grant support exists but has just been reshuffled into the EDGE Grant, where digital transformation is assessed case by case [5][6][7]. Pricing room is clearest below Zoho's S$39 entry tier [15][16][17], since the other relevant competitors' prices are not publicly verifiable. The biggest opportunity is that none of the verified competitors is described as serving minimarts or expiry tracking [9][10][11][12][13][14]; the biggest risk is that the segment's size and willingness to pay are unproven, since no source gives a minimart count or segment value. The first thing to validate is how many independent minimarts exist and what they currently pay for stock control, followed by whether EDGE support applies to a purchase at their scale.",
+  "references": [
+   {
+    "n": 1,
+    "title": "Economic Survey of Singapore 2025",
+    "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+    "kind": "web",
+    "issuer": "Ministry of Trade and Industry",
+    "date": "2026-02-10",
+    "page": 70
+   },
+   {
+    "n": 2,
+    "title": "Singapore Digital Economy Report 2026",
+    "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+    "kind": "web",
+    "issuer": "IMDA",
+    "date": "2026-10-05",
+    "page": 7
+   },
+   {
+    "n": 3,
+    "title": "Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/advisory-guidelines-on-the-use-of-personal-data-in-ai-recommendation-and-decision-systems.pdf",
+    "kind": "web",
+    "issuer": "PDPC",
+    "date": "2024-03-01",
+    "page": 3
+   },
+   {
+    "n": 4,
+    "title": "Guide to Data Protection Practices for ICT Systems",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/other-guides/tech-omnibus/guide-to-data-protection-practices-for-ict-systems.pdf",
+    "kind": "web",
+    "issuer": "PDPC",
+    "date": "2026-07-20",
+    "page": 20
+   },
+   {
+    "n": 5,
+    "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-29",
+    "page": 1
+   },
+   {
+    "n": 6,
+    "title": "EDGE Grant (web page captured to PDF)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-30",
+    "page": 1
+   },
+   {
+    "n": 7,
+    "title": "EDGE Grant (web page captured to PDF)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-30",
+    "page": 3
+   },
+   {
+    "n": 8,
+    "title": "Website · WhiteBox | Technical Interview Prep for the AI Era",
+    "url": "https://whitebox.ac/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 9,
+    "title": "Website · Inventory Management Software & Small Business ERP | Cin7",
+    "url": "https://www.cin7.com",
+    "kind": "site"
+   },
+   {
+    "n": 10,
+    "title": "Website · About Us | Cin7",
+    "url": "https://www.cin7.com/about-us/",
+    "kind": "site"
+   },
+   {
+    "n": 11,
+    "title": "Website · Online Inventory Management Software | Zoho Inventory",
+    "url": "https://www.zoho.com/en-sg/inventory/",
+    "kind": "site"
+   },
+   {
+    "n": 12,
+    "title": "Website · Zoho | Cloud Software Suite for Businesses",
+    "url": "https://www.zoho.com",
+    "kind": "site"
+   },
+   {
+    "n": 13,
+    "title": "Website · Stock & Inventory Management Software -  Try for FREE | Unle",
+    "url": "https://www.unleashedsoftware.com/",
+    "kind": "site"
+   },
+   {
+    "n": 14,
+    "title": "Website · About Unleashed Software | About Us | Meet the Team",
+    "url": "https://www.unleashedsoftware.com/en-us/about-us/",
+    "kind": "site"
+   },
+   {
+    "n": 15,
+    "title": "Website · Pricing Comparison | Zoho Inventory",
+    "url": "https://www.zoho.com/en-sg/inventory/pricing-comparison/",
+    "kind": "site"
+   },
+   {
+    "n": 16,
+    "title": "Website · Inventory Plans and Pricing | Zoho Inventory",
+    "url": "https://www.zoho.com/en-sg/inventory/pricing/",
+    "kind": "site"
+   },
+   {
+    "n": 17,
+    "title": "Website (via search index) · Subscription - Zoho Inventory",
+    "url": "https://www.zoho.com/inventory/help/subscription/subscription.html",
+    "kind": "site"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "jp": "jp1",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "Singapore's wholesale trade sector grew by 6.1 per cent for the whole of 2025, extending the 5.6 per cent expansion in 2024.",
+     "quote": "For the whole of 2025, the sector grew by 6.1 per cent, extending the 5.6 per cent expansion in 2024.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 70
+    },
+    {
+     "text": "In the fourth quarter of 2025, the wholesale trade sector expanded by 9.9 per cent year-on-year, up from 5.4 per cent growth in the previous quarter.",
+     "quote": "The wholesale trade sector expanded by 9.9 per cent year-on-year in the fourth quarter of 2025, accelerating from the 5.4 per cent growth in the previous quarter.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 70
+    },
+    {
+     "text": "Singapore's information and communications sector real value added grew 6.1% year-on-year in 2025, outpacing overall real GDP growth of 5.0%.",
+     "quote": "In 2025, the sector saw its real VA grow by 6.1% yoy, moderating from the 14.2% yoy expansion in 2024, but outpacing the overall real GDP growth of 5.0%.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+       "title": "Singapore Digital Economy Report 2026"
+      }
+     ],
+     "issuer": "IMDA",
+     "date": "2026-10-05",
+     "page": 7
+    },
+    {
+     "text": "The information and communications sector's GDP contribution rose from 5.9% in 2024 to 6.3% in 2025.",
+     "quote": "In terms of GDP contribution, the size of the I&C sector rose from 5.9% in 2024 to 6.3% in 2025",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+       "title": "Singapore Digital Economy Report 2026"
+      }
+     ],
+     "issuer": "IMDA",
+     "date": "2026-10-05",
+     "page": 7
+    }
+   ]
+  },
+  {
+   "jp": "jp2",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The Personal Data Protection Act 2012 is Singapore's general data protection law governing organisations' collection, use and disclosure of personal data.",
+     "quote": "The Personal Data Protection Act 2012 ( the “PDPA” ) establishes a general data protection law in Singapore that governs the collection, use and disclosure of an individual’s personal data by organisations",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/advisory-guidelines-on-the-use-of-personal-data-in-ai-recommendation-and-decision-systems.pdf",
+       "title": "Advisory Guidelines on Use of Personal Data in AI Recommendation and Decision Systems"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2024-03-01",
+     "page": 3
+    },
+    {
+     "text": "PDPC's 2026 guide recommends maintaining an inventory of personal data, which can be done using spreadsheets or asset inventory software.",
+     "quote": "by maintaining an inventory of personal data. Methods can include using spreadsheets or asset inventory software.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/other-guides/tech-omnibus/guide-to-data-protection-practices-for-ict-systems.pdf",
+       "title": "Guide to Data Protection Practices for ICT Systems"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2026-07-20",
+     "page": 20
+    }
+   ]
+  },
+  {
+   "jp": "jp3",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The Productivity Solutions Grant (PSG) offered up to 50% of eligible costs for local SMEs, with up to $30,000 in support.",
+     "quote": "Up to 50% of eligible costs for local SMEs - Receive up to $30,000 and improve your business productivity.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+       "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "PSG, EDG and MRA ceased on 29 September 2026, and from 30 September onwards applicants apply under the EDGE Grant.",
+     "quote": "EDG, MRA and PSG ceased on 29 September 2026. From 30 September onwards, apply for business grant support under the EDGE Grant.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+       "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "The EDGE Grant, issued by Enterprise Singapore, covers 8 business areas and over 150 activities, including Automation & Digitalisation.",
+     "quote": "The EDGE Grant covers 8 business areas, and over 150 activities to help your business grow.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+       "title": "EDGE Grant (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-30",
+     "page": 1
+    },
+    {
+     "text": "Under EDGE Grant, large-scale digital transformation is assessed on a case-by-case basis.",
+     "quote": "Execute large scale digital transformation through modern and integrated technologies to deliver sustainable growth and efficiency. Assessed on a case-by-case basis",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+       "title": "EDGE Grant (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-30",
+     "page": 3
+    }
+   ]
+  },
+  {
+   "jp": "jp4",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "WhiteBox: WhiteBox is a technical interview prep platform for the AI era, offering real implementation problems, system design practice, domain quizzes, roadmaps and an AI coach called White Room.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://whitebox.ac/pricing",
+       "title": "Website · WhiteBox | Technical Interview Prep for the AI Era"
+      }
+     ]
+    },
+    {
+     "text": "Cin7: Cloud-based inventory management and small business ERP software connecting sales channels, suppliers and warehouses for real-time stock visibility, aimed at product sellers and wholesalers.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.cin7.com",
+       "title": "Website · Inventory Management Software & Small Business ERP | Cin7"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.cin7.com/about-us/",
+       "title": "Website · About Us | Cin7"
+      }
+     ]
+    },
+    {
+     "text": "Zoho Inventory: Zoho Inventory is online inventory management software from Zoho, aimed at small and growing businesses to track stock, manage orders, warehouses and order fulfillment.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.zoho.com/en-sg/inventory/",
+       "title": "Website · Online Inventory Management Software | Zoho Inventory"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.zoho.com",
+       "title": "Website · Zoho | Cloud Software Suite for Businesses"
+      }
+     ]
+    },
+    {
+     "text": "Unleashed: Unleashed is inventory management software for manufacturers, wholesalers and distributors, offering real-time stock visibility, order, purchase and production management, reporting and integrations.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.unleashedsoftware.com/",
+       "title": "Website · Stock & Inventory Management Software -  Try for FREE | Unle"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.unleashedsoftware.com/en-us/about-us/",
+       "title": "Website · About Unleashed Software | About Us | Meet the Team"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "jp": "jp5",
+   "status": "partial",
+   "claims": [
+    {
+     "text": "WhiteBox: Free $0/mo / Ultra Premium $21/mo (27% off from $29/mo); DSA Premium with Mindsolve $9/mo or $79/yr",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://whitebox.ac/pricing",
+       "title": "Website · WhiteBox | Technical Interview Prep for the AI Era"
+      }
+     ]
+    },
+    {
+     "text": "Zoho Inventory: Free S$0 / Standard S$39 / Professional S$109 / Premium S$169 / Enterprise S$329 per organization/month billed annually (SGD, Singapore page)",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.zoho.com/en-sg/inventory/pricing-comparison/",
+       "title": "Website · Pricing Comparison | Zoho Inventory"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.zoho.com/en-sg/inventory/pricing/",
+       "title": "Website · Inventory Plans and Pricing | Zoho Inventory"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.zoho.com/inventory/help/subscription/subscription.html",
+       "title": "Website (via search index) · Subscription - Zoho Inventory"
+      }
+     ]
+    }
+   ],
+   "note": "Official prices found for only 2 of 4 competitors; the rest: pricing not publicly available"
+  }
+ ],
+ "summary": {
+  "favorable": [
+   "Singapore's wholesale trade sector grew 6.1% in 2025, indicating a healthy supply chain environment for minimarts. [JP1]",
+   "Wholesale trade accelerated to 9.9% year-on-year growth in Q4 2025, suggesting rising commercial activity. [JP1]",
+   "The info-communications sector grew 6.1% in 2025, outpacing GDP, showing strong digital adoption. [JP1]",
+   "The EDGE Grant covers Automation & Digitalisation, potentially offsetting software costs for minimarts. [JP3]"
+  ],
+  "risks": [
+   "The PDPC guide recommends maintaining a personal data inventory, adding compliance burden for minimarts. [JP2]",
+   "The PSG grant, which offered up to 50% funding, ceased in September 2026, replaced by the EDGE Grant. [JP3]",
+   "Under the EDGE Grant, large-scale digital transformation is assessed case-by-case, creating funding uncertainty. [JP3]",
+   "Established competitors like Cin7, Zoho Inventory, and Unleashed already offer inventory management to small businesses. [JP4]"
+  ],
+  "gaps": [
+   "JP5 How do competitors charge?: Official prices found for only 2 of 4 competitors; the rest: pricing not publicly available"
+  ],
+  "validate": [
+   "Whether target customers really have this pain (needs customer interviews)",
+   "Whether customers will pay your price (needs customer or transaction evidence)",
+   "Check whether minimarts qualify for EDGE Grant funding for inventory software under Automation & Digitalisation.",
+   "Assess competitor pricing and features, e.g., Zoho Inventory's S$39–S$329 per month tiers, against minimart needs.",
+   "Verify if minimarts require personal data inventory features under PDPC guidelines and how that affects software design."
+  ]
+ },
+ "competitors": {
+  "runId": "TC06_2026-11-07T18-44-41_c",
+  "intent": {
+   "type": "own",
+   "query": "We are building Inventory software for minimarts for Independent minimarts in Singapore. Find our competitors",
+   "competitors": [
+    "WhiteBox",
+    "Cin7",
+    "Zoho Inventory",
+    "Unleashed"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding",
+    "pricing"
+   ],
+   "topic": "SaaS"
+  },
+  "rows": [
+   {
+    "competitor": "WhiteBox",
+    "domain": "whitebox.ac",
+    "siteMethod": "search_domain",
+    "cells": {
+     "name": {
+      "value": "WhiteBox",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://whitebox.ac",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "WhiteBox is a technical interview prep platform for the AI era, offering real implementation problems, system design practice, domain quizzes, roadmaps and an AI coach called White Room.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://whitebox.ac/pricing",
+        "title": "Website · WhiteBox | Technical Interview Prep for the AI Era"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "size": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "funding": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "pricing": {
+      "value": "Free $0/mo / Ultra Premium $21/mo (27% off from $29/mo); DSA Premium with Mindsolve $9/mo or $79/yr",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://whitebox.ac/pricing",
+        "title": "Website · WhiteBox | Technical Interview Prep for the AI Era"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Billing",
+        "text": "Annual and Monthly toggle; Ultra Premium renews at $21/month, cancel any time; DSA Premium $9/mo or $79/yr",
+        "url": "https://whitebox.ac/pricing"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "Free plan: 48 implementation problems, 912 DSA problems, 1,900+ quiz questions, roadmaps, interview intel, daily quests, Tsuki AI chat, 36 guides…",
+        "url": "https://whitebox.ac/pricing"
+       },
+       {
+        "label": "Current offer",
+        "text": "Halloween 27% off Ultra Premium: $29/mo reduced to $21/mo for new Premium subscriptions, keeping the shown rate while active",
+        "url": "https://whitebox.ac/pricing"
+       }
+      ],
+      "gaps": [
+       "Pricing unit",
+       "Extra costs"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Cin7",
+    "domain": "cin7.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Cin7",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.cin7.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Cloud-based inventory management and small business ERP software connecting sales channels, suppliers and warehouses for real-time stock visibility, aimed at product sellers and wholesalers.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.cin7.com",
+        "title": "Website · Inventory Management Software & Small Business ERP | Cin7"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.cin7.com/about-us/",
+        "title": "Website · About Us | Cin7"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "Global business with offices in six countries; no headquarters city stated in the documents.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.cin7.com/about-us/",
+        "title": "Website · About Us | Cin7"
+       }
+      ],
+      "status": "requeried"
+     },
+     "size": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "funding": {
+      "value": "2024 年 11 月，Rubicon Technology Partners 完成 5 亿美元单资产延续基金以支持 Cin7，CVC Secondary Partners 领投，Ares、BlackRock、Goldman Sachs Asset Management、Schroders Capital 参投。",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://www.cvc.com/media/news/2024/2024-11-18-rubicon-technology-partners-closes-500-million-single-asset-continuation-fund-to-support-the-continued-growth-of-cin7/",
+        "title": "Third party · 2025-01-21 · Rubicon Technology Partners Closes $500 Million Single-Asset"
+       },
+       {
+        "kind": "web",
+        "url": "https://www.privateequityinternational.com/rubicon-completes-500m-continuation-fund-for-cin7/",
+        "title": "Third party · 2024-11-18 · Rubicon completes $500m continuation fund for Cin7"
+       }
+      ],
+      "status": "requeried"
+     },
+     "pricing": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     }
+    }
+   },
+   {
+    "competitor": "Zoho Inventory",
+    "domain": "zoho.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Zoho Inventory",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.zoho.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Zoho Inventory is online inventory management software from Zoho, aimed at small and growing businesses to track stock, manage orders, warehouses and order fulfillment.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.zoho.com/en-sg/inventory/",
+        "title": "Website · Online Inventory Management Software | Zoho Inventory"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.zoho.com",
+        "title": "Website · Zoho | Cloud Software Suite for Businesses"
+       }
+      ],
+      "status": "requeried"
+     },
+     "region": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "size": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "funding": {
+      "value": "Bootstrapped, no outside funding: Zoho has never raised venture capital or private equity; total raised $0, no funding rounds or lead investors.",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://www.revenuememo.com/p/who-owns-zoho",
+        "title": "Third party · 2026-09-17 · Who owns Zoho? Ownership structure explained (2026)"
+       },
+       {
+        "kind": "web",
+        "url": "https://www.indianstartuptimes.com/startup-deep-dive/zoho-deep-dive/",
+        "title": "Third party · 2026-08-09 · Zoho Startup Deep Dive: Business Model, Funding, Risks"
+       },
+       {
+        "kind": "web",
+        "url": "https://siliconvalleyinvestclub.com/zh-TW/companies/zoho/",
+        "title": "Third party · Zoho — CEO Tony Thomas"
+       }
+      ],
+      "status": "requeried"
+     },
+     "pricing": {
+      "value": "Free S$0 / Standard S$39 / Professional S$109 / Premium S$169 / Enterprise S$329 per organization/month billed annually (SGD, Singapore page)",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing-comparison/",
+        "title": "Website · Pricing Comparison | Zoho Inventory"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing/",
+        "title": "Website · Inventory Plans and Pricing | Zoho Inventory"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.zoho.com/inventory/help/subscription/subscription.html",
+        "title": "Website (via search index) · Subscription - Zoho Inventory"
+       }
+      ],
+      "status": "requeried",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per organization per month; plans include 1–7 users and 2–10 locations depending on tier",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing/"
+       },
+       {
+        "label": "Billing",
+        "text": "Prices shown billed annually in SGD; monthly billing costs more (Standard S$49, Professional S$129, Premium S$209, Enterprise S$399); yearly saves 20%",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing/"
+       },
+       {
+        "label": "Extra costs",
+        "text": "Users S$10, 500 orders S$10, locations S$12, advanced autoscans S$12 for 50 scans, advanced warehousing S$157 per organization/month, all billed annually",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing/"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "Free plan: 50 orders/month, 1 user, 2 locations, composite items, dropshipment, backordering; 14-day trial on any paid plan",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing/"
+       },
+       {
+        "label": "Current offer",
+        "text": "Yearly billing saves 20% versus monthly billing",
+        "url": "https://www.zoho.com/en-sg/inventory/pricing-comparison/"
+       }
+      ],
+      "gaps": []
+     }
+    }
+   },
+   {
+    "competitor": "Unleashed",
+    "domain": "unleashedsoftware.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Unleashed",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.unleashedsoftware.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Unleashed is inventory management software for manufacturers, wholesalers and distributors, offering real-time stock visibility, order, purchase and production management, reporting and integrations.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.unleashedsoftware.com/",
+        "title": "Website · Stock & Inventory Management Software -  Try for FREE | Unle"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.unleashedsoftware.com/en-us/about-us/",
+        "title": "Website · About Unleashed Software | About Us | Meet the Team"
+       }
+      ],
+      "status": "requeried"
+     },
+     "region": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "size": {
+      "value": "112 employees (December 2020), up from 97 a year earlier",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://getlatka.com/companies/unleashed-software",
+        "title": "Third party · 2026-10-30 · Unleashed-Software Revenue 2020: $10.4M, $20.3M Raised"
+       }
+      ],
+      "status": "requeried"
+     },
+     "funding": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "pricing": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     }
+    }
+   }
+  ],
+  "stats": {
+   "sources": 123,
+   "checked": 24,
+   "requeried": 7,
+   "passed": 14,
+   "dropped": 10,
+   "pricingSlots": {
+    "filled": 15,
+    "total": 24
+   },
+   "pricingThirdParty": 0
+  },
+  "finishedAt": "2026-11-07T18:56:38.070Z"
+ },
+ "ragConnected": true,
+ "finishedAt": "2026-11-07T18:56:55.507Z"
+}

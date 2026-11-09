@@ -1,0 +1,1015 @@
+{
+ "runId": "TC01_2026-11-07T18-44-41",
+ "kind": "report",
+ "idea": {
+  "idea": "I want to build subscription software for small tuition centres in Singapore to manage student bookings, attendance, fee reminders and parent messages. Please research the market, regulations, government grants, competitors and their prices. Tell me what I still need to check.",
+  "product": "Tuition centre management software",
+  "customer": "Small tuition centres",
+  "sector": "Education technology",
+  "geography": "Singapore"
+ },
+ "narrative": {
+  "sections": [
+   {
+    "jp": "jp1",
+    "heading": "Market size and growth",
+    "text": "The only sector-level growth figure in the evidence is for accommodation, which grew 6.6 per cent year-on-year in the fourth quarter of 2025 and 3.1 per cent for the whole year, easing from 5.0 per cent in 2024 [1]. That tells us nothing about tuition centres, so it cannot be used to size this market. The closest relevant data point is the Education sector, which had a nominal value added share of 25.2 per cent and real growth of 1.6 per cent in 2025 [2] — a broad sector figure that says education is a large part of the economy but is growing slowly, and it does not isolate tuition or enrichment centres. Public sources found so far do not give a count of small tuition centres in Singapore, their software spend, or growth in this specific segment, which means the addressable market and its direction still need to be established before any sizing claim can be made."
+   },
+   {
+    "jp": "jp2",
+    "heading": "Policy and regulation",
+    "text": "The main regulatory frame is the PDPA, first enacted in 2012 and revised in 2020 [3], and it is actively administered and enforced by the Personal Data Protection Commission, which also promotes data protection awareness [3]. For a product holding student records, attendance and parent contact details, that means data protection obligations sit at the core of the offering rather than at the edge. The cross-border rule adds a further layer: an organisation collecting personal data originating from outside Singapore for its own purposes in Singapore must comply with all Data Protection Provisions from the time it seeks to collect the data or brings it into Singapore [4]. The evidence does not detail specific PDPA obligations, consent requirements or penalties, so the exact compliance checklist for this product still needs to be confirmed."
+   },
+   {
+    "jp": "jp3",
+    "heading": "Government grants and support",
+    "text": "The grant landscape has just been reorganised: EDG, MRA and PSG ceased on 29 September 2026, and from 30 September onwards businesses apply under the EDGE Grant [6]. EDGE is issued by Enterprise Singapore and covers 8 business areas and over 150 activities [5], so it is the current scheme to look at rather than the older ones. The Productivity Solutions Grant, now closed, offered up to 50% of eligible costs for local SMEs up to $30,000 [7], which indicates the scale of support that was available for adoption of productivity software — but the evidence does not say whether EDGE carries comparable rates or caps for this kind of solution. Startup SG Equity is issued by Enterprise Singapore and catalyses private sector investments for Singapore-based deep tech startups [8], which does not match a subscription software business for tuition centres. Public sources found so far do not show whether a tuition centre buying this software, or the founder building it, would qualify under EDGE, so eligibility needs to be checked directly."
+   },
+   {
+    "jp": "jp4",
+    "heading": "Competitive landscape",
+    "text": "The competitive set is already populated across two fronts. On the international side, TutorBird covers student management, scheduling, billing, online tutoring and a website builder for tutors, tutoring centres and test prep centres [9], while Teachworks automates scheduling, billing, invoicing and tutor payroll for tutoring and test prep businesses as well as music, language and driving schools [10][11]. Class Manager takes a different route as free class management SaaS for dance studios, gymnastics clubs and similar activity businesses, automating billing, scheduling, enrolment, attendance and family communications [12]. Most directly, Edulabs is a cloud-based school management system for tuition and enrichment centres in Singapore, automating registration, scheduling, invoicing, communication and reporting [13][14] — meaning the exact customer and geography are already served. The functional overlap with the proposed booking, attendance, fee reminder and parent messaging scope is high, and the evidence does not show how deeply any of these handle parent messaging or local payment habits."
+   },
+   {
+    "jp": "jp5",
+    "heading": "Competitor pricing",
+    "text": "Pricing spans a very wide range. TutorBird charges a single plan of $16.95/month for one tutor plus $4.95 per additional tutor or staff member [15][16][9], which scales with headcount. Teachworks uses tiers of $16.49/mo plus $0.350 per student lesson, $47.99/mo plus $0.210 per student lesson, and $187.99/mo plus $0.080 per student lesson [17], so cost rises with lesson volume. Class Manager is free with no monthly subscription, taking only a flat per-transaction fee on online payments (3.9% + 30¢) and tailored pricing for high volumes [18][19][12], which anchors the low end at zero subscription. Edulabs sits at the top with S$250 to S$550 per month billed annually, plus a one-time software license fee quoted after a demo [20][13][14]. For a small tuition centre, that leaves a clear gap between free and S$250+ per month, but the evidence does not show what small centres in Singapore actually pay today or how price-sensitive they are."
+   }
+  ],
+  "conclusion": "This is a crowded market with room at the low-price end: international tools like TutorBird and Teachworks already cover scheduling, billing and payroll [9][10][11], Class Manager gives the core away free and monetises payments [18][19][12], and Edulabs already targets Singapore tuition and enrichment centres directly [13][14]. The regulatory load is real but bounded — PDPA compliance, actively enforced by the PDPC, applies to the student and parent data at the heart of the product [3], with an extra cross-border dimension if data comes from outside Singapore [4]. Support exists but is in flux: PSG's up-to-50%-of-cost model has closed and been replaced by the broader EDGE Grant [6][5][7], and Startup SG Equity is aimed at deep tech rather than this kind of software [8]. Pricing room appears to sit between free and Edulabs' S$250–S$550 per month [20], with per-tutor and per-lesson models above and below [15][17]. The biggest opportunity is a locally tuned, affordable product for small centres; the biggest risk is that free and incumbent tools already cover the core workflow, and the first things to validate are the actual number and software spend of small Singapore tuition centres, what they pay today, and whether EDGE supports their purchase.",
+  "references": [
+   {
+    "n": 1,
+    "title": "Economic Survey of Singapore 2025",
+    "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+    "kind": "web",
+    "issuer": "Ministry of Trade and Industry",
+    "date": "2026-02-10",
+    "page": 74
+   },
+   {
+    "n": 2,
+    "title": "Economic Survey of Singapore 2025",
+    "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+    "kind": "web",
+    "issuer": "Ministry of Trade and Industry",
+    "date": "2026-02-10",
+    "page": 62
+   },
+   {
+    "n": 3,
+    "title": "Advisory Guidelines on Key Concepts in the PDPA",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+    "kind": "web",
+    "issuer": "PDPC",
+    "date": "2026-04-29",
+    "page": 7
+   },
+   {
+    "n": 4,
+    "title": "Advisory Guidelines on Key Concepts in the PDPA",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+    "kind": "web",
+    "issuer": "PDPC",
+    "date": "2026-04-29",
+    "page": 36
+   },
+   {
+    "n": 5,
+    "title": "EDGE Grant (web page captured to PDF)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-30",
+    "page": 1
+   },
+   {
+    "n": 6,
+    "title": "Enterprise Development Grant (EDG) (web page captured to PDF) (Ceased 29 Sep 2026)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-29",
+    "page": 1
+   },
+   {
+    "n": 7,
+    "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-29",
+    "page": 1
+   },
+   {
+    "n": 8,
+    "title": "Startup SG Equity (web page captured to PDF)",
+    "url": "https://www.startupsg.gov.sg/programmes/4895/startup-sg-equity",
+    "kind": "web",
+    "issuer": "Enterprise Singapore (Startup SG)",
+    "date": "2026-10-05",
+    "page": 1
+   },
+   {
+    "n": 9,
+    "title": "Website · The #1 Tutor Management Software",
+    "url": "https://www.tutorbird.com",
+    "kind": "site"
+   },
+   {
+    "n": 10,
+    "title": "Website · Teachworks",
+    "url": "https://www.teachworks.com",
+    "kind": "site"
+   },
+   {
+    "n": 11,
+    "title": "Website · About Us | Teachworks",
+    "url": "https://www.teachworks.com/about",
+    "kind": "site"
+   },
+   {
+    "n": 12,
+    "title": "Website · Industry-Leading Class Management Software, No Monthly Subsc",
+    "url": "https://classmanager.com",
+    "kind": "site"
+   },
+   {
+    "n": 13,
+    "title": "Website · Edulabs School Management System | Tuition Centre Management",
+    "url": "https://www.edulabs.com.sg",
+    "kind": "site"
+   },
+   {
+    "n": 14,
+    "title": "Website · About Us - Edulabs",
+    "url": "https://www.edulabs.com.sg/about/",
+    "kind": "site"
+   },
+   {
+    "n": 15,
+    "title": "Website · Pricing - TutorBird",
+    "url": "https://www.tutorbird.com/pricing/",
+    "kind": "site"
+   },
+   {
+    "n": 16,
+    "title": "Ranks #5 for “TutorBird pricing plans per user per month billed annually free plan”",
+    "url": "https://www.tutorbird.com/affordable/",
+    "kind": "seo"
+   },
+   {
+    "n": 17,
+    "title": "Website · Plans for Education Companies of All Sizes | Teachworks",
+    "url": "https://www.teachworks.com/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 18,
+    "title": "Website · FREE Class Management Software No Monthly Subscription",
+    "url": "https://classmanager.com/prices",
+    "kind": "site"
+   },
+   {
+    "n": 19,
+    "title": "Website (via search index) · Difference Between Classic and New Class Manager",
+    "url": "https://help.classmanager.com/classic-vs-new-class-manager",
+    "kind": "site"
+   },
+   {
+    "n": 20,
+    "title": "Website · Pricing - Edulabs",
+    "url": "https://www.edulabs.com.sg/pricing/",
+    "kind": "site"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "jp": "jp1",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The accommodation sector in Singapore grew by 6.6 per cent year-on-year in the fourth quarter of 2025.",
+     "quote": "The accommodation sector grew by 6.6 per cent year-on-year in the fourth quarter of 2025, improving from the 4.6 per cent expansion in the previous quarter.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 74
+    },
+    {
+     "text": "For the whole of 2025, Singapore's accommodation sector expanded by 3.1 per cent, easing from 5.0 per cent growth in 2024.",
+     "quote": "For the whole of 2025, the sector expanded by 3.1 per cent, easing from the 5.0 per cent growth in 2024.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 74
+    },
+    {
+     "text": "Singapore's top ten visitor-generating markets in 2025 accounted for 74.1 per cent of total arrivals.",
+     "quote": "Together, they accounted for 74.1 per cent of total arrivals in 2025.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 74
+    },
+    {
+     "text": "In 2025, the Education sector had a nominal value added share of 25.2 per cent and real growth of 1.6 per cent.",
+     "quote": "|**Education**|25.2|1.6|",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/1004/16f78938-9d69-4df0-87a2-c6e6b0376da6/FullReport_AES2025.pdf",
+       "title": "Economic Survey of Singapore 2025"
+      }
+     ],
+     "issuer": "Ministry of Trade and Industry",
+     "date": "2026-02-10",
+     "page": 62
+    }
+   ]
+  },
+  {
+   "jp": "jp2",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The PDPA was first enacted in 2012 and revised in 2020.",
+     "quote": "The PDPA was first enacted in 2012 and revised in 2020.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+       "title": "Advisory Guidelines on Key Concepts in the PDPA"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2026-04-29",
+     "page": 7
+    },
+    {
+     "text": "The Personal Data Protection Commission is established under the PDPA to promote awareness of data protection in Singapore and to administer and enforce the PDPA.",
+     "quote": "The Personal Data Protection Commission (the “Commission”) is established under the PDPA with the key functions, amongst others, of promoting awareness of data protection in Singapore and administering and enforcing the PDPA.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+       "title": "Advisory Guidelines on Key Concepts in the PDPA"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2026-04-29",
+     "page": 7
+    },
+    {
+     "text": "An organisation in Singapore collecting personal data originating from outside Singapore for its own purposes in Singapore must comply with all Data Protection Provisions from the time it seeks to collect the data or brings it into Singapore.",
+     "quote": "the organisation is required to comply with all Data Protection Provisions from the time it seeks to collect the personal data (if such collection occurs in Singapore) or from the time it brings the personal data into Singapore",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/advisory-guidelines/ag-on-key-concepts/advisory-guidelines-on-key-concepts-in-the-pdpa-17-may-2022.pdf",
+       "title": "Advisory Guidelines on Key Concepts in the PDPA"
+      }
+     ],
+     "issuer": "PDPC",
+     "date": "2026-04-29",
+     "page": 36
+    }
+   ]
+  },
+  {
+   "jp": "jp3",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The EDGE Grant is issued by Enterprise Singapore and covers 8 business areas and over 150 activities.",
+     "quote": "The EDGE Grant covers 8 business areas, and over 150 activities to help your business grow.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+       "title": "EDGE Grant (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-30",
+     "page": 1
+    },
+    {
+     "text": "EDG, MRA and PSG ceased on 29 September 2026, and from 30 September onwards businesses apply under the EDGE Grant.",
+     "quote": "EDG, MRA and PSG ceased on 29 September 2026. From 30 September onwards, apply for business grant support under the EDGE Grant.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant",
+       "title": "Enterprise Development Grant (EDG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "The Productivity Solutions Grant offered up to 50% of eligible costs for local SMEs, up to $30,000.",
+     "quote": "Up to 50% of eligible costs for local SMEs - Receive up to $30,000 and improve your business productivity.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/productivity-solutions-grant",
+       "title": "Productivity Solutions Grant (PSG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "Startup SG Equity is issued by Enterprise Singapore (Startup SG) and catalyses private sector investments for Singapore-based deep tech startups.",
+     "quote": "The Startup SG Equity (SSGE) scheme catalyses private sector investments to support Singapore-based deep tech* startups with global growth potential.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.startupsg.gov.sg/programmes/4895/startup-sg-equity",
+       "title": "Startup SG Equity (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore (Startup SG)",
+     "date": "2026-10-05",
+     "page": 1
+    }
+   ]
+  },
+  {
+   "jp": "jp4",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "TutorBird: TutorBird is tutor management software for private tutors, tutoring centers and test prep centers, covering student management, scheduling, billing, online tutoring and a website builder.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.tutorbird.com",
+       "title": "Website · The #1 Tutor Management Software"
+      }
+     ]
+    },
+    {
+     "text": "Teachworks: Web-based tutor management software for tutoring and test prep businesses, music, language and driving schools, automating scheduling, billing, invoicing and tutor payroll.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.teachworks.com",
+       "title": "Website · Teachworks"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.teachworks.com/about",
+       "title": "Website · About Us | Teachworks"
+      }
+     ]
+    },
+    {
+     "text": "Class Manager: Free class management SaaS for dance studios, gymnastics clubs and similar activity businesses, automating billing, scheduling, enrolment, attendance and family communications.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://classmanager.com",
+       "title": "Website · Industry-Leading Class Management Software, No Monthly Subsc"
+      }
+     ]
+    },
+    {
+     "text": "Edulabs: Cloud-based school management system for tuition and enrichment centres in Singapore, automating registration, scheduling, invoicing, communication and reporting.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.edulabs.com.sg",
+       "title": "Website · Edulabs School Management System | Tuition Centre Management"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.edulabs.com.sg/about/",
+       "title": "Website · About Us - Edulabs"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "jp": "jp5",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "TutorBird: Single plan: $16.95/month for one tutor, plus $4.95 per each additional tutor or staff member",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.tutorbird.com/pricing/",
+       "title": "Website · Pricing - TutorBird"
+      },
+      {
+       "kind": "seo",
+       "url": "https://www.tutorbird.com/affordable/",
+       "title": "Ranks #5 for “TutorBird pricing plans per user per month billed annually free plan”"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.tutorbird.com",
+       "title": "Website · The #1 Tutor Management Software"
+      }
+     ]
+    },
+    {
+     "text": "Teachworks: Starter $16.49/mo + $0.350 per student lesson / Growth $47.99/mo + $0.210 per student lesson / Premium $187.99/mo + $0.080 per student lesson",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.teachworks.com/pricing",
+       "title": "Website · Plans for Education Companies of All Sizes | Teachworks"
+      }
+     ]
+    },
+    {
+     "text": "Class Manager: Free — no monthly subscription; only a flat per-transaction fee on online payments (3.9% + 30¢ per search snippet); tailored pricing for high volumes.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://classmanager.com/prices",
+       "title": "Website · FREE Class Management Software No Monthly Subscription"
+      },
+      {
+       "kind": "site",
+       "url": "https://help.classmanager.com/classic-vs-new-class-manager",
+       "title": "Website (via search index) · Difference Between Classic and New Class Manager"
+      },
+      {
+       "kind": "site",
+       "url": "https://classmanager.com",
+       "title": "Website · Industry-Leading Class Management Software, No Monthly Subsc"
+      }
+     ]
+    },
+    {
+     "text": "Edulabs: Base System S$250 / S$300 / S$350 / S$400 / S$450 / S$500 / S$550 per month (billed annually), plus one-time software license fee quoted after demo",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://www.edulabs.com.sg/pricing/",
+       "title": "Website · Pricing - Edulabs"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.edulabs.com.sg",
+       "title": "Website · Edulabs School Management System | Tuition Centre Management"
+      },
+      {
+       "kind": "site",
+       "url": "https://www.edulabs.com.sg/about/",
+       "title": "Website · About Us - Edulabs"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "favorable": [
+   "Singapore's Education sector has a substantial nominal value added share, indicating a large addressable market. [JP1]",
+   "Existing competitors like Edulabs already serve Singapore tuition centres, validating demand. [JP4]",
+   "Several established tutor management tools exist, showing the software category is proven. [JP4]",
+   "The EDGE Grant consolidates multiple business support schemes, potentially offering funding for SMEs adopting productivity software. [JP3]"
+  ],
+  "risks": [
+   "Competitors offer lower-cost or free plans, which could pressure pricing for a new entrant. [JP5]",
+   "Edulabs already targets Singapore tuition centres with a cloud-based system, creating direct competition. [JP4]",
+   "PDPA compliance obligations for handling personal data add operational complexity and cost. [JP2]",
+   "Education sector real growth was modest at 1.6 per cent, suggesting limited market expansion. [JP1]"
+  ],
+  "gaps": [],
+  "validate": [
+   "Whether target customers really have this pain (needs customer interviews)",
+   "Whether customers will pay your price (needs customer or transaction evidence)",
+   "Check whether the EDGE Grant covers software adoption for tuition centres and what funding amount is available.",
+   "Assess how many small tuition centres in Singapore currently use pen-and-paper or spreadsheets versus existing software.",
+   "Review PDPA requirements for storing student and parent data to estimate compliance effort and cost."
+  ]
+ },
+ "competitors": {
+  "runId": "TC01_2026-11-07T18-44-41_c",
+  "intent": {
+   "type": "own",
+   "query": "We are building Tuition centre management software for Small tuition centres in Singapore. Find our competitors",
+   "competitors": [
+    "TutorBird",
+    "Teachworks",
+    "Class Manager",
+    "Edulabs"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding",
+    "pricing"
+   ],
+   "topic": "SaaS"
+  },
+  "rows": [
+   {
+    "competitor": "TutorBird",
+    "domain": "tutorbird.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "TutorBird",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.tutorbird.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "TutorBird is tutor management software for private tutors, tutoring centers and test prep centers, covering student management, scheduling, billing, online tutoring and a website builder.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.tutorbird.com",
+        "title": "Website · The #1 Tutor Management Software"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "Canada · Burlington, Ontario; markets include US/Canada, UK and international, with site in English, French, Spanish, Dutch, German and Polish.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://ca.linkedin.com/company/tutorbird",
+        "title": "Ranks #2 for “TutorBird company headquarters”"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.tutorbird.com",
+        "title": "Website · The #1 Tutor Management Software"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "9 employees (RocketReach)",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://rocketreach.co/tutorbird-profile_b7b2f049c53bd332",
+        "title": "Ranks #5 for “TutorBird company headquarters”"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "pricing": {
+      "value": "Single plan: $16.95/month for one tutor, plus $4.95 per each additional tutor or staff member",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.tutorbird.com/pricing/",
+        "title": "Website · Pricing - TutorBird"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.tutorbird.com/affordable/",
+        "title": "Ranks #5 for “TutorBird pricing plans per user per month billed annually free plan”"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.tutorbird.com",
+        "title": "Website · The #1 Tutor Management Software"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per tutor account per month; each additional tutor or staff member costs $4.95/month",
+        "url": "https://www.tutorbird.com/pricing/"
+       },
+       {
+        "label": "Billing",
+        "text": "Monthly price; no annual/monthly difference stated",
+        "url": "https://www.tutorbird.com/pricing/"
+       },
+       {
+        "label": "Extra costs",
+        "text": "Additional tutors or staff members at $4.95/month each; SMS reminders, website hosting and unlimited file storage included at no extra cost",
+        "url": "https://www.tutorbird.com/pricing/"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "30-day free trial with full access to all features, no credit card required; no permanent free plan",
+        "url": "https://www.tutorbird.com/pricing/"
+       },
+       {
+        "label": "Current offer",
+        "text": "90-day money back guarantee",
+        "url": "https://www.tutorbird.com/pricing/"
+       }
+      ],
+      "gaps": []
+     }
+    }
+   },
+   {
+    "competitor": "Teachworks",
+    "domain": "teachworks.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Teachworks",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.teachworks.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Web-based tutor management software for tutoring and test prep businesses, music, language and driving schools, automating scheduling, billing, invoicing and tutor payroll.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.teachworks.com",
+        "title": "Website · Teachworks"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.teachworks.com/about",
+        "title": "Website · About Us | Teachworks"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "Canada · Ontario (founded 2014); serves teaching businesses in 67 countries worldwide.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.teachworks.com/about",
+        "title": "Website · About Us | Teachworks"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.teachworks.com",
+        "title": "Website · Teachworks"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "2–10 employees (LinkedIn); PitchBook lists 7 total employees (2026).",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://ca.linkedin.com/company/teachworks",
+        "title": "Ranks #4 for “Teachworks number of employees company size”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://pitchbook.com/profiles/company/522020-44",
+        "title": "Ranks #2 for “Teachworks number of employees company size”"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "Privately held; no funding round stated in the documents.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://ca.linkedin.com/company/teachworks",
+        "title": "Ranks #4 for “Teachworks number of employees company size”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://pitchbook.com/profiles/company/522020-44",
+        "title": "Ranks #2 for “Teachworks number of employees company size”"
+       }
+      ],
+      "status": "verified"
+     },
+     "pricing": {
+      "value": "Starter $16.49/mo + $0.350 per student lesson / Growth $47.99/mo + $0.210 per student lesson / Premium $187.99/mo + $0.080 per student lesson",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.teachworks.com/pricing",
+        "title": "Website · Plans for Education Companies of All Sizes | Teachworks"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Monthly base fee plus per-student-lesson fee; lessons counted per student, cancelled lessons excluded.",
+        "url": "https://www.teachworks.com/pricing"
+       },
+       {
+        "label": "Billing",
+        "text": "Billed monthly in US Dollars after each month based on usage; first invoice pro-rated; no contracts.",
+        "url": "https://www.teachworks.com/pricing"
+       },
+       {
+        "label": "Extra costs",
+        "text": "Additional branch accounts: + $35/mth each beyond first 5 (Premium); bulk emails above fair usage $1 per 1,000 emails.",
+        "url": "https://www.teachworks.com/pricing"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "Free 21-day trial on all plans; no free plan.",
+        "url": "https://www.teachworks.com/pricing"
+       }
+      ],
+      "gaps": [
+       "Current offer"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Class Manager",
+    "domain": "classmanager.com",
+    "siteMethod": "search_domain",
+    "cells": {
+     "name": {
+      "value": "Class Manager",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://classmanager.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Free class management SaaS for dance studios, gymnastics clubs and similar activity businesses, automating billing, scheduling, enrolment, attendance and family communications.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://classmanager.com",
+        "title": "Website · Industry-Leading Class Management Software, No Monthly Subsc"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "UK (Exminster, Devon per LinkedIn; Torquay per Crunchbase/Tracxn), serving studios in the UK, United States, Australia and beyond.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://uk.linkedin.com/company/class-manager",
+        "title": "Ranks #1 for “Class Manager company headquarters”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.crunchbase.com/organization/class-manager",
+        "title": "Ranks #4 for “Class Manager company headquarters”"
+       },
+       {
+        "kind": "site",
+        "url": "https://classmanager.com",
+        "title": "Website · Industry-Leading Class Management Software, No Monthly Subsc"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "11–50 employees (LinkedIn); Tracxn lists latest employee count of 20 as of Feb 28.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://uk.linkedin.com/company/class-manager",
+        "title": "Ranks #3 for “Class Manager number of employees company size”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://tracxn.com/d/companies/class-manager/__k-CX25jAhqGmQK0L8802dUhhDjLPjgOc0oztlRAA9Xo",
+        "title": "Ranks #4 for “Class Manager number of employees company size”"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "Unfunded company, founded 1999, per Tracxn 2026 profile.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://tracxn.com/d/companies/class-manager/__k-CX25jAhqGmQK0L8802dUhhDjLPjgOc0oztlRAA9Xo",
+        "title": "Ranks #2 for “Class Manager company headquarters”"
+       }
+      ],
+      "status": "verified"
+     },
+     "pricing": {
+      "value": "Free — no monthly subscription; only a flat per-transaction fee on online payments (3.9% + 30¢ per search snippet); tailored pricing for high volumes.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://classmanager.com/prices",
+        "title": "Website · FREE Class Management Software No Monthly Subscription"
+       },
+       {
+        "kind": "site",
+        "url": "https://help.classmanager.com/classic-vs-new-class-manager",
+        "title": "Website (via search index) · Difference Between Classic and New Class Manager"
+       },
+       {
+        "kind": "site",
+        "url": "https://classmanager.com",
+        "title": "Website · Industry-Leading Class Management Software, No Monthly Subsc"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per transaction on payments processed online, not per user or per month.",
+        "url": "https://classmanager.com/prices"
+       },
+       {
+        "label": "Billing",
+        "text": "No monthly subscription; a flat service charge applies only to payments processed online, and nothing is charged in months without payments.",
+        "url": "https://classmanager.com/prices"
+       },
+       {
+        "label": "Extra costs",
+        "text": "No paid add-ons stated; high-volume studios can request tailored pricing.",
+        "url": "https://classmanager.com/prices"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "The software itself is free with no hidden costs; charges apply only as a per-transaction fee on online payments.",
+        "url": "https://classmanager.com"
+       }
+      ],
+      "gaps": [
+       "Current offer"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Edulabs",
+    "domain": "edulabs.com.sg",
+    "siteMethod": "search_domain",
+    "cells": {
+     "name": {
+      "value": "Edulabs",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Cloud-based school management system for tuition and enrichment centres in Singapore, automating registration, scheduling, invoicing, communication and reporting.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg",
+        "title": "Website · Edulabs School Management System | Tuition Centre Management"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg/about/",
+        "title": "Website · About Us - Edulabs"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "Singapore · 211 Jalan Besar, Singapore 208896; serves centres and schools in Singapore.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg/contact-us/",
+        "title": "Website · Contact Us - Edulabs"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg/about/",
+        "title": "Website · About Us - Edulabs"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "funding": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "pricing": {
+      "value": "Base System S$250 / S$300 / S$350 / S$400 / S$450 / S$500 / S$550 per month (billed annually), plus one-time software license fee quoted after demo",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg/pricing/",
+        "title": "Website · Pricing - Edulabs"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg",
+        "title": "Website · Edulabs School Management System | Tuition Centre Management"
+       },
+       {
+        "kind": "site",
+        "url": "https://www.edulabs.com.sg/about/",
+        "title": "Website · About Us - Edulabs"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per month, tiered by student count (100 Students example); billed annually",
+        "url": "https://www.edulabs.com.sg/pricing/"
+       },
+       {
+        "label": "Billing",
+        "text": "Prices billed annually, shown as S$ per month; currency Singapore dollars (S$)",
+        "url": "https://www.edulabs.com.sg/pricing/"
+       },
+       {
+        "label": "Extra costs",
+        "text": "One-time software license fee quoted after demo; pricing excludes it and is before government grants",
+        "url": "https://www.edulabs.com.sg/pricing/"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "Free 30-minute live demo on Zoom; no free plan stated",
+        "url": "https://www.edulabs.com.sg"
+       },
+       {
+        "label": "Current offer",
+        "text": "Up to 95% of project cost claimable via EDG and SFEC government grants",
+        "url": "https://www.edulabs.com.sg"
+       }
+      ],
+      "gaps": []
+     }
+    }
+   }
+  ],
+  "stats": {
+   "sources": 121,
+   "checked": 24,
+   "requeried": 0,
+   "passed": 21,
+   "dropped": 3,
+   "pricingSlots": {
+    "filled": 22,
+    "total": 24
+   },
+   "pricingThirdParty": 0
+  },
+  "finishedAt": "2026-11-07T18:46:03.627Z"
+ },
+ "ragConnected": true,
+ "finishedAt": "2026-11-07T18:46:21.259Z"
+}

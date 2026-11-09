@@ -1,0 +1,1073 @@
+{
+ "runId": "TC02_2026-11-07T18-44-41",
+ "kind": "report",
+ "idea": {
+  "idea": "I want to launch an AI assistant to help businesses save time in Singapore, but I have not decided which type of business or tasks to focus on. Please research the market, regulations, grants, competitors and prices.",
+  "product": "AI assistant for businesses",
+  "customer": "businesses",
+  "sector": "business services",
+  "geography": "Singapore"
+ },
+ "narrative": {
+  "sections": [
+   {
+    "jp": "jp1",
+    "heading": "Market size and growth",
+    "text": "AI adoption among Singapore enterprises is rising quickly: the overall rate climbed 8.8 percentage points from 2024 to 2025 to reach 23.5% [1], and among firms with at least 10 employees it rose 13.2 points to 34.6% [1]. The pipeline of future demand is also thickening, with 12.1% of non-adopting firms in 2025 planning to use AI within 12 months, up from 5.6% in 2023 [2]. The sharpest movement is at the small-business end, where adoption tripled from 4.2% to 14.5% between 2023 and 2024, while larger enterprises moved from 44.0% to 62.5% [3]. For an undecided AI assistant, this means the market is expanding fastest among SMEs that are still early in adoption, so the choice of business type matters more than the overall demand level."
+   },
+   {
+    "jp": "jp2",
+    "heading": "Policy and regulation",
+    "text": "The regulatory picture is sector-dependent rather than uniform: finance, healthcare and legal may be governed by existing sector-specific laws, regulations or guidelines [4]. In financial services specifically, the Monetary Authority of Singapore has published the FEAT Principles to guide firms using AI and data analytics for financial products and services [4]. Public sources found so far do not give a general AI-specific licensing or approval regime applying to all business types, which means the compliance burden will depend heavily on which sector and tasks the assistant targets. A horizontal assistant sold across sectors would inherit the strictest requirements of any regulated customer it serves."
+   },
+   {
+    "jp": "jp3",
+    "heading": "Government grants and support",
+    "text": "The grant landscape has recently shifted: the Enterprise Development Grant ceased on 29 September 2026, and from 30 September onwards businesses apply under the EDGE Grant [5]. The EDGE Grant, issued by Enterprise Singapore, covers 8 business areas and over 150 activities [6], which suggests a broad set of eligible activities an AI adoption project could potentially fall under. Separately, the Investment Allowance caps approved capital expenditure at S$10 million per project and was extended until 31 March 2026 [7], and Startup SG Equity supports Singapore-based deep tech startups through co-investment alongside independent qualified third-party investors [8]. Public sources found so far do not specify whether a generic business AI assistant qualifies under EDGE or Startup SG Equity, so the founder would need to confirm eligibility against the activity lists."
+   },
+   {
+    "jp": "jp4",
+    "heading": "Competitive landscape",
+    "text": "The competitive field is crowded and layered. At the general-purpose end, ChatGPT is a conversational assistant for answering questions, writing, creating images, coding and completing work, offered free or via paid plans for individuals and businesses [9][10], while Claude is an AI assistant and family of large language models used for writing, Q&A, coding and agentic work by individuals, teams and enterprises [11][12][13]. More specialised players occupy adjacent niches: Slite Agent is an AI knowledge base for teams that drafts and maintains documentation and answers questions with cited sources [14][15], and Sintra AI offers pre-built AI employees automating socials, inbox, content, support and sales for small business owners [16][17]. For an undecided entrant, this means the horizontal space is dominated by well-resourced general assistants, and the more defensible openings look like specific tasks or workflows where a focused product can differentiate."
+   },
+   {
+    "jp": "jp5",
+    "heading": "Competitor pricing",
+    "text": "Published pricing shows a clear ladder from free to premium. ChatGPT runs Free $0, Plus $20, Pro from $100 (with Pro tiers at $100, $200 and $500), Business from $20 per user/month annual ($25 monthly), and custom Enterprise pricing [18][19][20]. Claude offers Free $0, Pro at $17 per month annual or $20 monthly, Max $100, Ultra $200, Team seats from $20/seat/month annual, and custom Enterprise pricing [11][21][22]. Slite Agent sits at Basic $10 and Pro $20 per user/month with custom Enterprise pricing [23][14][24], while Sintra AI discounts heavily by commitment: $48.50/month on a 1-month plan (50% off), $23.60/month on 3 months (60% off) and $15.60/month on 12 months (70% off) [25][26]. This suggests the low end around $10–$20 per user/month is well populated, and pricing room may exist either below that for narrow task automation or above it for deeper, sector-specific outcomes."
+   }
+  ],
+  "conclusion": "This is a crowded market with room at the low-price end and in narrow, task-specific niches: general assistants like ChatGPT and Claude anchor the horizontal space [9][10][11][12][13], while Slite Agent and Sintra AI show specialised positioning at $10–$20 per user/month and aggressive annual discounts [14][15][16][17][23][24][25][26]. The regulatory load is not uniform but is real for finance, healthcare and legal, where sector rules and MAS's FEAT Principles apply [4], so the choice of target business type directly sets the compliance burden. Support exists through the EDGE Grant covering 8 business areas and over 150 activities [6], plus the Investment Allowance [7] and Startup SG Equity for deep tech [8], though eligibility for a generic assistant is unconfirmed. The biggest opportunity is the fast-growing SME segment, where adoption tripled to 14.5% and future intent is rising [2][3]; the biggest risk is being undifferentiated against free and low-cost general tools. The first thing to validate is which specific business type and task set gives a defensible wedge, and whether that choice keeps the product inside or outside regulated sectors [4] and eligible under EDGE activities [6].",
+  "references": [
+   {
+    "n": 1,
+    "title": "Singapore Digital Economy Report 2026",
+    "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+    "kind": "web",
+    "issuer": "IMDA",
+    "date": "2026-10-05",
+    "page": 12
+   },
+   {
+    "n": 2,
+    "title": "Singapore Digital Economy Report 2026",
+    "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+    "kind": "web",
+    "issuer": "IMDA",
+    "date": "2026-10-05",
+    "page": 15
+   },
+   {
+    "n": 3,
+    "title": "Update to Singapore National AI Strategy (2026)",
+    "url": "https://isomer-user-content.by.gov.sg/39/cb52d9a0-0d6c-484d-96fe-571031b37eb7/NAIS_update.pdf",
+    "kind": "web",
+    "issuer": "Ministry of Digital Development and Information / Smart Nation",
+    "date": "2026-05-20",
+    "page": 25
+   },
+   {
+    "n": 4,
+    "title": "Model AI Governance Framework (2nd ed.)",
+    "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf",
+    "kind": "web",
+    "issuer": "PDPC / IMDA",
+    "date": "2020-01-21",
+    "page": 17
+   },
+   {
+    "n": 5,
+    "title": "Enterprise Development Grant (EDG) (web page captured to PDF) (Ceased 29 Sep 2026)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-29",
+    "page": 1
+   },
+   {
+    "n": 6,
+    "title": "EDGE Grant (web page captured to PDF)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-30",
+    "page": 1
+   },
+   {
+    "n": 7,
+    "title": "Enterprise Development Grant (EDG) (web page captured to PDF) (Ceased 29 Sep 2026)",
+    "url": "https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant",
+    "kind": "web",
+    "issuer": "Enterprise Singapore",
+    "date": "2026-09-29",
+    "page": 4
+   },
+   {
+    "n": 8,
+    "title": "Startup SG Equity (web page captured to PDF)",
+    "url": "https://www.startupsg.gov.sg/programmes/4895/startup-sg-equity",
+    "kind": "web",
+    "issuer": "Enterprise Singapore (Startup SG)",
+    "date": "2026-10-05",
+    "page": 1
+   },
+   {
+    "n": 9,
+    "title": "Website · ChatGPT",
+    "url": "https://chatgpt.com",
+    "kind": "site"
+   },
+   {
+    "n": 10,
+    "title": "Ranks #1 for “what is ChatGPT”",
+    "url": "https://chatgpt.com/overview/",
+    "kind": "seo"
+   },
+   {
+    "n": 11,
+    "title": "Ranks #3 for “what is Claude”",
+    "url": "https://claude.ai/",
+    "kind": "seo"
+   },
+   {
+    "n": 12,
+    "title": "Ranks #2 for “what is Claude”",
+    "url": "https://en.wikipedia.org/wiki/Claude_(AI)",
+    "kind": "seo"
+   },
+   {
+    "n": 13,
+    "title": "Website (via search index) · Claude Platform",
+    "url": "https://console.claude.ai/",
+    "kind": "site"
+   },
+   {
+    "n": 14,
+    "title": "Website · Slite | The AI knowledge base that stays accurate",
+    "url": "https://slite.com",
+    "kind": "site"
+   },
+   {
+    "n": 15,
+    "title": "Website · Slite Agent — Your AI agent for trusted company knowledge",
+    "url": "https://slite.com/slite-agent",
+    "kind": "site"
+   },
+   {
+    "n": 16,
+    "title": "Website (via search index) · Sintra AI",
+    "url": "https://sintra.ai/",
+    "kind": "site"
+   },
+   {
+    "n": 17,
+    "title": "Website (via search index) · AI Employees for Small Business",
+    "url": "https://sintra.ai/ai-employees",
+    "kind": "site"
+   },
+   {
+    "n": 18,
+    "title": "Website (via search index) · ChatGPT Plan | Plus",
+    "url": "https://chatgpt.com/plans/plus/",
+    "kind": "site"
+   },
+   {
+    "n": 19,
+    "title": "Website (via search index) · Pricing",
+    "url": "https://learn.chatgpt.com/docs/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 20,
+    "title": "Ranks #3 for “ChatGPT pricing plans per user per month billed annually free plan”",
+    "url": "https://www.cloudzero.com/blog/how-much-does-chatgpt-cost/",
+    "kind": "seo"
+   },
+   {
+    "n": 21,
+    "title": "Ranks #1 for “Claude pricing plans per user per month billed annually free plan”",
+    "url": "https://www.softr.io/blog/claude-code-pricing",
+    "kind": "seo"
+   },
+   {
+    "n": 22,
+    "title": "Ranks #2 for “Claude pricing plans per user per month billed annually free plan”",
+    "url": "https://mem0.ai/library/llms-and-models/anthropic-claude-pricing",
+    "kind": "seo"
+   },
+   {
+    "n": 23,
+    "title": "Website · Slite - Pricing",
+    "url": "https://slite.com/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 24,
+    "title": "Website · Customer Support Knowledge Base That Maintains Itself | Slit",
+    "url": "https://slite.com/solutions/customer-support",
+    "kind": "site"
+   },
+   {
+    "n": 25,
+    "title": "Website (via search index) · Sintra AI Pricing",
+    "url": "https://sintra.ai/pricing",
+    "kind": "site"
+   },
+   {
+    "n": 26,
+    "title": "Website · Sintra AI plans and pricing | Sintra Help Center",
+    "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing",
+    "kind": "site"
+   }
+  ]
+ },
+ "sections": [
+  {
+   "jp": "jp1",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "AI adoption among all enterprises in Singapore rose by 8.8 percentage points from 2024 to 2025, reaching 23.5%.",
+     "quote": "From 2024 to 2025, the adoption rate rose by 8.8 pp to 23.5% among all enterprises",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+       "title": "Singapore Digital Economy Report 2026"
+      }
+     ],
+     "issuer": "IMDA",
+     "date": "2026-10-05",
+     "page": 12
+    },
+    {
+     "text": "Among enterprises with at least 10 employees, the AI adoption rate increased by 13.2 percentage points to 34.6%.",
+     "quote": "the rate among enterprises with at least 10 employees increased by 13.2 pp to 34.6%",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+       "title": "Singapore Digital Economy Report 2026"
+      }
+     ],
+     "issuer": "IMDA",
+     "date": "2026-10-05",
+     "page": 12
+    },
+    {
+     "text": "Among firms that had not adopted AI, 12.1% in 2025 planned to use AI in the next 12 months, up from 5.6% in 2023.",
+     "quote": "Among firms that had not adopted AI, 12.1% in 2025 shared they were planning to use AI in the next 12 months, up from 5.6% in 2023.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.imda.gov.sg/assets/8e4d9951-bc53-4612-80ba-77ee4feaa6da",
+       "title": "Singapore Digital Economy Report 2026"
+      }
+     ],
+     "issuer": "IMDA",
+     "date": "2026-10-05",
+     "page": 15
+    },
+    {
+     "text": "Between 2023 and 2024, AI adoption tripled among SMEs from 4.2% to 14.5% and rose from 44.0% to 62.5% among larger enterprises.",
+     "quote": "between 2023 and 2024, AI adoption tripled among SMEs from 4.2% to 14.5%; and rose from 44.0% to 62.5% among larger enterprises.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://isomer-user-content.by.gov.sg/39/cb52d9a0-0d6c-484d-96fe-571031b37eb7/NAIS_update.pdf",
+       "title": "Update to Singapore National AI Strategy (2026)"
+      }
+     ],
+     "issuer": "Ministry of Digital Development and Information / Smart Nation",
+     "date": "2026-05-20",
+     "page": 25
+    }
+   ]
+  },
+  {
+   "jp": "jp2",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "Certain sectors such as finance, healthcare and legal may be regulated by existing sector-specific laws, regulations or guidelines.",
+     "quote": "certain industry sectors (such as in the finance, healthcare, and legal sectors) may be regulated by existing sector-specific laws, regulations or guidelines relevant to the sector",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf",
+       "title": "Model AI Governance Framework (2nd ed.)"
+      }
+     ],
+     "issuer": "PDPC / IMDA",
+     "date": "2020-01-21",
+     "page": 17
+    },
+    {
+     "text": "The Monetary Authority of Singapore published the FEAT Principles to guide firms using AI and data analytics for financial products and services.",
+     "quote": "the Monetary Authority of Singapore published the Principles to Promote Fairness, Ethics, Accountability and Transparency in the Use of Artificial Intelligence and Data Analytics in Singapore’s Financial Sector (the “FEAT Principles”)",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.pdpc.gov.sg/-/media/files/pdpc/pdf-files/resource-for-organisation/ai/sgmodelaigovframework2.pdf",
+       "title": "Model AI Governance Framework (2nd ed.)"
+      }
+     ],
+     "issuer": "PDPC / IMDA",
+     "date": "2020-01-21",
+     "page": 17
+    }
+   ]
+  },
+  {
+   "jp": "jp3",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "The Enterprise Development Grant (EDG) ceased on 29 September 2026, and from 30 September onwards businesses apply for support under the EDGE Grant.",
+     "quote": "EDG, MRA and PSG ceased on 29 September 2026. From 30 September onwards, apply for business grant support under the EDGE Grant.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant",
+       "title": "Enterprise Development Grant (EDG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 1
+    },
+    {
+     "text": "The EDGE Grant is issued by Enterprise Singapore and covers 8 business areas and over 150 activities.",
+     "quote": "The EDGE Grant covers 8 business areas, and over 150 activities to help your business grow.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/edge-grant",
+       "title": "EDGE Grant (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-30",
+     "page": 1
+    },
+    {
+     "text": "Under the Investment Allowance, approved capital expenditure is capped at S$10 million per project, and the scheme was extended until 31 March 2026.",
+     "quote": "the approved capital expenditure is capped at S$10 million per project. As announced at Budget 2023, the scheme will be extended for another three years until 31 March 2026.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.enterprisesg.gov.sg/financial-support/enterprise-development-grant",
+       "title": "Enterprise Development Grant (EDG) (web page captured to PDF) (Ceased 29 Sep 2026)"
+      }
+     ],
+     "issuer": "Enterprise Singapore",
+     "date": "2026-09-29",
+     "page": 4
+    },
+    {
+     "text": "Startup SG Equity is issued by Enterprise Singapore (Startup SG) and supports Singapore-based deep tech startups through co-investment alongside independent, qualified third-party investors.",
+     "quote": "The Startup SG Equity (SSGE) scheme catalyses private sector investments to support Singapore-based deep tech* startups with global growth potential.",
+     "sources": [
+      {
+       "kind": "web",
+       "url": "https://www.startupsg.gov.sg/programmes/4895/startup-sg-equity",
+       "title": "Startup SG Equity (web page captured to PDF)"
+      }
+     ],
+     "issuer": "Enterprise Singapore (Startup SG)",
+     "date": "2026-10-05",
+     "page": 1
+    }
+   ]
+  },
+  {
+   "jp": "jp4",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "ChatGPT: OpenAI's conversational AI assistant for answering questions, writing, creating images, coding and completing work, offered free or via paid plans for individuals and businesses.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://chatgpt.com",
+       "title": "Website · ChatGPT"
+      },
+      {
+       "kind": "seo",
+       "url": "https://chatgpt.com/overview/",
+       "title": "Ranks #1 for “what is ChatGPT”"
+      }
+     ]
+    },
+    {
+     "text": "Claude: Claude is an AI assistant and family of large language models built by Anthropic, used for writing, Q&A, coding and agentic work by individuals, teams and enterprises.",
+     "sources": [
+      {
+       "kind": "seo",
+       "url": "https://claude.ai/",
+       "title": "Ranks #3 for “what is Claude”"
+      },
+      {
+       "kind": "seo",
+       "url": "https://en.wikipedia.org/wiki/Claude_(AI)",
+       "title": "Ranks #2 for “what is Claude”"
+      },
+      {
+       "kind": "site",
+       "url": "https://console.claude.ai/",
+       "title": "Website (via search index) · Claude Platform"
+      }
+     ]
+    },
+    {
+     "text": "Slite Agent: Slite is an AI knowledge base for teams, with a built-in Slite Agent that drafts and maintains documentation and answers questions with cited sources.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://slite.com",
+       "title": "Website · Slite | The AI knowledge base that stays accurate"
+      },
+      {
+       "kind": "site",
+       "url": "https://slite.com/slite-agent",
+       "title": "Website · Slite Agent — Your AI agent for trusted company knowledge"
+      }
+     ]
+    },
+    {
+     "text": "Sintra AI: Sintra AI is a SaaS platform offering pre-built AI employees that automate day-to-day work such as socials, inbox, content, support and sales for small business owners.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://sintra.ai/",
+       "title": "Website (via search index) · Sintra AI"
+      },
+      {
+       "kind": "site",
+       "url": "https://sintra.ai/ai-employees",
+       "title": "Website (via search index) · AI Employees for Small Business"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "jp": "jp5",
+   "status": "enough",
+   "claims": [
+    {
+     "text": "ChatGPT: Free $0 / Go / Plus $20 / Pro from $100 (Pro tiers $100, $200, $500) / Business from $20 per user/month annual ($25 monthly) / Enterprise 定制",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://chatgpt.com/plans/plus/",
+       "title": "Website (via search index) · ChatGPT Plan | Plus"
+      },
+      {
+       "kind": "site",
+       "url": "https://learn.chatgpt.com/docs/pricing",
+       "title": "Website (via search index) · Pricing"
+      },
+      {
+       "kind": "seo",
+       "url": "https://www.cloudzero.com/blog/how-much-does-chatgpt-cost/",
+       "title": "Ranks #3 for “ChatGPT pricing plans per user per month billed annually free plan”"
+      }
+     ]
+    },
+    {
+     "text": "Claude: Free $0 / Pro $17 per month (annual) or $20 monthly / Max $100 / Ultra $200; Team seats from $20/seat/month annual; Enterprise custom.",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://claude.ai/",
+       "title": "Website (via search index) · Claude: Sign in"
+      },
+      {
+       "kind": "seo",
+       "url": "https://www.softr.io/blog/claude-code-pricing",
+       "title": "Ranks #1 for “Claude pricing plans per user per month billed annually free plan”"
+      },
+      {
+       "kind": "seo",
+       "url": "https://mem0.ai/library/llms-and-models/anthropic-claude-pricing",
+       "title": "Ranks #2 for “Claude pricing plans per user per month billed annually free plan”"
+      }
+     ]
+    },
+    {
+     "text": "Slite Agent: Basic $10 per user/month / Pro $20 per user/month / Enterprise custom pricing (Contact Sales)",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://slite.com/pricing",
+       "title": "Website · Slite - Pricing"
+      },
+      {
+       "kind": "site",
+       "url": "https://slite.com",
+       "title": "Website · Slite | The AI knowledge base that stays accurate"
+      },
+      {
+       "kind": "site",
+       "url": "https://slite.com/solutions/customer-support",
+       "title": "Website · Customer Support Knowledge Base That Maintains Itself | Slit"
+      }
+     ]
+    },
+    {
+     "text": "Sintra AI: Sintra X 1-month plan $48.50/month (50% off); 3-month plan $23.60/month (60% off); 12-month plan $15.60/month (70% off)",
+     "sources": [
+      {
+       "kind": "site",
+       "url": "https://sintra.ai/pricing",
+       "title": "Website (via search index) · Sintra AI Pricing"
+      },
+      {
+       "kind": "site",
+       "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing",
+       "title": "Website · Sintra AI plans and pricing | Sintra Help Center"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "favorable": [
+   "AI adoption among Singapore enterprises rose 8.8 points to 23.5% from 2024 to 2025. [JP1]",
+   "Adoption among firms with 10+ employees jumped 13.2 points to 34.6%. [JP1]",
+   "The share of non-adopters planning AI use within 12 months more than doubled to 12.1%. [JP1]",
+   "SME adoption tripled from 4.2% to 14.5% between 2023 and 2024. [JP1]"
+  ],
+  "risks": [
+   "Finance, healthcare and legal sectors face sector-specific regulation that constrains AI deployment. [JP2]",
+   "MAS FEAT Principles impose governance expectations on AI use in financial services. [JP2]",
+   "The EDG grant ended and was replaced by the EDGE Grant, changing the funding landscape. [JP3]",
+   "Crowded field of established assistants (ChatGPT, Claude, Slite, Sintra) with low entry pricing. [JP4, JP5]"
+  ],
+  "gaps": [],
+  "validate": [
+   "Whether target customers really have this pain (needs customer interviews)",
+   "Whether customers will pay your price (needs customer or transaction evidence)",
+   "Check which EDGE Grant areas and activities (C8) could fund adoption of your product.",
+   "Confirm whether target sectors fall under MAS FEAT or other sector rules (C5, C6).",
+   "Assess whether Startup SG Equity or Investment Allowance terms (C9, C10) fit your funding structure."
+  ]
+ },
+ "competitors": {
+  "runId": "TC02_2026-11-07T18-44-41_c",
+  "intent": {
+   "type": "own",
+   "query": "We are building AI assistant for businesses for businesses in Singapore. Find our competitors",
+   "competitors": [
+    "ChatGPT",
+    "Claude",
+    "Slite Agent",
+    "Sintra AI"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding",
+    "pricing"
+   ],
+   "topic": "SaaS"
+  },
+  "rows": [
+   {
+    "competitor": "ChatGPT",
+    "domain": "chatgpt.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "ChatGPT",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://chatgpt.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "OpenAI's conversational AI assistant for answering questions, writing, creating images, coding and completing work, offered free or via paid plans for individuals and businesses.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://chatgpt.com",
+        "title": "Website · ChatGPT"
+       },
+       {
+        "kind": "seo",
+        "url": "https://chatgpt.com/overview/",
+        "title": "Ranks #1 for “what is ChatGPT”"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "美国 · 旧金山（OpenAI 总部，1455 and 1515 Third Street, San Francisco, California）",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://en.wikipedia.org/wiki/OpenAI",
+        "title": "Ranks #1 for “ChatGPT company headquarters”"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "4,500 employees (2026, Wikipedia)",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://en.wikipedia.org/wiki/OpenAI",
+        "title": "Ranks #1 for “ChatGPT number of employees company size”"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "2026 年融资 1,220 亿美元承诺资本，投后估值 8,520 亿美元",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+        "title": "Ranks #1 for “ChatGPT funding round raised investors valuation”"
+       }
+      ],
+      "status": "verified"
+     },
+     "pricing": {
+      "value": "Free $0 / Go / Plus $20 / Pro from $100 (Pro tiers $100, $200, $500) / Business from $20 per user/month annual ($25 monthly) / Enterprise 定制",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://chatgpt.com/plans/plus/",
+        "title": "Website (via search index) · ChatGPT Plan | Plus"
+       },
+       {
+        "kind": "site",
+        "url": "https://learn.chatgpt.com/docs/pricing",
+        "title": "Website (via search index) · Pricing"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.cloudzero.com/blog/how-much-does-chatgpt-cost/",
+        "title": "Ranks #3 for “ChatGPT pricing plans per user per month billed annually free plan”"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Billing",
+        "text": "提供月付和年付；Business 年付 $20/用户/月，月付 $25/用户/月，价格以美元计",
+        "url": "https://chatgpt.com/pricing/"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "Free 计划 $0：无限文本对话（受滥用防护限制），上传、图像生成、语音、深度研究、记忆和 Codex 均有限",
+        "url": "https://chatgpt.com/pricing/"
+       }
+      ],
+      "gaps": [
+       "Pricing unit",
+       "Extra costs",
+       "Current offer"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Claude",
+    "domain": "claude.ai",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Claude",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://claude.ai",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Claude is an AI assistant and family of large language models built by Anthropic, used for writing, Q&A, coding and agentic work by individuals, teams and enterprises.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://claude.ai/",
+        "title": "Ranks #3 for “what is Claude”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://en.wikipedia.org/wiki/Claude_(AI)",
+        "title": "Ranks #2 for “what is Claude”"
+       },
+       {
+        "kind": "site",
+        "url": "https://console.claude.ai/",
+        "title": "Website (via search index) · Claude Platform"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "United States · San Francisco, California (Anthropic headquarters); no specific main markets stated.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://en.wikipedia.org/wiki/Anthropic",
+        "title": "Ranks #1 for “Claude company headquarters”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://nation.ai/what-country-is-claude-ai-from/",
+        "title": "Ranks #4 for “Claude company headquarters”"
+       },
+       {
+        "kind": "web",
+        "url": "https://abc7news.com/post/anthropic-san-francisco-ai-company-vaults-965-billion-valuation-new-funding-claude-demand-surges/19188579/",
+        "title": "Third party · 2026-05-28 · Anthropic vaults to a $965 billion valuation with new fundin"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "funding": {
+      "value": "May 2026: $65 billion private round at $965 billion valuation, led by Altimeter, Dragoneer, Greenoaks and Sequoia; earlier $13B Series F (Sep 2025) at $183B.",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://abc7news.com/post/anthropic-san-francisco-ai-company-vaults-965-billion-valuation-new-funding-claude-demand-surges/19188579/",
+        "title": "Third party · 2026-05-28 · Anthropic vaults to a $965 billion valuation with new fundin"
+       },
+       {
+        "kind": "web",
+        "url": "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation",
+        "title": "Third party · 2026-09-28 · Anthropic raises $13B Series F at $183B valuation"
+       }
+      ],
+      "status": "verified"
+     },
+     "pricing": {
+      "value": "Free $0 / Pro $17 per month (annual) or $20 monthly / Max $100 / Ultra $200; Team seats from $20/seat/month annual; Enterprise custom.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://claude.ai/",
+        "title": "Website (via search index) · Claude: Sign in"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.softr.io/blog/claude-code-pricing",
+        "title": "Ranks #1 for “Claude pricing plans per user per month billed annually free plan”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://mem0.ai/library/llms-and-models/anthropic-claude-pricing",
+        "title": "Ranks #2 for “Claude pricing plans per user per month billed annually free plan”"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Billing",
+        "text": "Annual subscription billed up front ($200/year for Pro) versus $20 monthly; prices exclude applicable tax.",
+        "url": "https://claude.ai/"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "Free plan exists and includes Claude Design, Claude Slides and Claude Docs; no seat or usage limits stated.",
+        "url": "https://mem0.ai/library/llms-and-models/anthropic-claude-pricing"
+       },
+       {
+        "label": "Current offer",
+        "text": "Annual subscription discount: Pro at $17/month instead of $20 monthly, $200 billed up front.",
+        "url": "https://claude.ai/"
+       }
+      ],
+      "gaps": [
+       "Pricing unit",
+       "Extra costs"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Slite Agent",
+    "domain": "slite.com",
+    "siteMethod": "search_hint",
+    "cells": {
+     "name": {
+      "value": "Slite Agent",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://slite.com",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Slite is an AI knowledge base for teams, with a built-in Slite Agent that drafts and maintains documentation and answers questions with cited sources.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://slite.com",
+        "title": "Website · Slite | The AI knowledge base that stays accurate"
+       },
+       {
+        "kind": "site",
+        "url": "https://slite.com/slite-agent",
+        "title": "Website · Slite Agent — Your AI agent for trusted company knowledge"
+       }
+      ],
+      "status": "verified"
+     },
+     "region": {
+      "value": "Remote company; LinkedIn lists headquarters in Paris, France.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://slite.com/about",
+        "title": "Website · About Slite | A guide to Remote"
+       },
+       {
+        "kind": "seo",
+        "url": "https://uk.linkedin.com/company/slitehq?trk=ppro_cprof",
+        "title": "Ranks #3 for “Slite Agent company headquarters”"
+       }
+      ],
+      "status": "verified"
+     },
+     "size": {
+      "value": "11–50 employees (LinkedIn); other sources give 20 or 40 employees.",
+      "sources": [
+       {
+        "kind": "seo",
+        "url": "https://uk.linkedin.com/company/slitehq?trk=ppro_cprof",
+        "title": "Ranks #3 for “Slite Agent company headquarters”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://pitchbook.com/profiles/company/224624-71",
+        "title": "Ranks #4 for “Slite Agent number of employees company size”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.ycombinator.com/companies/slite",
+        "title": "Ranks #5 for “Slite Agent company headquarters”"
+       }
+      ],
+      "status": "verified"
+     },
+     "funding": {
+      "value": "2020 Series A of $11M led by Spark Capital; no later round or total raised stated.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://slite.com/blog/announcing-our-series-a",
+        "title": "Website · Announcing our $11M series A"
+       }
+      ],
+      "status": "requeried"
+     },
+     "pricing": {
+      "value": "Basic $10 per user/month / Pro $20 per user/month / Enterprise custom pricing (Contact Sales)",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://slite.com/pricing",
+        "title": "Website · Slite - Pricing"
+       },
+       {
+        "kind": "site",
+        "url": "https://slite.com",
+        "title": "Website · Slite | The AI knowledge base that stays accurate"
+       },
+       {
+        "kind": "site",
+        "url": "https://slite.com/solutions/customer-support",
+        "title": "Website · Customer Support Knowledge Base That Maintains Itself | Slit"
+       }
+      ],
+      "status": "verified",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per user (member) per month.",
+        "url": "https://slite.com/pricing"
+       },
+       {
+        "label": "Billing",
+        "text": "Prices shown are billed yearly; monthly billing not stated on the pricing page.",
+        "url": "https://slite.com/pricing"
+       },
+       {
+        "label": "Extra costs",
+        "text": "Agent credit top-ups at $10 per 100 credits once the monthly allowance is used up.",
+        "url": "https://slite.com/pricing"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "14-day free trial, no credit card required, includes 500 shared credits; no permanent free plan.",
+        "url": "https://slite.com/pricing"
+       }
+      ],
+      "gaps": [
+       "Current offer"
+      ]
+     }
+    }
+   },
+   {
+    "competitor": "Sintra AI",
+    "domain": "sintra.ai",
+    "siteMethod": "search_domain",
+    "cells": {
+     "name": {
+      "value": "Sintra AI",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://sintra.ai",
+        "title": "Homepage"
+       }
+      ],
+      "status": "verified"
+     },
+     "overview": {
+      "value": "Sintra AI is a SaaS platform offering pre-built AI employees that automate day-to-day work such as socials, inbox, content, support and sales for small business owners.",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://sintra.ai/",
+        "title": "Website (via search index) · Sintra AI"
+       },
+       {
+        "kind": "site",
+        "url": "https://sintra.ai/ai-employees",
+        "title": "Website (via search index) · AI Employees for Small Business"
+       }
+      ],
+      "status": "requeried"
+     },
+     "region": {
+      "value": "No public information",
+      "sources": [],
+      "status": "missing"
+     },
+     "size": {
+      "value": "62 employees (Dealroom, 2026); LinkedIn lists 11–50 employees; PitchBook reports 35 total employees",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://dealroom.co/companies/sintra/",
+        "title": "Third party · Sintra — venture-backed company profile | Dealroom"
+       },
+       {
+        "kind": "seo",
+        "url": "https://www.linkedin.com/company/sintradotai",
+        "title": "Ranks #3 for “Sintra AI number of employees company size”"
+       },
+       {
+        "kind": "seo",
+        "url": "https://pitchbook.com/profiles/company/534693-16",
+        "title": "Ranks #5 for “Sintra AI company headquarters”"
+       }
+      ],
+      "status": "requeried"
+     },
+     "funding": {
+      "value": "2025 年 6 月种子轮 1700 万美元，Earlybird VC 领投，Inovo、Practica Capital 及天使投资人参与；Dealroom 记录估值 6800 万美元。",
+      "sources": [
+       {
+        "kind": "web",
+        "url": "https://www.vestbee.com/insights/articles/sintra-ai-raises-17-m",
+        "title": "Third party · 2025-07-01 · Vilnius-based AI employees platform sintra.ai raises $17M se"
+       },
+       {
+        "kind": "web",
+        "url": "https://dealroom.co/companies/sintra/",
+        "title": "Third party · Sintra — venture-backed company profile | Dealroom"
+       }
+      ],
+      "status": "requeried"
+     },
+     "pricing": {
+      "value": "Sintra X 1-month plan $48.50/month (50% off); 3-month plan $23.60/month (60% off); 12-month plan $15.60/month (70% off)",
+      "sources": [
+       {
+        "kind": "site",
+        "url": "https://sintra.ai/pricing",
+        "title": "Website (via search index) · Sintra AI Pricing"
+       },
+       {
+        "kind": "site",
+        "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing",
+        "title": "Website · Sintra AI plans and pricing | Sintra Help Center"
+       }
+      ],
+      "status": "requeried",
+      "items": [
+       {
+        "label": "Pricing unit",
+        "text": "Per subscription (one workspace plan), billed upfront for the chosen term; 250 credits per month included",
+        "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing"
+       },
+       {
+        "label": "Billing",
+        "text": "Upfront payment per term: 1-month $48.50, 3-month $70.80 total, 12-month $187 total; USD, VAT added at checkout",
+        "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing"
+       },
+       {
+        "label": "Extra costs",
+        "text": "No paid add-ons stated; plans include 250 monthly credits for advanced AI usage, resetting each month",
+        "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing"
+       },
+       {
+        "label": "Free tier & trial",
+        "text": "No free plan stated; 14-day money-back guarantee on initial Sintra X subscription purchase",
+        "url": "https://help.sintra.ai/en/articles/12606895-sintra-ai-plans-and-pricing"
+       },
+       {
+        "label": "Current offer",
+        "text": "Discounts shown on pricing page: 50% off 1-month, 60% off 3-month, 70% off 12-month plans",
+        "url": "https://sintra.ai/pricing"
+       }
+      ],
+      "gaps": []
+     }
+    }
+   }
+  ],
+  "stats": {
+   "sources": 126,
+   "checked": 24,
+   "requeried": 5,
+   "passed": 22,
+   "dropped": 2,
+   "pricingSlots": {
+    "filled": 18,
+    "total": 24
+   },
+   "pricingThirdParty": 0
+  },
+  "finishedAt": "2026-11-07T18:47:46.538Z"
+ },
+ "ragConnected": true,
+ "finishedAt": "2026-11-07T18:48:03.415Z"
+}
