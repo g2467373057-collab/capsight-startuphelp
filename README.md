@@ -137,3 +137,13 @@ The PDFs are not stored in this repository; each row of `rag-service/data/regist
 | `docs/RAG-API.md` | The contract between the server and the knowledge base |
 
 The competitor research module started as Li Yisha's Gate 2 project (repository `capsight`); in this system it is the module behind JP4 and JP5.
+
+---
+
+## License · 版权声明
+
+© 2026 Li Yisha. All rights reserved.
+
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE). You may read, study and use it for personal, academic and other noncommercial purposes. **Any commercial use requires prior written permission from the author.**
+
+本项目采用 [PolyForm Noncommercial 1.0.0](LICENSE) 许可证。允许个人学习、学术研究等非商业用途；**任何商业用途须事先获得作者书面许可。**
